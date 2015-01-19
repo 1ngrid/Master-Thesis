@@ -1,0 +1,28 @@
+\section{Evaluation}
+The main purpose of the evaluation is to see whether there are any improvements when applying the categorization, but it is also interesting to evaluate the result of the classifier i.e., see whether it correctly assigns categories. Improvements can also be assumed to be better if the classifier has a high probability of categorize correctly.
+
+%Evaluation of the improvement is an evaluation of the results of the user. 
+%The evaluation should both cover evaluation t
+%This evaluation can be thought of as two evaluation approaches; evaluation of the technical result and evaluation of the overall improvements when applying the classifier. Technical evaluation is 
+
+%There are different parts of the result that can be evaluated,  but the most important evaluation is to evaluate the classifier to see whether it correctly assign categories. 
+
+The evaluation of the classifier can be separated into different evaluations that together cover the whole categorization. 
+%plit into different parts to get an evaluation of the different components of the classifier. 
+The first evaluation could be of the predefined base components of the classifier; the keyword list and the set of categories. One way of evaluating the list of keywords is to determine if the keywords are relevant for the categorization. This could be done by looking at the size of the list i.e., how many words are included in the list, and what keywords are actually used (which occur in the collection of text). It could also be interesting to see if some of the words are never used. 
+
+The set of categories could be evaluated as how many texts get categories to the the different categories, and try to evaluate if some of the categories seem unnecessary. The set of categories might also depend on the use of the categorization, which means that some categories might be unnecessary in some content analysis and useful in others. 
+
+A more interesting evaluation is the function that decides what category a keyword maps to. It is not possible to do the mapping by hand since the program is operating with many thousand keywords, also in many languages, which means that the mapping has to be done automatically. The best evaluation of this function is comparing with  a true solution. Creating a true solution for the whole categorization, but there are two other approaches for evaluating the result. The first is to create a handmade solution for some small list and compare the classifier's result with this list. This will hopefully give some indication of the result of the classifier, but the result will vary a lot depending on what list we choose. 
+%This should be compared by a list made by humans; what category should a keyword link to? The problem with this is that it is time consuming and difficult to make a list like this by hand. 
+The other approach is to take advantage of Wikipedia's category structure. 
+%
+%of the list could therefore be based on Wikipedia's category structure instead. 
+All articles are, as already mentioned, already categorized and it is therefore possible to compare the path 
+%Since all titles are categorized is it possible to compare the path 
+distances from the parent categories and to the most describing category to determine if the keyword is linking to the right categories.
+
+
+The last part of the classifier's evaluation is deciding the overall result, i.e., how well does the classifier categorize the collection of texts? The best evaluation would again be to compare the classifier's result with a manual categorization and look if the results are the same. The problem with this approach is the same as with the mapping function, we need a true solution to compare with. A proposal to a result is the same; we could create a small set for comparing, but a problem with this solution is that it is a difficult task for comparing, since text can be difficult to categorize. Ole Johan Dahl could for instance be categorized under both \textit{Norwegian computer scientists} and \textit{computer scientist}, and both of them are correct. Such a comparison would therefore depend on using the same categories which can seem unnatural. It is also possible to compare the result of a classification with classifications of very similar texts to see if the categorization decides the same result. 
+
+Some text collections can also be evaluated with help from the text itself. Lots of news articles are for instance already categorized in the URL, for instance would the URL of an article about sport contain  some information that it is about sport:\texttt{.../sport/...}. A possible solution is therefore to look the URL and see if it matches categories proposed by the classifier. 

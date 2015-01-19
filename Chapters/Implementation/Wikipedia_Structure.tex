@@ -1,0 +1,29 @@
+\section{Wikipedia Structure}
+There are two ways of accessing Wikipedia's encyclopedic information. The first way is to look up runtime as most users do when they are looking for information. The other way is more common when the information is used by other programs and
+
+%s, which means that the program access Wikipedia's 
+
+The other, and most common way is to download database dumps from Wikipedia. All Wikipedia articles, images and categories are stored in a database which are accessed when a user are searching for an article online. A database dump is therefore a backup of the database which are usually stored in the case of some data is lost. \footnote{TODO: reference: en.wikipedia.ort/wiki/Database\_dump} This backup is available for anyone interested at \emph{TODO: insert link}\footnote{TODO: insert reference?}. 
+
+
+
+
+A database dump is defined as the table structures which is used to get the information to load
+
+For our purpose there are some dumps that are relevant: 
+
+
+I have chosen to work on the English Wikipedia, which is the largest database in with *** articles and *** pages. 
+
+The relevant files are: 
+\begin{itemize}
+\item \enwikicatlink
+\item \enwikipage
+\item \enwikicategory
+\end{itemize}
+
+All of these files are compressed sql-files, which means that they represent files to put information into a SQL-database. Each of the files can be used to build up a database table with insert-statements, so all the information is stored in the table. 
+
+\enwikicatlink describes all the links between categories, which describes two different types of relationships in Wikipedia. The first relationship is between a Wikipedia article and a category, i.e the category *** points to the article. The other relationship is between two categories which means that one of the categories is a subcategory of the other category. 
+
+The file contains the table "categorylinks". Since the file is quite large (1.5GB compressed), it is desirable to split the file into two files; files containing information of the relationships between categories and files that contain information about the relationship between categories and pages. 
