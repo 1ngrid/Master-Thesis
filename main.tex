@@ -34,6 +34,9 @@
 \newcommand{\catlinkprogram}{\texttt{Split\_catlink.py}}
 \newcommand{\catgraphbuilderprogram}{\texttt{Categorygraph\_builder.py}}
 
+\newcommand\Chapter[2]{
+  \chapter[#1: {\itshape#2}]{#1\\[2ex]\Large\itshape#2}
+}
 
 
 \title{Content Categorization for Contextual Advertising Using Wikipedia}
@@ -42,7 +45,9 @@
 %\bibliography{mybib}
 
 \begin{document}
-\ififorside{}
+%\ififorside{}
+
+\ififorside
 \frontmatter{}
 \maketitle{}
 
@@ -54,15 +59,16 @@
 %\urldef\iababout\url{http://www.iab.net/about_the_iab}
 
 %%---------------------------------------------------------------------------%%
-
+%\pagenumbering{roman}
 \input{Chapters/Abstract/Abstract.tex}
 
+\input{Chapters/Acknowledgements.tex}  
 \tableofcontents{}
 \listoffigures{}
 \listoftables{}
 
-\input{Chapters/Acknowledgements.tex}  
 \mainmatter{}
+%\pagenumbering{arabic}
 
 %\part{Introduction}
 \input{Chapters/Introduction/Introduction}
