@@ -1,0 +1,34 @@
+\documentclass[11pt,english,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+\title{Notater}
+\author{Ingrid Grønlie Guren}
+
+\begin{document}
+
+\maketitle
+
+
+\subsection*{Overcoming the Brittleness Bottleneck using Wikipedia: Enhancing Text Categorization with Encyclopedic Knowledge}
+ \begin{itemize}
+ \item Purpose: enrich document representatin through automatix use of a cast compendium of human knowledge
+ \item Problem: 
+    \begin{itemize}
+    \item textual form: requires natural language understanding
+    \item assume large amount of common-sense knowledge
+    \end{itemize}
+    \item text categorization: automatic assignment of category labels to natural language documents
+    \item auxiliary text classifier that is apable of matching the most relevant articles of Wikipedia
+    \item BOW: for easy to medium difficulty and identified by some distinguish word. 
+ \end{itemize}
+\subsubsection*{Approach}
+\begin{itemize}
+\item Parse Wikipedia XML dump
+\item processed the text: remoed stop words and rare words
+\item Stemmed the remainin words
+\item Features generated from the 10 best-matching Wikipedia concepts
+\end{itemize}
+
+\end{document}
