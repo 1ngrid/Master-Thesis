@@ -1,0 +1,42 @@
+\section{Overskrift}
+
+The first step towards classification of Wiipedia articles is to find all full paths for the articles. There will be more than one way to reach many of the articles. 
+
+\begin{code}
+[INSERT EXAMPLE]
+\end{code}
+
+This task depends on different files from Wikipedia and should be split into smaller steps, hence several programs were made to complete the first task. 
+
+The files needed for this task were: 
+\begin{itemize}
+\item \enwikicatlink
+\item \enwikipage
+\item \enwikipageprops
+\end{itemize}
+
+
+
+
+% About hidden categories. 
+Wikipedia’s category structure contains lots of hidden categories which are not displayed at the bottom of an article page for the general users, even if the article is placed under the category. The first subtask was therefore to remove all links to the hidden categories since they do not provide any relevant information about the article's content. 
+
+The task of finding all hidden categories was more complicated than first assumed. The first approach was to find all subcatogries of the category \emph{Hidden Categories} in the insert statement database dump. This turned out to [TODO:NUMBER]. 
+
+
+but is not all hidden subcategories in Wikipedia, because some o
+
+Finding all of the subcategories of these turned out to be difficult since some of them included links to categories that should not be removed, 
+\begin{code}
+[ISERT EXAMPLE]
+\end{code}
+
+The next attempt was to look at the file \enwikipageprops, where each statement is on the following form: 
+
+\begin{code}
+[INSERT example]
+\end{code}
+The \enwikipageprops  contains information about the pages, ans has a field called \emph{pp\_propname} that give some description about the page. Hidden categories are therefore marked as \emph{hiddencat} (see %TODO: input figure here)
+and finding all hidden categories could be done by collecting all categories which page ids corresponding to those with the field \emph{pp\_propname} marked as \emph{hiddencat}. Collecting all the names gave a list of [NUMBER] hidden categories. 
+
+Since the two approaches gave different results, was the conclusion to combine the two lists to be sure that all hidden categories had been found, which resulted in a list containing [NUMBER] different hidden categories that could be ignored later in the programs.  

@@ -28,11 +28,17 @@
 
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 
+% The files I needed
 \newcommand{\enwikicatlink}{\texttt{enwiki-latest-categorylinks.sql.gz} }
 \newcommand{\enwikipage}{\texttt{enwiki-latest-page.sql.gz} }
+\newcommand{\enwikipageprops}{\texttt{enwiki-latest-page\_props.sql.gz} }
 \newcommand{\enwikicategory}{\texttt{enwiki-latest-category.sql.gz} }
-\newcommand{\catlinkprogram}{\texttt{Split\_catlink.py}}
-\newcommand{\catgraphbuilderprogram}{\texttt{Categorygraph\_builder.py}}
+
+
+% The programs I have made
+\newcommand{\catlinkprogram}{\texttt{Split\_catlink.py} }
+\newcommand{\catgraphbuilderprogram}{\texttt{Categorygraph\_builder.py} }
+\newcommand{\artbuildprogram}{\texttt{}}
 
 \newcommand\Chapter[2]{
   \chapter[#1: {\itshape#2}]{#1\\[2ex]\Large\itshape#2}
@@ -73,15 +79,14 @@
 %\part{Introduction}
 \input{Chapters/Introduction/Introduction}
 
-\[ Put introduction here. \]
-\part{Background}
+%\part{Background}
 \input{Chapters/Background/Background}
 
 \input{Chapters/PreviousWork/Previous_Work}
 
 %\part{General Discussion}
 
-\part{Implementation}
+%\part{Implementation}
 \input{Chapters/Implementation/Implementation}
 \part{Results and Discussion}
 

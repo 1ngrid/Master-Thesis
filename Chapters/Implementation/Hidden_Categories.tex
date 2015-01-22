@@ -19,10 +19,29 @@ To see the necessity of removing irrelevant categories (the hidden ones), we can
 \begin{table}[h]
 \centering
 \begin{tabular}{l|c|c}
- \textbf{Links between...} & \textbf{With Hidden Categories} & \textbf{Without Hidden Categories}  \\ \hline
+ \textbf{Links between...} & \textbf{W/ Hidden Categories} & \textbf{W/o Hidden Categories}  \\ \hline
  \textbf{subcategories} & 3.341.524 & 2.886.880 \\
  \textbf{articles and categories} & 78.535.744 & 29.034.980 
 \end{tabular}
 \caption{Number of links removed when links to hidden categories are disregarded}
 \label{tab:with_and_without_hidden_cats}
+\end{table}
+
+The next step to reduce number of categories and articles are removing those whose titles contains words mostly connected to Wikipedia. All articles with the following words where removed
+\emph{articles}, \emph{redirects}, \emph{\_link\_}, \emph{wikipedia}, \emph{wikify}, \emph{wikidata}, \emph{\_pages\_}. 
+
+% 31594 in All_hidden_categories
+
+
+\ref{tab:removed_irrelevant_words} shows that number of links are reduced when articles and categories containing these words are removed. 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|c|c}
+\textbf{Links between...} & \textbf{W/ the words} & \textbf{W/o the words} \\
+ \textbf{subcategories}& 2.886.880 & 2.826.161 \\
+ \textbf{articles and categories} & 29.034.980 & 24.581.556
+\end{tabular}
+\caption{Number of links removed when words not likely to be relevant are removed }
+\label{tab:removed_irrelevant_words}
 \end{table}
