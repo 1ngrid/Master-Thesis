@@ -1,0 +1,21 @@
+
+\subsection{Advantages with Automatic Content Analysis}
+The main advantage with automatic content analysis is time, computers work ve
+
+\subsection{Issues}
+% Main issues: 
+% predefined set
+% predefined keyword list
+% Common knowledge -> how to represent this
+Even though there are many advantages of using automatic content analysis, there are also some issues with categorization that need to be dealt with for optimal results. 
+%There are some issues with automatic content analysis that are important to handle. 
+The first is that the computer can only think what its learnt to think, hence cannot define its own categories but needs a predefined set of possible categories. It is a lot easier to ask the computer "Is the article about a computer scientist" than to let the computer find this possibility itself. The other issue is to decide what words are important and useful for deciding the categories of a text. 
+
+%The computer content analysis is an automatic categorization process, where we want to find words that help us define the categories of the text. 
+The first issue can be solved by defining a set of categories that we want to categorize text into. This set of categories should be presented as the desired output and be so simple that it can be understood by the users of the program. The category set should also contain a special category \textit{unknown} for texts where no category is found.
+%There are some requirements that need to be met for our set; the set has to be so large that all relevant texts can be placed under at least one category, and it has to be so general that similar texts have a high probability of being categorized together. The category set should also contain a special category \textit{unknown} for texts where no category is found. 
+%Another requirement for the category set is that the it has to be so well-defined and specific that it conserves as much information as possible about the categorized text. The solution to the problem should also be able to change the pre-defined category set to another pre-defined set depending on the texts that are being categorized and the context of the classification.
+%that a text is not categorized under conflicting categories, for instance the category "sport" and the category "not sport". We also want the categories to be specific to have more information about the categorized text. 
+%Hence the best result of the classifier would be found if the set satisfies all of these requirements with the best possible trade off between specialization and generalization. 
+
+Feature selection is an important part of classification, and is defined as the process of selecting relevant features which will be used for the classification. It is natural to use words or phrases as features in classification of text, hence feature selection is the issue of deciding the words or phrases that are useful for categorization. These should be collected in a predefined list of keywords where our task is to create a mapping from the keywords to one or more categories that are describing for the text. The category mapping is a way of saying that a text is more likely to belong to the keyword's category if the word is present in the text. If an article mentions "Pippi Langstrømpe" (the main character in many of Astrid Lindgren's children books), the probability for the article to be about Astrid Lindgren or belong to the category "Swedish children's writers" should be larger than if the articles does not mention the name. The keyword "Pippi Langstrømpe" should therefore have some mapping to this category. 

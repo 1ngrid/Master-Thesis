@@ -1,0 +1,38 @@
+\subsection{Irrelevant Articles and Categories}
+The next step is to remove all articles that are not relevant. Some articles does not provide information and should therefore be removed from our structure to reduce number of links that have to be considered at all time. Ideally we only want to consider article titles that can provide useful information. Articles about numbers are an example of articles that does not provide any new information and can be removed. 
+
+The full paths for an article can also be quite long, hence it is useful to reduce the complexity by removing category titles from the path that are not useful. The main reason to remove a category title from the path is if it is too specified, for instance categories that ... : 
+
+
+%Some of the articles not relevant are articles which are numbers. Numbers can have many meanings, but the meaning in the Wikipedia article does not give any new information when the number is available as an entry in a dictionary. 
+
+%\subsection{Categories not relevant for the path}
+%The structure of the categories in Wikipedia are very detailed, which make many of the paths too specified for our task. To simplify the article paths are some categories therefore removed from the path. 
+
+%The categories which where chosen to be removed where: 
+\begin{itemize}
+\item ... are numbers
+\item ... contains number
+\item ... contains the word \emph{by}
+\end{itemize}
+
+The reason to remove all categories that are or contains numbers are that they usually are connected to a specific year, which is not interesting in our case. Categories containing the words \emph{by} can usually be removed because they are a parent category for sorting categories and usually indicate what the categories are sorted by. 
+%Categories containing the word \emph{by} can also be removed because the  category is usually  placed under both of the categories it represents. 
+An example of this can be seen in figure \ref{fig:galileogalilei} where one of the paths found for the Italian mathematician \emph{Galileo Galilei} can be simplified. 
+%which is placed under the category \emph{Italian Mathematicians by century}.
+
+%Reducing the complexity is useful to make the paths more readable. Example of this can be showed in figure \ref{} where 
+
+\begin{figure}
+\centering
+\begin{lstlisting}
+/mathematics/mathematicians/italian mathematicians/italian mathematicians by century/
+16th-century Italian mathematicians/galileo galilei
+\end{lstlisting}
+\begin{lstlisting}
+/mathematics/mathematicians/italian mathematicians/galileo galilei
+\end{lstlisting}
+
+\caption[Simplification of an article path]{Simplification of one of the paths of the article about Galileo Galilei}
+\label{fig:galileogalilei}
+\end{figure}

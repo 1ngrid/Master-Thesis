@@ -1,0 +1,13 @@
+\section{Id Mapping}
+When writing all the results to file, these files are extremely large. All path to all Wikipedia articles ended with about 20 GB compressed data of text. The result was to create a id mapping for each category name and article name. All names get a unique id, and instead of writing the full path to file, the ids of the full path is written to file. 
+
+
+Another reasoning for id mapping is to make faster is that the ids are smaller than the full category names, which makes the lookups faster. 
+
+
+
+% Sammenlikning mellom finne alle pather med id vs med navn
+
+% Fordel 2: Kan bruke "/" in the text. 
+
+The id mapping is fixed by creating a counter that assigns numbers to each category name or article name that is not found yet.  

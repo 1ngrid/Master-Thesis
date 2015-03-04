@@ -1,0 +1,65 @@
+\section{Redirects}
+%Wikipedia contains lots of redirects between articles to help the users find the articles they look for, and to keep the encyclopedia well-structured.  
+Wikipedia contains lots of redirects to articles for two main reasons. The first is to help users find the articles they are looking for, and the second reason is to keep the encyclopedia well-structured. The redirects are divided into different types depending on the reason for redirecting. Wikipedia lists all the different reasons of redirects. \cite{wiki:redirect} 
+\begin{itemize}[noitemsep]
+\item[-] Alternative names 
+\item[-] Plurals 
+\item[-] Closely related words 
+\item[-] Adjectives/Adverbs point to noun forms 
+\item[-] Less specific forms of names, for which the article subject is still the primary topic. 
+\item[-] More specific forms of names 
+\item[-] Abbreviations and initialisms 
+\item[-] Alternative spellings or punctuation
+\item[-] Punctuation issues—titles containing dashes should have redirects using hyphens.
+\item[-] Representations using ASCII characters, that is, common transliterations 
+\item[-] Likely misspellings
+\item[-] Likely alternative capitalizations 
+\item[-] To comply with the maintenance of nontrivial edit history
+\item[-] Sub-topics or other topics which are described or listed within a wider article
+\item[-] Redirects to disambiguation pages which do not contain "(disambiguation)" in the title
+\item[-] Shortcuts
+\item[-] Old-style CamelCase links 
+\item[-] Links auto-generated from Exif information 
+\item[-] Finding what links to a section, when links are made to the redirect rather than the section.
+\end{itemize}
+
+Most of the redirect pages are places in categories which tells the reason for the redirection. The category types for the classification are \emph{Maintenance}, \emph{Visual} or \emph{Discussion}.
+
+%When a page is marked as a redirect page in 
+\subsubsection{Handling redirects}
+
+If a page is supposed to be redirected to another page, this is found in \texttt{enwiki- latest-page.sql.gz} where the page's \texttt{INSERT} statement is marked with '1' in the 6th position if it's redirecting (see figure \ref{fig:isredirect}).
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+(10,0,'AccessibleComputing','',0,1,0,0.33167112649574004,
+'20150111235554','20150112004211',631144794,69,NULL)
+\end{lstlisting}
+\caption{Example of a redirecting \texttt{INSERT} statement}
+\label{fig:isredirect}
+\end{figure}
+The first attempt of handling redirects is to make sure the paths are found to articles with correct names and not to the redirecting pages. Finding all paths to pages that redirect to other pages is unnecessary and creates more data than needed. It is instead better to find all pages that other pages redirect \emph{to}. This can be found in a separate file \texttt{enwiki-latest-redirects.sql.gz} where both page id and page title for all pages are found. After all of these ids and titles are collected, the next step is to connect them with the correct output. As an example would the article from figure \ref{fig:isredirect} be connected to the page title in figure \ref{fig:correctacccomp} after the title is converted to lowercase and underscores are removed. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+(10,0,'Computer_accessibility','','')
+\end{lstlisting}
+\caption[Example of a page redirecting to]{The page title \emph{AccessibleComputing} (figure \ref{fig:isredirect}) redirect to \emph{Computer Accessibility}.}
+\label{fig:correctacccomp}
+\end{figure}
+
+%Trenger at alle artiklene er lagret med de riktige navnene! 
+
+
+%
+%The next step in our problem is to decide which of the redirects that are relevant. 
+%If the page is redirecting 
+%All redirect pages are found in a separate file 
+
+%Most redirect pages are not placed in article categories. There are three types of redirect categorization that are helpful and useful:
+
+%    Maintenance categories are in use for particular types of redirects, such as Category:Redirects from initialisms, in which a redirect page may be sorted using the {{R from initialism}} template. One major use of these categories is to determine which redirects are fit for inclusion in a printed subset of Wikipedia. See Wikipedia:Template messages/Redirect pages for a full alphabetical list of these templates. A brief functional list of redirect category (Rcat) templates is found at {{R template index}}.
+%    Sometimes a redirect is placed in an article category because the form of the redirected title is more appropriate to the context of that category, e.g. Shirley Temple Black. (Redirects appear in italics in category listings.)
+%    Discussion pages. If a discussion/talk page exists for a redirect, please ensure (1) that the talk page's projects are all tagged with the "class=Redirect" parameter and (2) that the talk page is tagged at the TOP with the {{talk page of redirect}} template. If the discussion page is a redirect, then it can also be tagged with appropriate Rcats.

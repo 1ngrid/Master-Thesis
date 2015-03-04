@@ -1,0 +1,50 @@
+\section{Grading of Categories}
+
+\begin{comment}
+The structure of Wikipedia could be considered confusing since anyone can edit. This means that the underlying category structure of Wikipedia contains lots of links between all categories. 
+
+This means that it is possible to reach almost all articles from each category. 
+
+This means that there are categories that reach lots of other categories. These should not be considered as important as the other categories. A program was made to find these categories. 
+
+There are 28 top categories (direct subcategories of %\emph{Main Topic Classifications}). 
+
+The main assumption is that if a category leads to many of the top categories, it is possible to reach lots of articles which are not associated with the category. 
+
+%\begin{code}
+Eksempel på hvordan kategorier finner artikler som ikke har noen sammenheng med kategorien.
+%\end{code}
+
+If a category leads to many of these 
+The top categories (28) leads to lots of subcategories. 
+
+% Fan
+Another way of finding categories that does not provide information about the path, is to find all categories with many parent categories and with many subcategories since this means that they easily can reach categories not relevant for the category. 
+
+Hence a program was made to find the number of parent categories and subcategories for each category. 
+\end{comment}
+
+Many articles can be reached from categories that are not describing of the content at all, for instance is the article about \emph{Ole-Johan Dahl} (the Norwegian programmer) found from links from the category \emph{people}, but also found from links from the categories \emph{politics} and \emph{arts} (see Figure \ref{fig:olejohandahl_paths}). When all paths are found for all Wikipedia articles, the next step was to grade each path depending on how well they describe the article. 
+
+%grade the paths to find the paths most helpful for describing the article's content. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+ole-johan dahl:
+*people/people categories by parameter/categories by nationality/academics by nationality/norwegian academics/faculty by university or college in norway/university of oslo faculty
+
+[...]
+
+*politics/political activism/leadership/management/quality/software quality/formal methods/formal methods people
+
+[...]
+
+*arts/aesthetics/design/software design/data modeling/formal methods/formal methods people
+
+\end{lstlisting}
+\caption[Example of variety in article paths]{Some of the paths for the article about \emph{Ole-Johan Dahl}.}
+\label{fig:olejohandahl_paths}
+\end{figure}
+
+\input{Chapters/Implementation/Grading/In_out_grading}

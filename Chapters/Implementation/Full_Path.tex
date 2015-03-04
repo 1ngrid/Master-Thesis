@@ -1,0 +1,30 @@
+\subsection{Finding Full Paths of Wikipedia Articles}
+Finding the full paths for each Wikipedia article is easy when the representation of the structure is ready. Each path can be found by following the links between categories until an article is reached, and the links categories visited are the path. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Chapters/Implementation/example_path}
+\caption[Example of an article path]{Example of one of the article paths of the article \emph{Ole-Johan Dahl}. The rectangles are categories and the rectangle with rounded corners is the article. }
+\label{fig:examplepath}
+\end{figure}
+
+\subsubsection{Issues with finding the full path}
+The structure of Wikipedia is not represented as a tree, but as a graph. This means that there might be loops within the graph. A loop within the graph means that a category already visited in the search of a path can be reached again. This leads to problems if the program keep going in loop and does not reach an article. A solution to this problem is to keep track on categories already visited and only follow links to categories not yet visited in the path. 
+
+Another issue is to decide the start point for the paths, in other words the start category. Wikipedia contains some natural categories that are relevant to use as start category. These categories are very general and have links to most other categories in the Wikipedia category structure. For this task was the category \emph{Main Topic Classifiers} chosen, which has 28 subcategories where all of them have their own subcategories \ref{fig:mainclassifiers}\cite{wiki:specialtree}.
+
+%\begin{wrapfigure}{r}{0.5\textwidth}
+\begin{figure}
+%\vspace{100pt}
+\begin{center}
+\includegraphics[width=0.48\textwidth]{Chapters/Implementation/Maintopicclassifiers.png}
+\end{center}
+\caption[Subcategories of \emph{Main Topic Classifiers}]{Shows the first subcategories of the chosen start category \emph{Main Topic Classifiers}. \emph{C} corresponds the the category's subcategories and \emph{P} corresponds to its pages. The figure is provided by Wikipedia's Category Tree }
+%\vspace{-300pt}
+\vspace{-20pt}
+\label{fig:mainclassifiers}
+%\end{wrapfigure}
+\end{figure}
+
+The category \emph{Main Topic Classifiers} has a large variety in its subcategories which makes it possible to reach categories within many topics. 
+

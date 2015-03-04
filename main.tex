@@ -4,8 +4,6 @@
 \usepackage[T1]{fontenc, url} %andreas
 %\usepackage[T1]{url}
 \urlstyle{sf}
-%\usepackage{babel,textcomp,csquotes,ifimasterforside,varioref,graphicx}
-%\usepackage[english]{babel}
 \usepackage{ifikompendiumforside}
 \usepackage{textcomp} %andreas slutt
 
@@ -22,10 +20,26 @@
 \usepackage{array}
 \usepackage{fancyvrb, babel, csquotes, varioref, graphicx}
 \usepackage{float}
-\floatstyle{plaintop}
+%\floatstyle{plaintop}
 \restylefloat{table}
 \usepackage[section]{placeins}
+\usepackage{tabularx}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{comment}
+\usepackage{hyperref, enumitem}
 
+\hypersetup{
+    linktocpage,
+    colorlinks, 
+    citecolor=black, 
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black,
+    linktoc=all
+    }
+
+%\floatsetup[table]{capposition=top}
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 
 % The files I needed
@@ -43,6 +57,33 @@
 \newcommand\Chapter[2]{
   \chapter[#1: {\itshape#2}]{#1\\[2ex]\Large\itshape#2}
 }
+
+\renewcommand{\lstlistingname}{Code}
+\lstdefinestyle{customasm}{
+  basicstyle=\ttfamily,
+  belowcaptionskip=1\baselineskip,
+  frame=trLb}
+
+\lstset{ captionpos=b, style=customasm, xleftmargin=\parindent,breaklines=true,}
+% aboveskip=20pt,belowskip=20pt,  
+% own environment for code
+%\newcounter{codecnt}
+%\labelformat{codecnt}{Code~#1}
+
+
+%\newenvironment{mycode} %[2]{
+%{
+%    \begin{center}
+%    \begin{verb}
+%}
+%{
+%    \end{verb}
+%    \caption{Code \refstepcounter{codecnt}}
+%    \end{center}
+    %\label{mycode: #1}
+%}
+%\label{mycode:#2}
+
 
 
 \title{Content Categorization for Contextual Advertising Using Wikipedia}
@@ -88,7 +129,7 @@
 
 %\part{Implementation}
 \input{Chapters/Implementation/Implementation}
-\part{Results and Discussion}
+%\part{Results and Discussion}
 
 \input{Chapters/Results/Results}
 
@@ -103,6 +144,11 @@
 \backmatter{}
 
 \renewcommand{\bibname}{References}
+% Fra internettet:
+%\bibliographystyle{IEEEtran}
+%\bibliography{IEEEabrv,mybibfile}
+
+% Fra Sigmund:
 \bibliographystyle{plain}
 
 % 2. Clear double page. This is necessary to produce the correct page number for the
@@ -118,5 +164,8 @@
 %\bibliography{library}
 %\part{References}
 %\printbibliography
+
+
+%\bibliography{IEEEabrv,mybibfile}
 \bibliography{mybib}
 \end{document}
