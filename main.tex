@@ -4,7 +4,7 @@
 \usepackage[T1]{fontenc, url} %andreas
 %\usepackage[T1]{url}
 \urlstyle{sf}
-\usepackage{ifikompendiumforside}
+\usepackage{ifipackages/ifikompendiumforside}
 \usepackage{textcomp} %andreas slutt
 
 \usepackage{graphicx, wrapfig}
@@ -25,8 +25,9 @@
 \usepackage[section]{placeins}
 \usepackage{tabularx}
 \usepackage{listings}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 \usepackage{comment}
+%\usepackage[caption=false]{subfig}
 \usepackage{hyperref, enumitem}
 
 \hypersetup{
@@ -43,10 +44,10 @@
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
 
 % The files I needed
-\newcommand{\enwikicatlink}{\texttt{enwiki-latest-categorylinks.sql.gz} }
-\newcommand{\enwikipage}{\texttt{enwiki-latest-page.sql.gz} }
-\newcommand{\enwikipageprops}{\texttt{enwiki-latest-page\_props.sql.gz} }
-\newcommand{\enwikicategory}{\texttt{enwiki-latest-category.sql.gz} }
+%\newcommand{\enwikicatlink}{\texttt{enwiki-latest-categorylinks.sql.gz} }
+%\newcommand{\enwikipage}{\texttt{enwiki-latest-page.sql.gz} }
+%\newcommand{\enwikipageprops}{\texttt{enwiki-latest-page\_props.sql.gz} }
+%\newcommand{\enwikicategory}{\texttt{enwiki-latest-category.sql.gz} }
 
 
 % The programs I have made
@@ -83,6 +84,29 @@
     %\label{mycode: #1}
 %}
 %\label{mycode:#2}
+
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
+}
+
+\newcommand{\enwikipageprops}{\texttt{\justify{enwiki-latest-page\_props.sql.gz}} }
+\newcommand{\enwikipage}{\texttt{\justify{enwiki-latest-page.sql.gz}} }
+\newcommand{\enwikicatlink}{\texttt{\justify{enwiki-latest-categorylinks.sql.gz}} }
+\newcommand{\allhidden}{\texttt{\justify{All\_hidden\_categories.txt.gz}} }
+\newcommand{\enwikiredirect}{\texttt{\justify{enwiki-latest-redirect.sql.gz}} }
+\newcommand{\outputredirect}{\texttt{\justify{output-redirect-titles.txt.gz}} }
+\newcommand{\subcat}{\texttt{\justify{Sub-categories.txt.gz}} }
+\newcommand{\pagecat}{\texttt{\justify{Page-categories.txt.gz}} }
+\newcommand{\subcatlink}{\texttt{\justify{Subcat\_links.txt.gz}} }
+\newcommand{\catinfo}{\texttt{\justify{category-info.txt}} }
+\newcommand{\artinfo}{\texttt{\justify{article-info.txt.gz}} }
+\newcommand{\enwikicategory}{\texttt{\justify{enwiki-latest-category.sql.gz} }}
+
+
 
 
 

@@ -1,0 +1,19 @@
+\subsection{Processing Titles}
+A match in a random article is found if a phrase or word is an exact match with a Wikipedia article title, hence the Wikipedia article titles can be viewed as entries in a dictionary. The titles should therefore be processed to make sure that matches will be found. 
+
+\subsubsection{Disambiguation or Specification}
+Lots of the Wikipedia titles contains parenthesis that specify what the Wikiepdia article is about. Figure \ref{fig:parenthesis_example} shows two Wikipedia titles for the \emph{General Grant}, where one article is about the largest giant sequoia \cite{wiki:generalgranttree} and the other is about a 1,005-ton ship built in 1864 \cite{wiki:generalgrantship}. A match will mostly likely occur without the parenthesis, but the article titles will be identical if the parenthesises are removed. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+General Grant (ship)
+General Grant (tree)
+\end{lstlisting}
+\caption{Wikipedia article titles with parenthesis}
+\label{fig:parenthesis_example}
+\end{figure}
+
+
+
+The next step is to process the titles

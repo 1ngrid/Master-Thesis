@@ -1,0 +1,142 @@
+\documentclass[a4paper,english]{article}
+\usepackage[utf8]{inputenc}         % or whatever you use
+
+\usepackage[T1]{fontenc, url} %andreas
+\title{Programs made for the Master Thesis}
+\author{Ingrid Grønlie Guren}
+
+\newcommand*\justify{%
+  \fontdimen2\font=0.4em% interword space
+  \fontdimen3\font=0.2em% interword stretch
+  \fontdimen4\font=0.1em% interword shrink
+  \fontdimen7\font=0.1em% extra space
+  \hyphenchar\font=`\-% allowing hyphenation
+}
+
+\newcommand{\enwikipageprops}{\texttt{\justify{enwiki-latest-page\_props.sql.gz}} }
+\newcommand{\enwikipage}{\texttt{\justify{enwiki-latest-page.sql.gz}} }
+\newcommand{\enwikicatlinks}{\texttt{\justify{enwiki-latest-categorylinks.sql.gz}} }
+\newcommand{\allhidden}{\texttt{\justify{All\_hidden\_categories.txt.gz}} }
+\newcommand{\enwikiredirect}{\texttt{\justify{enwiki-latest-redirect.sql.gz}} }
+\newcommand{\outputredirect}{\texttt{\justify{output-redirect-titles.txt.gz}} }
+\newcommand{\subcat}{\texttt{\justify{Sub-categories.txt.gz}} }
+\newcommand{\pagecat}{\texttt{\justify{Page-categories.txt.gz}} }
+\newcommand{\subcatlink}{\texttt{\justify{Subcat\_links.txt.gz}} }
+\newcommand{\catinfo}{\texttt{\justify{category-info.txt}} }
+\newcommand{\artinfo}{\texttt{\justify{article-info.txt.gz}} }
+
+
+
+\begin{document}
+
+\maketitle{}
+\noindent
+All programs made for the master thesis, listed in the order they should be run. 
+
+\subsection*{1. Hidden\_Categories.py}
+This program is to find all hidden categories in the Wikipedia structure. 
+\subsubsection*{Input}
+\begin{itemize}
+\item[-] \enwikipageprops
+\item[-] \enwikipage
+\end{itemize}
+
+\subsubsection*{Output}
+\begin{itemize}
+\item[-] \allhidden : Contains names of all the hidden categories. 
+\end{itemize}
+Goes through all insert statements in \enwikipageprops and finds all categories marked with \texttt{"hiddencat"}. Then loops through all \enwikipage to find the names of all the hidden categories. 
+
+%\texttt{\justify{enwiki-latest-page.sql.gz}}
+
+\subsection*{2. Redirects.py}
+\noindent
+Find all titles that should be redirecting and the desirable title
+
+\subsubsection*{Input}
+\begin{itemize}
+\item[-] \enwikiredirect
+\end{itemize}
+\subsubsection*{Output}
+\begin{itemize}
+\item[-] \outputredirect : Contains the page id and titles of all redirects
+\end{itemize}
+Goes through all insert statements in \enwikiredirect and collect titles and ids of pages redirecting to. 
+
+\subsection*{3. Split\_catlink.py}
+Sort all category links between articles and categories to one file, and all category links betweeen categories to another file. 
+\subsubsection*{Input}
+\begin{itemize}
+\item[-] \enwikicatlinks
+\item[-] \allhidden 
+\item[-] \outputredirect 
+\end{itemize}
+\subsubsection*{Output}
+\begin{itemize}
+\item[-] \subcat : All links betweeen categories
+\item[-] \pagecat : All links between articles and categories
+\end{itemize}
+Looks through all links found in \enwikicatlinks and sort depending if the link is between categories or between categories and articles. If the link a category and an article is found, and the article is hidden, the link is disgarded. All category names found in redirect are swapped with the redirecting name. 
+
+\subsection*{4. Remove\_hiddencats.py}
+Remove all hidden categories from the links found from \texttt{Split\_catlink.py}
+\subsubsection*{Input}
+\begin{itemize}
+\item[-] \subcat
+\item[-] \allhidden
+\end{itemize}
+\subsubsection*{Output}
+\begin{itemize}
+\item[-] \subcatlink : All links betweeen categories withouth hidden categories. 
+\end{itemize}
+Find all children of all hidden categories, and then replace the hidden categories by its children in the links.
+
+\subsection*{5. Categorygraph\_builder.py}
+Builds a category graph based on all the links in \subcatlink
+\subsubsection*{Input}
+\begin{itemize}
+\item[-] \subcatlink
+\end{itemize}
+\subsubsection*{Output}
+\begin{itemize}
+\item[-] \catinfo : A file containing information about the category graph where all the subcategories of a category is listed under the category name
+\end{itemize}
+
+\subsection*{6. Articlegraph\_builder.py}
+Create an article graph based on all the links between categories and articles in \pagecat
+\subsubsection*{Input}
+\begin{itemize}
+\item[-] \pagecat : One of the outputs from \texttt{Split\_catlink.py}
+\end{itemize}
+\subsubsection*{Output}
+\begin{itemize}
+\item[-] \artinfo : A file containin information about the article graph whelere all the articles of a category is listed under the category name
+\end{itemize}
+
+\subsection*{7. Article\_path\_builder-id.py}
+Find all possible article paths for all articles in \artinfo
+\subsubsection*{Input}
+\begin{itemize}
+\item[-] \catinfo
+\item[-] \artinfo
+\end{itemize}
+
+
+\subsubsection*{Output}
+Lots of files containing all possible paths for each article. 
+
+\subsubsection*{}
+
+\subsection*{8. Create\_category\_grades-id.py}
+
+\subsection*{9.  Grader-id.py}
+
+\subsection*{10. Count-parents.py}
+
+\subsection*{11. grade-parser.py}
+
+
+
+
+
+\end{document}

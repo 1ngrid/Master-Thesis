@@ -1,13 +1,52 @@
 \section{Id Mapping}
-When writing all the results to file, these files are extremely large. All path to all Wikipedia articles ended with about 20 GB compressed data of text. The result was to create a id mapping for each category name and article name. All names get a unique id, and instead of writing the full path to file, the ids of the full path is written to file. 
+When writing all the results to file, the files are extremely large. All path to all Wikipedia articles ended with about 20 GB compressed data of text. The result was to create a id mapping for each category name and article name to reduce space needed for storing all results on the computer. Id mapping gives all names an unique id, and instead of writing the full path to file, the ids of the full path is written to file.
+
+The id mapping is created fixed by creating a counter that assigns numbers to each category name or article name that is not found yet. When a new category name or article name is found, it is assigned an unique number that represents the name. Figure \ref{fig:idmapping} shows an excerpt of the id mapping created for our purpose, where the id 4600570 corresponds to the article about \emph{Ole-Johan Dahl}, which means that this id is used everywhere \emph{Ole-Johan Dahl} is used in paths. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+...
+4600566 roger matthews
+4600567 pesticide drift
+4600568 roxy theatre (clarksville, tennessee)
+4600569 papadindar
+4600570 ole-johan dahl
+4600571 red square (university of washington)
+...
+\end{lstlisting}
+\caption[Id mapping example]{Excerpt of the id mapping between id and the name of all categories and articles.}
+\label{fig:idmapping}
+\end{figure}
+
+One of the reasons to work with ids instead of the full names is the memory needed on the computer. Lots of memory is needed if the full paths are represented by names, but less memory is needed if the full paths are represented by ids since the ids are shorter than the names of the category and article names. 
+
+Working with ids is also a lot faster when considering lookups in the program. This will depend on the structure chosen for the programs, but when using dictionaries as done in our implementation, ids will perform faster than if using full names. An example of this can be seen in figure \ref{fig:id_lookup} where the time to find all categories from the category with id 177678 (corresponding to the category \emph{people}) is 0.955 minutes. Figure \ref{fig:fullname_lookup} shows the time needed to find the same paths for the category when using full names for categories and articles, which is found to be 1.559 minutes. Comparing the times shows that the time is a lot faster when using ids, which is important when many paths have to found.
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+[INFO] Finding all article paths from 177678
+
+[INFO] Time to find all article paths: 0.955 min
+\end{lstlisting}
+\caption[Time for all paths for \emph{people} when using ids]{Time needed for finding all paths from the category 177678 (corresponding to the category \emph{people}) when ids are used in the program.}
+\label{fig:id_lookup}
+\end{figure}
 
 
-Another reasoning for id mapping is to make faster is that the ids are smaller than the full category names, which makes the lookups faster. 
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+[INFO] Finding all article paths from people
 
-
-
-% Sammenlikning mellom finne alle pather med id vs med navn
+[INFO] Time to find all article paths: 1.559 min
+\end{lstlisting}
+\caption[Time for all paths for \emph{people} when using full names]{Time needed for finding all paths from the category people when using full names).}
+\label{fig:fullname_lookup}
+\end{figure}
+ 
+The last reason to use ids instead of full names is that the full names may include characters useful for describing paths, for instance the characters "/" which is a common way of describing full paths. 
 
 % Fordel 2: Kan bruke "/" in the text. 
 
-The id mapping is fixed by creating a counter that assigns numbers to each category name or article name that is not found yet.  

@@ -1,0 +1,37 @@
+
+
+Categories that should not be classified. 
+
+Lots of categories in Wikipedia are container categories, usually from years, for instance "INPUT EXAMPLE HERE". It is desirable to find all these categories and mark them as categories about years. 
+
+This was done by finding all categories matching the string: 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+\d+ in \w+
+\end{lstlisting}
+\caption{Caption}
+\label{fig:my_label}
+\end{figure}
+
+We also want to find all categories that are container categories because these do not provide any useful information in our classification. 
+
+the esaiest way to do this is to go through the file \emph{enwiki-lates-category.sql.gz} where each insertion contains a spot telling how many pages the category has. If the number is 0 this means that the category is a container category and can be disgarded. 
+
+List of sports: http://listofsports.com/
+Material arts: http://www.blackbeltwiki.com/martial-arts-styles
+list of all countries: http://www.internetworldstats.com/list1.htm
+
+\begin{comment}
+rugby union stadiums in portugal
+*rugby (sports)
+*sport
+*europe (travel)
+*travel
+
+Eksempel på feilklassifisering: (uønsket klassifisering)
+portuguese serial killers
+*europe travel
+
+\end{comment}
