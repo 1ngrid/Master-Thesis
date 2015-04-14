@@ -1,0 +1,39 @@
+
+\subsection{Accessing Information from Wikipedia}
+There are two ways of accessing Wikipedia’s encyclopedic information; the most common way is to enter the webpage and search for the information needed, but it is also possible to download database dumps and access them directly to find information. All Wikipedia articles, images and categories are stored in a database which is accessed whenever a user search for information online, and the information retrieved from the database is returned to the webpage for example in the form of an article. To ensure that all data is safe at all times, files containing the information needed to recover the database is stored and regularly updated.\cite{wiki:databasedownload} This type of backup is called a database dump and is available for anyone interested at \url{http://dumps.wikimedia.org/enwiki/}.
+%When a user search for information on the webpage this database is accessed. 
+%which are accessed when a user are searching for an article online. 
+%A database dump is therefore a backup of the database, and usually stored in the case of some data is lost\footnote{TODO Insert some link here. }. This backup is available for anyone interested at \footnote{TODO:insert link}. 
+
+The files associated with the database dumps contains different information needed i.e., some files contains all the articles' titles, some contains information about which images belong to which articles and so on. Together they provide all information needed to restore Wikipedia if data is lost. 
+%Just a few of these files where relevant for our task, the information needed was links between categories, between categories and articles and some special information about page properties. 
+As mentioned, the first step is to find the full path of all articles. Since the Wikipedia articles are placed under categories describing their content, the full path of each article can be found by following the links between categories until an article is found. Table \ref{tab:databasedumpfiles} shows the files determined to be relevant for our task and a short description on what they contain. 
+
+
+%This depends on creating a way to represent the structure of the categories and the articles. 
+
+%and we can therefore define an article's path as the way to reach it from a given category. 
+%The first step towards classification of Wiipedia articles is to find all full paths for the articles. There will be more than one way to reach many of the articles. 
+
+%\begin{code}
+%[INSERT EXAMPLE]
+%\end{code}
+
+%This task depends on different files from Wikipedia and should be split into smaller steps, hence several programs were made to complete the first task. 
+
+%Several files were needed for the task, and the files depended on the language chosen. English is the language with most articles in Wikipedia, hence English were chosen and the 
+
+%The files needed for this task we
+
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l|X}
+\textbf{File name} & \textbf{Information contained}\\ \hline
+\texttt{enwiki-latest-categorgylinks.sql.gz} &  Containing information about links between categories, and between categories and articles. \\ \hline
+\texttt{enwiki-latest-page.sql.gz} & Containing information about all pages in Wikipedia, including the type of page (category, article, user) and whether the page is a redirecting page or not\\ \hline
+\texttt{enwiki-latest-page\_props.sql.gz} & Containing information about the properties of each page, including if the category is a hidden category or if the page a disambiguation page.
+\end{tabularx}
+\\[10pt]
+\caption[Relevant files from Wikipedia database dump]{The relevant files from the Wikipedia database dump and a short description on what they contain}
+\label{tab:databasedumpfiles}
+\end{table}

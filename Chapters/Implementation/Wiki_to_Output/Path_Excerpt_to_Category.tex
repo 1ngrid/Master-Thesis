@@ -1,2 +1,284 @@
 \subsection{Wikipedia Path Excerpts to Output Category}
-The next attempt was made to make sure 
+The next attempt was built on the idea that a the mapping from Wikipedia category and output categories need more information, and that this information could be found in the full paths of articles. The mapping process is based on excerpts of the paths, which should be mapped to one or more output categories. This approach solves the problem with disambiguation if the path excerpts specifies the meaning of the category. 
+
+\begin{figure}
+\centering
+\begin{lstlisting}
+ancient philosophers/cicero
+towns in illinois/cicero,illinois
+\end{lstlisting}
+\caption{Solving disambiguation}
+\label{fig:solving_disambiguation}
+\end{figure}
+
+
+does not have the problem with 
+
+\subsection{Automatic Mapping}
+There are two main problems with manual mapping between excerpts from article paths and categories. The first problem is that the process is difficult and takes lots of time
+
+One of the main reasons for making it an automatic process is that the process easily can be created into a 
+
+
+Manually mapping between excerpts of article paths and categories is a tedious process. It is desirable to make this  process automatic or close to automatic. The reason for this is so that it is easy to create 
+
+
+\begin{comment}
+Test: 
+
+auto parts: 
+vehicle parts/auto parts	1476
+automotive companies/auto parts suppliers	198
+automotive technologies/auto parts	13
+
+auto repair: 
+
+buying cars: 
+
+car culture: 
+transport culture/car culture	192
+automobiles/car culture	12
+	
+certified pre-owned: 
+
+convertible: 
+car body styles/convertibles	102
+automotive accessories/convertible top suppliers	20
+classes of mobile computers/convertible laptops	19
+tablet computers/convertible laptops	10
+laptops/convertible laptops	2
+
+coupe: 
+car body styles/coupes	330
+association football matches/coupe de france finals	224
+seasons in french football competitions/coupe de france seasons	113
+association football matches/coupe de la ligue finals	27
+figure skating competitions/coupe internationale de nice	24
+international ice hockey competitions hosted by france/coupe de chamonix	18
+football cup competitions in france/coupe de la ligue	16
+2009–10 in french football/2009–10 coupe de france	14
+dutch books by writer/books by louis couperus	10
+national association football cups/coupe de france	10
+international association football competitions hosted by france/coupe de l\'outre-mer	5
+2001–02 in french football/2001–02 coupe de france	4
+2000–01 in french football/2000–01 coupe de france	4
+2007–08 in french football/2007–08 coupe de france	4
+musical families/couperin family	3
+
+crossover: 
+postmodern works/crossover video games	576
+continuity (fiction)/fictional crossovers	319
+metafictional works/fictional crossovers	86
+hardcore punk groups/crossover thrash groups	57
+continuity (fiction)/intercompany crossovers	48
+car classifications/crossover sport utility vehicles	43
+tokusatsu/crossover tokusatsu	35
+popular music/crossover (music)	29
+hardcore punk albums/crossover thrash albums	27
+jazz albums by genre/crossover jazz albums	20
+classical albums by genre/classical crossover albums	15
+fusion music genres/crossover (music)	11
+pop albums by genre/classical crossover albums	4
+jazz drummers by genre/crossover jazz drummers	3
+science fiction television/crossover science fiction television series	3
+
+diesel: 
+locomotive stubs/diesel locomotive stubs	615
+petroleum products/diesel	431
+caterpillar inc. subsidiaries/electro-motive diesel locomotives	368
+british rail rolling stock/british rail diesel multiple units	111
+rail transport preservation/preserved diesel locomotives	69
+engines by model/diesel engines by model	57
+sustainable transport/biodiesel	51
+british rail locomotives/british rail diesel locomotives	47
+metre gauge locomotives/metre gauge diesel locomotives	32
+oil companies/biodiesel producers	31
+locomotives of sri lanka/diesel locomotives of sri lanka	24
+multiple units of portugal/diesel multiple units of portugal	24
+locomotives of tasmania/diesel locomotives of tasmania	24
+energy crops/biodiesel feedstock sources	20
+internal combustion piston engines/diesel engine technology	18
+
+electric vehicle: 
+low-carbon economy/electric vehicles	4487
+electric power/electric vehicles	836
+sustainability organisations/electric vehicle organizations	271
+battery manufacturers/electric vehicle battery manufacturers	27
+battery chargers/electric vehicle infrastructure developers	19
+vehicles by fuel/diesel-electric vehicles	10
+sustainability advocates/hybrid electric vehicle advocates	7
+
+hatchback: 
+car body styles/hatchbacks	103
+
+hybrid: 
+fictional life forms/fictional hybrid life forms	819
+mythic humanoids/mythological human hybrids	732
+bus operating companies/transit authorities with hybrid buses	680
+organisms/hybrid organisms	603
+buddleja/buddleja hybrids and cultivars	557
+green buses/hybrid electric buses	202
+human-derived fictional species/fictional human hybrids	141
+electric vehicles/hybrid electric vehicles	120
+partial zero-emissions vehicles/hybrid vehicles	113
+martial arts by type/hybrid martial arts	81
+controversial bird taxa/hybrid birds of paradise	69
+green automobiles/hybrid cars	68
+grape varieties/hybrid grape varieties	65
+legendary creatures/mythological hybrids	54
+hominini/hominid hybrids	54
+
+luxur: 
+brands/luxury brands	1433
+car classifications/luxury vehicles	598
+culture/luxury	149
+real estate/luxury real estate	140
+wealth/luxury	91
+sport utility vehicles/luxury sport utility vehicles	36
+hotel types/luxury hotel	1
+
+minivan: 
+car classifications/minivans	154
+hybrid electric vehicles/hybrid minivans	2
+
+motorcycles: 
+personal transporters/motorcycles	2673
+wheeled vehicles/motorcycles	1745
+motorcycle classifications/standard motorcycles	259
+motorcycling/motorcycles	227
+lists of vehicles/lists of motorcycles	110
+motorcycle classifications/cruiser motorcycles	107
+motorcycle classifications/dual-sport motorcycles	106
+20th century in transport/20th-century motorcycles	70
+grand prix motorcycle racing/grand prix motorcycles	51
+motorcycle classifications/sport touring motorcycles	50
+wheeled military vehicles/military motorcycles	47
+racing vehicles/racing motorcycles	32
+1940s in transport/motorcycles introduced in the 1940s	31
+electric two-wheel vehicles/electric motorcycles	29
+motorcycle classifications/touring motorcycles	26
+
+off-road vehicles: 
+off-roading/off-road vehicles	364
+land vehicles/off-road vehicles	36
+
+performance vehicles: 
+
+pickup: 
+car classifications/pickup trucks	308
+audio transducers/guitar pickups	67
+auto racing series/pickup truck racing series	38
+seduction community/pickup artists	30
+electrical generators/guitar pickups	27
+
+road-side assistance: 
+
+sedan: 
+car body styles/sedans	340
+auto racing series in australia/australian sports sedan championship	87
+car classifications/sports sedans	48
+
+selling cars: 
+
+trucks & accessories: 
+
+vintage cars: 
+
+wagon: 
+car body styles/station wagons	163
+history of road transport/wagons	76
+rail freight transport in the united kingdom/british railway wagons	24
+rolling stock of victoria (australia)/victorian railways goods wagons	21
+steam road vehicle manufacturers/steam wagon manufacturers	11
+manufacturing plants in england/birmingham railway carriage and wagon company	10
+freight rolling stock/british railway wagons	6
+skate punk albums/lagwagon albums	4
+protected areas of oklahoma/protected areas of wagoner county, oklahoma	3
+boilers/steam wagon boilers	2
+steam road vehicles/steam wagons	1
+
+
+
+
+Manual mapping: 
+
+#Automotive
+Auto Parts
+-components/vehicle parts/auto parts
+Auto Repair
+-automobile maintenance/automotive repair shops
+Buying & Selling Cars
+Car Culture
+-transport culture/car culture
+Certified Pre-Owned
+Convertible
+-car body styles/convertibles
+Coupe
+-car body styles/coupes
+Crossover
+-car classifications/crossover sport utility vehicles
+Diesel
+Electric Vehicle
+-electric vehicles/hybrid electric vehicles/hybrid electric cars
+-green automobiles/hybrid cars/hybrid electric cars
+-green automobiles/electric cars
+-electric vehicles/electric cars
+-car classifications/electric sports cars
+Hatchback
+-car body styles/hatchbacks
+Hybrid
+-electric vehicles/hybrid electric vehicles/hybrid electric cars
+-green automobiles/hybrid cars/hybrid electric cars
+-green vehicles/partial zero-emissions vehicles/hybrid vehicles
+Luxury
+-luxury vehicles
+MiniVan
+-car classifications/minivans
+Motorcycle
+-transport culture/motorcycling
+-vehicle stubs/motorcycle stubs
+-motorcycling/motorcycle sport
+Off-Road Vehicles
+-off-roading/off-road vehicles
+-dirt biking/off-road racing
+Road-Side Assistance
+-emergency services/emergency road services/
+Sedan
+-car classifications/sports sedans
+-automobiles/car body styles/sedans
+Trucks & Accessories
+-wheeled vehicles/trucks
+-car classifications/pickup trucks
+-transport culture/trucking subculture
+-electric vehicles/electric trucks
+-sport utility vehicles/sport utility trucks
+-hybrid vehicles/hybrid trucks
+Vintage Cars
+-automobiles by period/vintage vehicles
+Wagon
+-automobiles/car body styles/station wagons
+
+
+Eksempel på hvor variert de ulike pathene kan bli
+coltainville:
+* 8.72045433333 geography/geography stubs/europe geography stubs/france geography stubs/centre (region) geography stubs/eure-et-loir geography stubs/
+* 8.81607333333 sports/physical exercise/dance/choreography/narratology/genres/non-fiction/non-fiction literature/historical documents/political charters/constitutions/forms of government/republics/france/geography of france/france geography stubs/centre (region) geography stubs/eure-et-loir geography stubs/
+* 8.82085425    culture/cultural spheres of influence/romance countries and territories/france/geography of france/france geography stubs/centre (region) geography stubs/eure-et-loir geography stubs/
+
+
+Alle:
+[INFO] Total number of articles found: 152 664/4690240
+[INFO] books & literature: 189169 articles
+
+
+
+Kun 6 kategorier etter: 33 104/4690240
+[INFO] books & literature: 51919 articles
+
+-> len(cats_at_end) > 5: 
+
+Kun 4 kategorier etter: 
+
+
+
+\end{comment}

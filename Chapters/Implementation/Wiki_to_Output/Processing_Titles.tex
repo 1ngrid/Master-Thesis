@@ -2,7 +2,7 @@
 A match in a random article is found if a phrase or word is an exact match with a Wikipedia article title, hence the Wikipedia article titles can be viewed as entries in a dictionary. The titles should therefore be processed to make sure that matches will be found. 
 
 \subsubsection{Disambiguation or Specification}
-Lots of the Wikipedia titles contains parenthesis that specify what the Wikiepdia article is about. Figure \ref{fig:parenthesis_example} shows two Wikipedia titles for the \emph{General Grant}, where one article is about the largest giant sequoia \cite{wiki:generalgranttree} and the other is about a 1,005-ton ship built in 1864 \cite{wiki:generalgrantship}. A match will mostly likely occur without the parenthesis, but the article titles will be identical if the parenthesises are removed. 
+Lots of the Wikipedia titles contains parenthesis that specify what the Wikiepdia article is about. Figure \ref{fig:parenthesis_example} shows two Wikipedia titles for the \emph{General Grant}, where one article is about the largest giant sequoia \cite{wiki:generalgranttree} and the other is about a 1,005-ton ship built in 1864 \cite{wiki:generalgrantship}. A match will mostly likely occur without the parenthesis, so these has to be removed from the entries. 
 
 \begin{figure}[h]
 \centering
@@ -14,6 +14,48 @@ General Grant (tree)
 \label{fig:parenthesis_example}
 \end{figure}
 
+Lots of Wikipedia articles are about events happening a specific year. Exact matching with these titles will most likely occur, hence the year should be removed from the entry.  Figure \ref{fig:davis_cups} shows an example of two entries which corresponds to the Davis tennis tournaments in 1996 and in 2000. Removing the year from these entries will increase the probability of finding a match, but also make both entries look the same. 
 
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+1996 Davis Cup
+2000 Davis Cup
+\end{lstlisting}
+\caption{Wikipedia article titles which will look the same when removing the year from the title.}
+\label{fig:davis_cups}
+\end{figure}
 
-The next step is to process the titles
+% Skrive noe om mens/womens?
+Another specification found in Wikipedia articles is specification on gender, like \emph{2015 Dubai Tennis Championships – Women's Singles} a figure \ref{fig:dubai_gender} shows. This specification reduces the probability of an exact match, hence \emph{women's} and \emph{men's} are removed from the title and reduces it to a more general form. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+2015 Dubai Tennis Championships
+2015 Dubai Tennis Championships - Women's Singles
+2015 Dubai Tennis Championships - Men's Singles
+\end{lstlisting}
+\caption{Wikipedia articles specified for gender (women and men) and gender neutral.}
+\label{fig:dubai_gender}
+\end{figure}
+
+The next step is to decide whether the modified entries mean the same or have different meaning after the parenthesis and years are removed. The solution was to look at the mapping of the entries. If the entries have been matched to the same category, the processed entry is kept, but if the entries are matched to different categories it is removed from the dictionary. The entry \emph{General Grant} is removed from the dictionary since the two original entries are mapped to different categories, but \emph{Davis Cup} is kept since both of the entries in figure \ref{fig:davis_cups} are mapped to the same categories. The gender specific entries in figure \ref{fig:dubai_gender} are reduced to one entry \emph{Dubai Tennis Championships - Singles} when gender and year is removed from the entry, hence combined with the articles from other years as well.
+
+There are both advantages and disadvantages with this approach. The main disadvantage is that entries are removed, hence information is lost. The advantage is on the other hand that the removed entries are the entries which most likely would lead to wrong information. 
+
+\subsubsection{Removing common words}
+After the entries are reduced, some of the entries are reduced to very common English word. Figure \ref{fig:common_word} shows an example of the entry  \emph{(85476) 1997 MY} (a main-belt minor planet \cite{wiki:myplanet}) which are reduced to the entry \emph{my} when parenthesis and years are removed from the entry. This means that the common word \emph{my} and  \emph{(85476) 1997 MY} is categorized to the same category, \emph{Astronomy\&Space}. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+(85476) 1997 MY
+my
+\end{lstlisting}
+\caption{Example of an entry that has been reduced to a common English word. }
+\label{fig:common_word}
+\end{figure}
+
+Words that occur very often should be disregarded as entries. This was done by creating a large list containing the most common English words, called a stop list. An entry is removed if it is reduced to one of these words. The stop list chosen for this implementation was chosen as the 1000 most basic English words according to Wictionary \cite{wiki:freqwordlist}. 
+

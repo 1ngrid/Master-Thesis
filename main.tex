@@ -8,7 +8,7 @@
 \usepackage{textcomp} %andreas slutt
 
 \usepackage{graphicx, wrapfig}
-\usepackage{caption}
+%\usepackage{caption}
 \usepackage{booktabs}
 \usepackage[labelfont=it,textfont=it]{caption}
 \usepackage{subcaption}
@@ -19,6 +19,7 @@
 \usepackage{multirow}
 \usepackage{array}
 \usepackage{fancyvrb, babel, csquotes, varioref, graphicx}
+%\usepackage{fancyvrb, csquotes, varioref, graphicx}
 \usepackage{float}
 %\floatstyle{plaintop}
 \restylefloat{table}
@@ -30,6 +31,11 @@
 %\usepackage[caption=false]{subfig}
 \usepackage{hyperref, enumitem}
 
+%\usepackage[romanian]{babel}
+\usepackage{combelow}
+\usepackage{layout}
+
+%\usepackage[margin=0.5in]{geometry}
 \hypersetup{
     linktocpage,
     colorlinks, 
@@ -42,13 +48,6 @@
 
 %\floatsetup[table]{capposition=top}
 \DefineVerbatimEnvironment{code}{Verbatim}{fontsize=\small}
-
-% The files I needed
-%\newcommand{\enwikicatlink}{\texttt{enwiki-latest-categorylinks.sql.gz} }
-%\newcommand{\enwikipage}{\texttt{enwiki-latest-page.sql.gz} }
-%\newcommand{\enwikipageprops}{\texttt{enwiki-latest-page\_props.sql.gz} }
-%\newcommand{\enwikicategory}{\texttt{enwiki-latest-category.sql.gz} }
-
 
 % The programs I have made
 \newcommand{\catlinkprogram}{\texttt{Split\_catlink.py} }
@@ -72,19 +71,6 @@
 %\labelformat{codecnt}{Code~#1}
 
 
-%\newenvironment{mycode} %[2]{
-%{
-%    \begin{center}
-%    \begin{verb}
-%}
-%{
-%    \end{verb}
-%    \caption{Code \refstepcounter{codecnt}}
-%    \end{center}
-    %\label{mycode: #1}
-%}
-%\label{mycode:#2}
-
 \newcommand*\justify{%
   \fontdimen2\font=0.4em% interword space
   \fontdimen3\font=0.2em% interword stretch
@@ -105,8 +91,6 @@
 \newcommand{\catinfo}{\texttt{\justify{category-info.txt}} }
 \newcommand{\artinfo}{\texttt{\justify{article-info.txt.gz}} }
 \newcommand{\enwikicategory}{\texttt{\justify{enwiki-latest-category.sql.gz} }}
-
-
 
 
 
@@ -134,10 +118,12 @@
 \input{Chapters/Abstract/Abstract.tex}
 
 \input{Chapters/Acknowledgements.tex}  
+\pagenumbering{roman}
 \tableofcontents{}
 \listoffigures{}
 \listoftables{}
 
+\pagenumbering{arabic}
 \mainmatter{}
 %\pagenumbering{arabic}
 
@@ -158,7 +144,7 @@
 \input{Chapters/Results/Results}
 
 %\part{Conclusion and Further Work}
-\input{Chapters/Conclusion/Conclusion}
+\input{Chapters/Conclusion_and_Further_Work/Conclusion_and_Further_Work}
 
 % often kept up to date. 
 

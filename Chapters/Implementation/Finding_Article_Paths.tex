@@ -1,70 +1,86 @@
 \section{Full path of articles}
 The goal of our implementation was to create a dictionary where the entries are created from the titles of Wikipedia articles, and each entry leads to one or more describing categories. Wikipedia already contains an underlying category structure which is useful to decide the relevant categories for each article. The first step was therefore to find the full path of each article in Wikipedia, where the path is given from the categories that lead to every article. 
 
-\subsection{Accessing Information from Wikipedia}
-There are two ways of accessing Wikipedia’s encyclopedic information; the most common way is to enter the webpage and search for the information needed, but it is also possible to download database dumps and access them directly to find information. All Wikipedia articles, images and categories are stored in a database which is accessed whenever a user search for information online, and the information retrieved from the database is returned to the webpage for example in the form of an article. To ensure that all data is safe at all times, files containing the information needed to recover the database is stored and regularly updated.\cite{wiki:databasedownload} This type of backup is called a database dump and is available for anyone interested at \url{http://dumps.wikimedia.org/enwiki/}.
-%When a user search for information on the webpage this database is accessed. 
-%which are accessed when a user are searching for an article online. 
-%A database dump is therefore a backup of the database, and usually stored in the case of some data is lost\footnote{TODO Insert some link here. }. This backup is available for anyone interested at \footnote{TODO:insert link}. 
 
-The files associated with the database dumps contains different information needed i.e., some files contains all the articles' titles, some contains information about which images belong to which articles and so on. Together they provide all information needed to restore Wikipedia if data is lost. 
-%Just a few of these files where relevant for our task, the information needed was links between categories, between categories and articles and some special information about page properties. 
-As mentioned, the first step is to find the full path of all articles. Since the Wikipedia articles are placed under categories describing their content, the full path of each article can be found by following the links between categories until an article is found. Table \ref{tab:databasedumpfiles} shows the files determined to be relevant for our task and a short description on what they contain. 
+% Creating a representation of the underlying structure. 
+
+\subsection{Creating the Underlying Category Structure}
+Finding full paths of all articles require information about Wikipedia's structure between categories, and between categories and articles. This, the first step was to create a way of representing the available information about the Wkipedia structure. % so the relevant information could be extracted. 
+The file \enwikicatlink contains the information needed to create a database table \emph{categorylinks} filled with all links between categories, all links between articles and files, and all links between categories and articles. All information about the links are inserted in the database table through \texttt{INSERT} statements where all entries are on the form\\\\
+(\emph{cl\_from},\emph{cl\_to},\emph{cl\_sortkey},\emph{cl\_timestamp},\emph{cl\_sortkey\_prefix},\emph{cl\_collation},\emph{cl\_type})\\\\
+    Table \ref{tab:insertdescription} describes the meaning of all the \texttt{INSERT} statement fields \cite{wiki:categorylinkstable} and \ref{fig:entryexample} shows an example of an entry in the \texttt{INSERT} statement, where the link between the category with id \emph{12} and the  page \emph{Anarchism} is inserted into the table \emph{categorylinks}.  
 
 
-%This depends on creating a way to represent the structure of the categories and the articles. 
+\begin{comment}
+The description of all the fields are 
+the form shown in figure \ref{fig:entryform}. and an example of how that looks is shwon in figure \ref{fig:entryexample}
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+(cl_from, cl_to, cl_sortkey, cl_timestamp, cl_sortkey_prefix, cl_collation, cl_type)
+\end{lstlisting}
+\caption{The form of all \texttt{INSERT} statement entries}
+\label{fig:entryform}
+\end{figure}
+\end{comment}
 
-%and we can therefore define an article's path as the way to reach it from a given category. 
-%The first step towards classification of Wiipedia articles is to find all full paths for the articles. There will be more than one way to reach many of the articles. 
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+(12,'Anarchism',' \nANARCHISM','2014-11-20 17:57:05',
+' ','uppercase','page')
+\end{lstlisting}
+\caption{Example of an \texttt{INSERT} statement entry.}
+\label{fig:entryexample}
+\end{figure}
 
-%\begin{code}
-%[INSERT EXAMPLE]
-%\end{code}
-
-%This task depends on different files from Wikipedia and should be split into smaller steps, hence several programs were made to complete the first task. 
-
-%Several files were needed for the task, and the files depended on the language chosen. English is the language with most articles in Wikipedia, hence English were chosen and the 
-
-%The files needed for this task we
 
 \begin{table}[ht]
 \renewcommand{\arraystretch}{1.25}
 \begin{tabularx}{\textwidth}{l|X}
-\textbf{File name} & \textbf{Information contained}\\ \hline
-\texttt{enwiki-latest-categorgylinks.sql.gz} &  Containing information about links between categories, and between categories and articles. \\ \hline
-\texttt{enwiki-latest-page.sql.gz} & Containing information about all pages in Wikipedia, including the type of page (category, article, user) and whether the page is a redirecting page or not\\ \hline
-\texttt{enwiki-latest-page\_props.sql.gz} & Containing information about the properties of each page, including if the category is a hidden category or if the page a disambiguation page.
+\textbf{Entry field} &  \textbf{Description} \\ \hline
+cl\_from & Stores the page.page\_id of the article where the link was placed. \\ \hline
+cl\_to & Stores the name (excluding namespace prefix) of the desired category \\  \hline
+cl\_sortkey & Stores the title by which the page should be sorted in a category list. \\ \hline
+cl\_timestamp & Stores the time at which that link was last updated in the table. \\ \hline
+cl\_sortkey\_prefix & Empty string if a page is using the default sortkey or readable version of cl\_sortkey. \\ \hline
+cl\_collation & What collation is in used. \\ \hline
+cl\_type & What type of article is this (file, subcat (subcategory) or page (normal page)).
 \end{tabularx}
 \\[10pt]
-\caption[Relevant files from Wikipedia database dump]{The relevant files from the Wikipedia database dump and a short description on what they contain}
-\label{tab:databasedumpfiles}
+\caption[Relevant files from Wikipedia database dump]{The relevant files from the Wikipedia database dump and a short description on what they contain.}
+\label{tab:insertdescription}
 \end{table}
 
-%\begin{table}[h]
-%{\renewcommand\arraystretch{1.25}
-%\begin{tabular}{|l|l|l|} 
-%\textbf{File name} & \textbf{Information contained} \\% \multicolumn{2}{l|}{Opret Server} \\ \hline
-%\texttt{enwiki-latest-categorylinks.sql.gz }&  \multicolumn{2}{p{4cm}|}{\raggedright At oprette en server med bestemte regler som %tillader folk at spille sammen. More Text more text More Text} 
-%\end{tabular}}
 
+\begin{figure}[ht]
+\begin{lstlisting}
+INSERT INTO `categorylinks` VALUES 
+(0,'','','2014-01-16 15:23:19','','','page'),
+(10,'Redirects_from_moves','ACCESSIBLECOMPUTING','2014-10-26 04:50:23','','uppercase','page'),
+(10,'Redirects_with_old_history','ACCESSIBLECOMPUTING','2010-08-26 22:38:36','','uppercase','page'),
+(10,'Unprintworthy_redirects','ACCESSIBLECOMPUTING','2010-08-26 22:38:36','','uppercase','page'),
+(12,'Anarchism',' \nANARCHISM','2014-11-20 17:57:05',' ','uppercase','page')
+\end{lstlisting}
+\caption[Excerpt from \texttt{enwiki-latest-categorylinks.sql.gz}]{Excerpt from the file \texttt{enwiki-latest-categorylinks.sql.gz} where each \texttt{INSERT} statement contains many links.}
+\label{fig:categorylinks}
+\end{figure}
 
-%\textbf{File name} & \textbf{Information contained} \\ \hline
-%\texttt{enwiki-latest-categorylinks.sql.gz} & Containing information about links between categories, and between categories and articles. \\ 
-%\texttt{enwiki-latest-page.sql.gz} & lkajsdf
-%\end{tabular}
-%s\caption{Caption}
-%\label{tab:my_label}
-%\end{table}
+Each \texttt{INSERT} statement consists of multiple links for insertion in the database table as we can see in figure \ref{fig:categorylinks}. The \texttt{INSERT} statements has to be split so that all links are separated into new statements, and only relevant links are kept, i.e.,  links with \emph{cl\_type} as \emph{subcat} (link between categories) or \emph{page} (link between category and article). The file \enwikicatlink contains 10 938 \texttt{INSERT} statements, which in total consists of 88172914 links. Table \ref{tab:enwikicatlinks} shows the number of different links found in the file. 
 
-%\begin{itemize}
-%\item \enwikicatlink
-%\item[] Containing links between categories, and categories and articles which is needed to create a structure.
-%\item \enwikipage
-%\item[] Containing information about all pages in Wikipedia, including the type of page (category, article, user) and whether the page %is a redirecting page or not.
-%\item \enwikipageprops
-%\item[] Containing more information about the properties of each page, including if the category is a hidden category of if the page is a disambiguation page. 
-%\end{itemize}
+\begin{table}[ht]
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l|c|c|c} %X}
+\textbf{Betweeen...} & \textbf{categories} &  \textbf{categories and articles} & \textbf{articles and files} \\\hline
+ & 1 648 873 & 21 846 996 & 5 262 146
+\end{tabularx}
+\\[10pt]
+\caption{Number of links found within the different link types.}
+\label{tab:enwikicatlinks}
+\end{table}
 
-%All of these files are downloaded from \path{http://dumps.wikimedia.org/enwiki/} 
+%A total number of #### \texttt{INSERT} statements were found in the \enwikicatlink 
 
-\input{Chapters/Implementation/Split_catlink}
+%It is clear that there are lots of links within As table \ref{tab:enwikicatlinks} 
+
+Table \ref{tab:enwikicatlinks} shows that there are lots of links between categories and between categories and articles. Some of these links are connected to categories for maintaining the encyclopedia. These categories are called \emph{hidden categories} and should be removed to reduce the complexity.

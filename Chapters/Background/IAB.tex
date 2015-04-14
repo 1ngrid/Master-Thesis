@@ -1,4 +1,4 @@
-\section{IAB - Interactive Advertising Bureau}
+\section{Interactive Advertising Bureau (IAB)}
 The predefined category set should be well-defined and fit for the purposes of the task. Since the focus of this project is improving advertising, the predefined category set should be a category set useful for advertising. 
 
 
@@ -6,12 +6,32 @@ The predefined category set should be well-defined and fit for the purposes of t
 
 %The problem is therefore using IAB's categories for the clustering. 
 
-IAB stands for Interactive Advertising Bureau and is a business organization that develops, researches and maintains industry standards for the online advertising industry. The organization works for coalescing and maintaining standards and practices in online advertising. IAB also does research and share knowledge on the advertisement and is responsible and distributing 86 \% of all the online advertisement in the US. \cite{IABabout}
+IAB is a business organization that develops, researches and maintains industry standards for the online advertising industry. The organization works for coalescing and maintaining standards and practices in online advertising. IAB also does research and share knowledge on the advertisement and is responsible for distributing 86 \% of all the online advertisement in the US \cite{IABabout}.
 
-IAB has a predefined set of categories that are made as part of the Quality Assurance Guidelines Taxonomy. This set is well-defined for advertising, and is split into two layers also called tiers. The layers are created for varying the grade of speciality. The first tier is a general or broad level where the categories are quite general, with a total of 23 categories, including \textit{Business} or \textit{Food \& Drinks}. The second tier is a deepening level containin 371 subcategories of the categories of the first tiers.
+IAB has a predefined set of categories that are developed as part of the Quality Assurance Guidelines Taxonomy. This set is well-defined for advertising, and is split into two layers also called tiers. The layers are created for varying the grade of speciality. The first tier is a general or broad level where the categories are quite general, with a total of 23 categories, including \emph{Business} or \emph{Food \& Drinks}. The second tier is a deepening level containing 371 subcategories of the categories of the first tiers.
 %, where the categories are subcategories of a category in the first tier.
-Figure \ref{fig:IAB} 
-shows the categories of IAB as defined on their web page and is written as a set of categories. 
+Figure \ref{fig:IAB} shows the taxonomy of IAB as defined on their web page where the first tier is all the category names written in white (eg. \emph{Food \& Drinks}) and the second tier is followed under the first tier (eg. \emph{American Cuisine}). This taxonomy is written as a category set that is used for our project. Table \ref{tab:taxonomyascategories} is an example of how parts of the taxonomy for \emph{Food \& Drinks} and \emph{Hobbies \& Interests} is written as a category set, where the second tier is placed under the first tier. This means that an article mapping to \emph{Chinese Cuisine} maps to the category \emph{Food \& Drinks/Chinese Cuisine}.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l|l}
+%\textbf{Tier 1} & \textbf{Tier 2} \\ \hline
+\textbf{Food \& Drinks} & \textbf{Hobbies \& Interests} \\ \hline
+American cuisine & Art/Technology\\
+Barbecues \& Grilling & Arts \& Crafts\\
+Cajun/Creole & Beadwork \\
+Chinese Cuisine & Birdwatching\\
+Cocktails/Beer & Board Games/Puzzles\\
+Coffee/Tea & Candle \& Soap Making\\
+Cuisine-Specific & Card Games\\
+Desserts \& Baking & Chess \\
+... & ...
+\end{tabular}
+\caption{Example of how the IAB taxonomy changed to a category set}
+\label{tab:taxonomyascategories}
+\end{table}
+
+
 
 
 %The category set from IAB's taxonomy is a well-defined category set to use of our clustering problem.  

@@ -1,7 +1,7 @@
 \subsubsection{Hidden categories}
-Wikipedia's category structure contains lots of hidden categories which are not displayed at the bottom of an article page for the general users, even if the article is placed under the category. These categories are useful for editing since it is an easy way to all mark categories with something in common, for instance mark all categories with references that needs to be checked. 
+Wikipedia's category structure contains lots of hidden categories which are not displayed as categories at the bottom of an article page for the general users, even if the article is placed under the category. Examples of some hidden categories are \emph{All articles with dead external links}, \emph{Wikipedia Articles needing rewrite} and \emph{Wikipedia articles in need of updating from September 2014}. These categories are useful for editing articles or maintaining a trustworthy and well-structured encyclopedia. The hidden categories provide an easy way to all mark categories with something in common, for instance mark all categories with references that needs to be checked. 
 
-Hidden categories are concerned with maintenance and administration, hence not relevant for normal users or for our problem. The next step is therefore to remove all the links to hidden categories, which led to the task of finding all hidden categories. On Wikipedia's information page about \emph{Hidden Categories}\cite{wiki:hiddencat} are 15 385 subcategories listed as immidiate subcategories, but many of these categories have links to their own hidden subcategories which also have to be found. The first attempt was to look through all the links from the category \emph{Hidden Categories}, where 15 006 subcategories where found and marked as not relevant. Since this did not give the expected number, another attempt was made by looking at the file \texttt{enwiki-latest-page\_props.sql.gz}, where figure \ref{fig:pageprops} shows how  hidden categories are marked in the table. The next attempt was therefore to find all the ids marked with \emph{hiddencat} and find the corresponding category titles in \texttt{enwiki-latest-page.sql.gz}. This approach led to 15 513 categories. To make sure that all hidden categories where found, a test was made to see if all categories from the first attempt was found in the list created from the second attempt. The results showed that all categories found in the first attempt was also found in the second attempt, and the list of all 15 513 category titles whose links should be disregarded from further results. 
+Hidden categories are concerned with maintenance and administration, hence not relevant for normal users or for our problem because they add complexity to the structure, and are not relevant when finding full paths of articles. Hence, it is desirable to remove all the links to hidden categories, but for this it was necessary to know the title of all hidden categories.  On Wikipedia's information page about \emph{Hidden Categories}\cite{wiki:hiddencat} 15 385 subcategories are listed as immediate subcategories, hence these are also hidden categories. Many of these categories have links to their own hidden subcategories which also have to be found. The first attempt was to look through all the links from the category \emph{Hidden Categories}, where 15 006 subcategories where found and marked as not relevant. Since this did not give the expected number, another attempt was made by looking at the file \enwikipageprops (figure \ref{fig:pageprops} shows how insertions of a  hidden category is marked). Thus, all the ids marked with \emph{hiddencat} was collected and their corresponding category title found in \enwikipage. This approach led to 15 513 categories. To make sure that all hidden categories where found, a test was made to see if all categories from the first attempt was found in the list created from the second attempt. The results showed that all categories found in the first attempt was also found in the second attempt, and the list of all 15 513 category titles whose links should be disregarded from the paths in the final results. 
 
 \begin{figure}[h]
 \centering
@@ -12,7 +12,9 @@ Hidden categories are concerned with maintenance and administration, hence not r
 \label{fig:pageprops}
 \end{figure}
 
-The hidden categories have to be removed carefully because they might be subcategories of visible categories or have visible categorise as their own subcategories. An example of this can be seen in figure \ref{fig:stevie_wonder_hidden}, where the double rounded rectangle is a hidden category, the rounded rectangle is a normal (visible) category and the rectangle is the article about \emph{Stevie Wonder}.
+The hidden categories should be removed from both links between categories and articles, and between categories. The first case is easy since the links can just be removed from the results. Removing hidden categories between categories has to be done carefully to make sure that information is not lost. The reason for this is that hidden categories might be subcategories of visible categories or have visible categorise as their own subcategories. An example of this can be seen in figure \ref{fig:stevie_wonder_hidden}, where the double rounded rectangle is a hidden category, the rounded rectangle is a normal (visible) category and the rectangle is the article about \emph{Stevie Wonder}.
+
+
 %Hidden categories can not be disregard
 %19103360 article links, 391482 category links skipped
 
@@ -25,7 +27,7 @@ The hidden categories have to be removed carefully because they might be subcate
 \label{fig:stevie_wonder_hidden}
 \end{figure}
 
-The desirable visible paths for all articles are paths without hidden categories. The next step is therefore to change the structure so that hidden categories are removed from the structure, but without loosing any of the subcategories which might contain relevant information or  important links. Example of a how a path can be transformed is figure \ref{fig:stevie_wonder} which is the excerpt from the path in figure \ref{fig:stevie_wonder_hidden} without the hidden categories. 
+The desirable visible paths for all articles are paths without hidden categories. Thus, the hidden categories should be removed from the structure without loosing any of the subcategories which might contain relevant information or  important links. Example of a how a path can be transformed is figure \ref{fig:stevie_wonder} which is the excerpt from the path in figure \ref{fig:stevie_wonder_hidden} without the hidden categories. 
 
 \begin{figure}[h]
 \centering
@@ -34,8 +36,7 @@ The desirable visible paths for all articles are paths without hidden categories
 \label{fig:stevie_wonder}
 \end{figure}
 
-
-Table \ref{tab:withouthiddencat} shows how number of links between categories, and between categories and articles are reduced when hidden categories are not considered. 
+Table \ref{tab:withouthiddencat} shows how number of links between categories and articles are reduced when hidden categories are disregarded. Number of links between categories has increased even though total number of categories are reduced from asf to 504 309.
 
 %The main reason to reduce number of links is to reduce the complexity 
 
@@ -43,9 +44,44 @@ Table \ref{tab:withouthiddencat} shows how number of links between categories, a
 \centering
 \begin{tabular}{l|c|c}
 \textbf{Links between...} & \textbf{W/ Hidden Categories} & \textbf{W/o Hidden Categories}  \\ \hline
- \textbf{subcategories} & 1 654 758  & 1 311 275\\
- \textbf{articles and categories} & 4 241 881  & 3 152 873
+ \textbf{subcategories} & 3 358 007  & 3 467 360\\
+ \textbf{articles and categories} & 71 487 647  & 52 611 629 
 \end{tabular}
 \caption[Number of links without hidden categories]{Number of links removed when all hidden categories are excluded. }
 \label{tab:withouthiddencat}
 \end{table}
+
+
+
+
+\begin{comment}
+Number of category links (w hiddencats): 3 358 007
+Number of category links (w/o hiddencats): 
+
+Number of categories before hidden cats: 1 206 719
+Number of categories (after hidden cats): 1199730
+
+Number of hidden categories: 1964
+
+3 358 008
+3 467 360
+
+Difference in number of categories: 1 654 758  & 1 311 275
+
+[INFO] Diambiguation links found: 285624
+[INFO] Writing category links to file
+[INFO] --- 1194.24166107 seconds (19.9040276845 min, 54.2416610718 min) ---
+[INFO] 18898753 article links, 0 category links skipped
+
+1648873 sub categories written to S.txt.gz
+2948243 page categories written to P.txt.gz
+22735 number links between categories or cat-articles found
+
+artskip: 18898753
+filecnt : 5262146
+insertioncnt : 88172914 
+
+Lines read 88172914
+
+ & 5 262 146 & 2948243
+\end{comment}
