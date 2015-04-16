@@ -1,7 +1,7 @@
 \section{Id Mapping}
-When writing all the results to file, the files are extremely large. All path to all Wikipedia articles ended with about 20 GB compressed data of text. The result was to create a id mapping for each category name and article name to reduce space needed for storing all results on the computer. Id mapping gives all names an unique id, and instead of writing the full path to file, the ids of the full path is written to file.
+The files containing the results becomes extremely large due to the size of the results. When writing all the results to file, the files becomes extremely large. All paths of all Wikipedia articles is more than 20 GB of compressed data. It is desirable to reduce the space needed for storing all results on the computer. The solution was to create an id mapping for each category name and article name. Id mapping gives all names a unique id, and instead of writing the full path of category names to the file, the full paths with category ids is written to file. 
 
-The id mapping is created fixed by creating a counter that assigns numbers to each category name or article name that is not found yet. When a new category name or article name is found, it is assigned an unique number that represents the name. Figure \ref{fig:idmapping} shows an excerpt of the id mapping created for our purpose, where the id 4600570 corresponds to the article about \emph{Ole-Johan Dahl}, which means that this id is used everywhere \emph{Ole-Johan Dahl} is used in paths. 
+The id mapping is implemented by creating a counter that assigns numbers to each category name or article name that is not found yet, i.e., a unique number represents each name. Figure \ref{fig:idmapping} shows an excerpt of the id mapping created for our purpose, where the id \emph{4600570} corresponds to the article about \emph{Ole-Johan Dahl}, which means that this id is used everywhere \emph{Ole-Johan Dahl} is used in paths. 
 
 \begin{figure}[h]
 \centering
@@ -19,9 +19,9 @@ The id mapping is created fixed by creating a counter that assigns numbers to ea
 \label{fig:idmapping}
 \end{figure}
 
-One of the reasons to work with ids instead of the full names is the memory needed on the computer. Lots of memory is needed if the full paths are represented by names, but less memory is needed if the full paths are represented by ids since the ids are shorter than the names of the category and article names. 
+Id mapping is storage efficient because category names and article names usually are a  lot longer than their representing ids. 
 
-Working with ids is also a lot faster when considering lookups in the program. This will depend on the structure chosen for the programs, but when using dictionaries as done in our implementation, ids will perform faster than if using full names. An example of this can be seen in figure \ref{fig:id_lookup} where the time to find all categories from the category with id 177678 (corresponding to the category \emph{people}) is 0.955 minutes. Figure \ref{fig:fullname_lookup} shows the time needed to find the same paths for the category when using full names for categories and articles, which is found to be 1.559 minutes. Comparing the times shows that the time is a lot faster when using ids, which is important when many paths have to found.
+Working with ids is also faster in many implementations concerning lookups in the program. This depends on the structure chosen for the programs, but when using dictionaries as done in our implementation, ids will perform faster than if using full names. An example of this can be seen in figure \ref{fig:id_lookup} where the time to find all categories from the category with id 177678 (corresponding to the category \emph{people}) is 0.955 minutes. Figure \ref{fig:fullname_lookup} shows the time needed to find the same paths for the category when using full names for categories and articles, which is found to be 1.559 minutes. Comparing the times shows that the time is a lot faster when using ids, which is important when many paths have to found.
 
 \begin{figure}[h]
 \centering

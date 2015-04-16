@@ -1,6 +1,10 @@
-\section{Redirects}
-%Wikipedia contains lots of redirects between articles to help the users find the articles they look for, and to keep the encyclopedia well-structured.  
-Wikipedia contains lots of redirects to articles for two main reasons. The first is to help users find the articles they are looking for, and the second reason is to keep the encyclopedia well-structured. The redirects are divided into different types depending on the reason for redirecting. Wikipedia lists all the different reasons of redirects. \cite{wiki:redirect} 
+\subsection{Redirects}
+%Wikipedia contains lots of redirects between articles to help the users find the articles they look for, and to keep the encyclopedia well-structured. 
+Redirecting is a common technique for making a web page available to multiple URLs \cite{wiki:urlredirect}. Wikipedia contains lots of redirects to articles, where it redirects from an alternative article name, and redirects to the actual article.  This means that the project is only interested in the article name it redirects to. Wikipedia has two main reasons for redirects. The first reason is to help users find the articles they are looking  independent on misspellings or inflections of words. The  second reason is to keep the encyclopedia well-structured. Wikipedia has divided the different types of redirects into 3 types which are \emph{Maintenance}, \emph{Visual} and \emph{Discussion}. The reasons for redirecting is listed in figure \ref{fig:redirectreasons} \cite{wiki:redirect}.
+
+The redirects are divided into different types depending on the reason for redirecting. Wikipedia lists all the different reasons of redirects. \cite{wiki:redirect} 
+\begin{figure}[h]
+%\centering
 \begin{itemize}[noitemsep]
 \item[-] Alternative names 
 \item[-] Plurals 
@@ -22,13 +26,16 @@ Wikipedia contains lots of redirects to articles for two main reasons. The first
 \item[-] Links auto-generated from Exif information 
 \item[-] Finding what links to a section, when links are made to the redirect rather than the section.
 \end{itemize}
+\caption{Wikipedia's reasons for redirecting a Wikipedia article.}
+\label{fig:redirectreasons}
+\end{figure}
 
-Most of the redirect pages are places in categories which tells the reason for the redirection. The category types for the classification are \emph{Maintenance}, \emph{Visual} or \emph{Discussion}.
+%Most of the redirect pages are places in categories which tells the reason for the redirection. The category types for the classification are \emph{Maintenance}, \emph{Visual} or \emph{Discussion}.
 
 %When a page is marked as a redirect page in 
 \subsubsection{Handling redirects}
-
-If a page is supposed to be redirected to another page, this is found in \texttt{enwiki- latest-page.sql.gz} where the page's \texttt{INSERT} statement is marked with '1' in the 6th position if it's redirecting (see figure \ref{fig:isredirect}).
+It is desirable to use the article names that are redirected to in this project since they are spelled correctly. Thus, it is necessary to find all pages that are redirect pages and the pages they redirect to. 
+If a page is supposed to be redirected to another page, this is found in \enwikipage where the page's \texttt{INSERT} statement is marked with '1' in the 6th position (see figure \ref{fig:isredirect}).
 
 \begin{figure}[h]
 \centering
@@ -36,7 +43,7 @@ If a page is supposed to be redirected to another page, this is found in \texttt
 (10,0,'AccessibleComputing','',0,1,0,0.33167112649574004,
 '20150111235554','20150112004211',631144794,69,NULL)
 \end{lstlisting}
-\caption{Example of a redirecting \texttt{INSERT} statement}
+\caption{Example of a redirecting \texttt{INSERT} statement in \texttt{enwiki-latest-page.sql.gz}.} 
 \label{fig:isredirect}
 \end{figure}
 The first attempt of handling redirects is to make sure the paths are found to articles with correct names and not to the redirecting pages. Finding all paths to pages that redirect to other pages is unnecessary and creates more data than needed. It is instead better to find all pages that other pages redirect \emph{to}. This can be found in a separate file \enwikiredirect where both page id and page title for all pages are found. After all of these ids and titles are collected, the next step is to connect them with the correct output. As an example would the article from figure \ref{fig:isredirect} be connected to the page title in figure \ref{fig:correctacccomp} after the title is converted to lowercase and underscores are removed. 

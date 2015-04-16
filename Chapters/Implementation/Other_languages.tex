@@ -1,0 +1,102 @@
+\section{Other Languages}
+It is ideal if the results could be applied in other languages as well (norwegian advertising) for instance. 
+
+Since Wikipedia is available in multiple languages, we can take advantage of this and easily reuse the categorization results found 
+
+The file "enwiki-latest-langlinks.sql.gz" contains information about the language links, which can be displayed on the side of a Wikipieda article. These links are on the form
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+CREATE TABLE `langlinks` (
+  `ll_from` int(8) unsigned NOT NULL DEFAULT '0',
+  `ll_lang` varbinary(20) NOT NULL DEFAULT '',
+  `ll_title` varbinary(255) NOT NULL DEFAULT '',
+  UNIQUE KEY `ll_from` (`ll_from`,`ll_lang`),
+  KEY `ll_lang` (`ll_lang`,`ll_title`)
+)
+\end{lstlisting}
+\caption{Caption}
+\label{fig:my_label}
+\end{figure}
+
+\url{http://www.mediawiki.org/wiki/Manual:Langlinks\_table}
+
+INSERT INTO `langlinks` VALUES (2011404,'aa',''),(4240539,'aa',''),(30938635,'aa','')
+As an attempt I tried to create a norwegian dictionary from this. 
+First I found all links to norwegian pages by finding all insertions marked with \emph{no}. Then all page-ids are stored together with the title of the norwegian article. 
+ 
+('2968022', 'no', 'Barbados under Sommer-OL 2000')
+ 
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+378466  Fidel V. Ramos
+287145  Jacques Cazotte
+24984364        Gnathothlibus
+287149  Nyala
+2653965 Papuacedrusslekten
+370256  Timurid-dynastiet
+34417918        Kategori:Personer fra provinsen Valencia
+33931676        Druide
+778284  Flora (gudinne)
+4369469 Aloandia
+1246681 Edge (magasin)
+5980    Karbonsluk
+1902206 Nansenprisen
+\end{lstlisting}
+\caption{Caption}
+\label{fig:my_label}
+\end{figure}
+ 
+Then I needed to find the corresponding English article name for the page id, which was done by looping through relevant pages in the \enwikicatlink file since all entries are on the form: 
+ 
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+INSERT INTO `categorylinks` VALUES (0,'','','2014-01-16 15:23:19','','','page'),(10,'Redirects_from_moves','ACCESSIBLECOMPUTING','2014-10-26 04:50:23','','uppercase','page')
+\end{lstlisting}
+\caption{Caption}
+\label{fig:my_label}
+\end{figure}
+ 
+id 10 equals accesiblecomputing. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+bicycle kick        brassespark
+davis phinney       davis phinney
+phasi charoen       district  phasi charoen
+chanthaburi         chanthaburi
+hindnubben          hindnubben
+kamrup district     kamrup (distrikt)
+\end{lstlisting}
+\caption{Caption}
+\label{fig:my_label}
+\end{figure}
+
+At the end I loaded the finished dictionary and compared the names and created a large dictionary with the english names where there were norwegian titles available and ended with a dictionary like this: 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+"speilreflekskamera": [
+      "technology & computing/cameras & camcorders"
+    ], 
+    "henry hermansen": [
+      "sports/skiing"
+    ], 
+    "joost wichman": [
+      "sports/mountain biking"
+    ], 
+    "punt e mes": [
+      "food & drinks/wine"
+    ], 
+    "mikroorganisme": [
+      "science/biology"
+    ], 
+\end{lstlisting}
+\caption{Caption}
+\label{fig:my_label}
+\end{figure}

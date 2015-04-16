@@ -1,27 +1,43 @@
 \section{Categorization}
-The process of grouping collections of text into categories is called categorization and can be done by either humans or computers. Computer categorization is part of machine learning which is defined as the technique of teaching the machine how to behave. The idea of the  process is to find patterns, for instance recognize similarities between input, or to decide rules which makes the machine able to predict the category of any input. The goal of the process is in other word to optimize the behavior and performance of the machine.
+The process of grouping collections of text into categories is called categorization and can be done by either humans or computers. Computer categorization is the technique of teaching a classifier how to decide the category of any input \cite{wiki:categorization}. The idea of the process is to find patterns which makes the machine able to predict the category or class of the input. Such patterns could be similarities between input or decision rules \cite{wiki:classification}. It is desirable to optimize the results of the classifier, hence make the classifier as accurate as possible. 
+%make the classifier as good as possible,
 
-Categorization with machine learning can be split into further types; statistical classification which is a \emph{supervised} learning process, and clustering which can be performed as both %an \textit{supervised} and 
-a \emph{supervised} and an \emph{unsupervised} learning process. Supervised learning is a technique where the machine is given a training data set, where the set contains the correct output in addition to the input we want to classify. The classifier uses this data to learn the machine how to behave, also called training the classifier. Unsupervised learning, on the other hand, is the task of trying to find a hidden structure in unlabeled data. The main difference between the two types is that unlabeled data gives no feedback to the classifier, hence the classifier has to assume that it is correctly classified without receiving feedback. It is also possible to have classification processes which are combined of the two, where prior knowledge is given to the classifier. 
+%Categorization with machine learning can be split into further types; statistical classification which is a \emph{supervised} learning process, and clustering which can be performed as both %an \textit{supervised} and a \emph{supervised} and an \emph{unsupervised} learning process. Supervised learning is a technique where the machine is given a training data set, where the set contains the correct output in addition to the input we want to classify. The classifier uses this data to learn the machine how to behave, also called training the classifier. Unsupervised learning, on the other hand, is the task of trying to find a hidden structure in unlabeled data. The main difference between the two types is that unlabeled data gives no feedback to the classifier, hence the classifier has to assume that it is correctly classified without receiving feedback. It is also possible to have classification processes which are combined of the two, where prior knowledge is given to the classifier. 
 %added to the classification process for better results. 
 
 %the data is unlabeled is no feedback sent to the classifier. 
 %The classifier will therefore not know if the result is correct, but will continue to classify assuming that the classification performed so far is correct.  
 
-Our problem consists of two categorization problems. The first is to classify all Wikipedia articles within their most describing categories. The second categorization problem is the main categorization where any article given as input should be categorized to its most describing category.  
+Our problem consists of two categorization problems. The first is to classify Wikipedia articles to the most describing category from a desirable category set. The second categorization problem is to categorize any input article based on the occurrence of titles of wikipedia articles in the text and the corresponding categories for these articles. 
+%the main categorization where any article given as input should be categorized to its most describing category.  
 
 \subsubsection{Categorization of all Wikipedia articles}
-The first categorization problem is to categorize all Wikipedia articles into their most describing categories. To be able to do this, it is essential to look at the underlying structure of Wikipedia to determine what the article is about. 
+The classifier needs to know what all Wikipedia article are about to be able to categorize them. The meaning of the Wikipedia article can be found by looking at the underlying structure of Wikipedia i.e, the article's categories and the category structure. It is also essential to help the classifier with the categorization by finding rules and apply heuristics. 
+
+\begin{comment}
+
+Categorizing the articles can be done 
+
+When the most describing categories of the article is found
+
+Here the task is to create classifier that looks at the underlying structure of Wikipedia to describe the categories and then 
+
+into their most describing categories. To be able to do this, it is essential to look at the underlying structure of Wikipedia to determine what the article is about. 
 
 Since there are no training sets available, the categorization has to be unsupervised. Wikipedia still has an underlying structure which is useful for determining the most likely categories for all Wikipedia articles. This means that we can use this as heuristic for our categorization. 
+\end{comment}
 
 %The categorization needed to determine the categories for each article is a statistical classification. Wikipedia's structure is available and this can be used to find the most likely categories. 
 
 \subsubsection{Categorization of any article}
-The main goal for our problem is to be able to categorize any article given as input to the program based on the content of the article. The main assumption here is that an article containing many titles categorized to the same category is more likely to be categorized to the same category. 
+Categorizing articles based on occurrence of Wikipedia article titles are the main goal of the implementation. The main assumption is that an article containing many titles categorized to the same category is more likely to be categorized to the same category. A text could contain keywords belonging to different categories, so some rules or heuristics might be needed to decide the category of the text. 
+
+\begin{comment}
+Mye nyttig: 
 
 To be able to categorize any article given as input, it is essential to have a list of keywords which give some indication of possible categories for the article. A keyword list should contain words or phrases useful for classification, and we have chosen the Wikipedia titles to be such a list. 
 
+\end{comment}
 
 %. The main assumption 
 
