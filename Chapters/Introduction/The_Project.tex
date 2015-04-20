@@ -42,7 +42,7 @@ As example should an article which contains the words \emph{soccer}, \emph{Messi
 %This classifier will be used as part of an automatic categorization process. 
 %Our overall goal is therefore to make an automatic categorization that have a predefined keyword list and start by creating a mapping from each keyword to a category from another predefined list. Where the category of a text can be defined from the keywords found in the text. 
 
-\subsection{An Overview of Challenges}
+\section{An Overview of Challenges}
 The main challenges encountered had to do with Wikipedia, mainly because the encyclopedia is maintained by thousands of volunteers and is poorly documented from a developer's point of view. The structure of Wikipedia is complex and the size makes it hard to check if the results found are correct. 
 
 %which also leads to a complicated and complex structure. 
@@ -52,16 +52,13 @@ Wikipedia is available in multiple languages and is written by volunteers from a
 
 An example of a category name which leads to trouble with encoding is  \emph{Communes in Cara\cb{s}-Severin County}, which is either be written with the letter \emph{\cb{s}} \cite{swithcomma} or \c{s} \cite{swithcedilla}. These letters are examples of characters that makes matching category names difficult, because \emph{Communes in Cara\cb{s}-Severin County} and \emph{Communes in Cara\c{s}-Severin County} will not be equal to the computer even though it is clear to most users that they should be the same.
 
-
-
 One way of solving this problem is to find
 
+% Categorier som jeg ikke får til : 
 10800
 
 
 %It was not completely possible to overcome this problem, 
-
-
 
 
 
@@ -74,3 +71,15 @@ Hva ligger i hvilke filer?
 %The underlying structure of Wikipedia is quite complex, which led to 
 
 \subsubsection{Creating a mapping to desirable output}
+
+
+\subsubsection{Disambiguation}
+A word is ambiguous if there is more than one meaning to the words. Wikipedia contains many titles with different meanings (see figure \ref{fig:disambiguation_example}), which leads to the disambiguation problem. Disambiguation is a common problem in natural language processing \cite{wiki:disambiguation}. Hence, a complete section (\ref{sec:disambiguation}) is dedicated to others solutions with this specific problem. 
+%others work within in the topic see \ref{sec:disambiguation}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{Chapters/Introduction/Ice_cream_disambiguation}
+\caption{Example of disambiguation in Wikipedia.}
+\label{fig:disambiguation_example}
+\end{figure}

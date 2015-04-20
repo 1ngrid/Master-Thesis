@@ -19,9 +19,9 @@ The id mapping is implemented by creating a counter that assigns numbers to each
 \label{fig:idmapping}
 \end{figure}
 
-Id mapping is storage efficient because category names and article names usually are a  lot longer than their representing ids. 
+Id mapping is storage efficient because category names and article titles usually are a  lot longer than their representing ids. This means that the disk space needed for storing the id is smaller than the disk space needed for storing the category names or the article titles. 
 
-Working with ids is also faster in many implementations concerning lookups in the program. This depends on the structure chosen for the programs, but when using dictionaries as done in our implementation, ids will perform faster than if using full names. An example of this can be seen in figure \ref{fig:id_lookup} where the time to find all categories from the category with id 177678 (corresponding to the category \emph{people}) is 0.955 minutes. Figure \ref{fig:fullname_lookup} shows the time needed to find the same paths for the category when using full names for categories and articles, which is found to be 1.559 minutes. Comparing the times shows that the time is a lot faster when using ids, which is important when many paths have to found.
+Working with ids is also faster in many implementations concerning lookups in the program. This depends on the chosen data structure, but dictionaries which are frequently used in our implementation is an example of a data structure that performs faster with id mapping. An example of this can be seen in figure \ref{fig:id_lookup} where the time to find all categories from the category with id \emph{177678} (corresponding to the category \emph{people}) is 0.955 minutes. Figure \ref{fig:fullname_lookup} shows the time (1.559 minutes) needed to find the same paths for the category names and for the article titles. Comparing the times shows that the time is a lot faster when using ids, which is important when many paths have to found.
 
 \begin{figure}[h]
 \centering
@@ -30,7 +30,7 @@ Working with ids is also faster in many implementations concerning lookups in th
 
 [INFO] Time to find all article paths: 0.955 min
 \end{lstlisting}
-\caption[Time for all paths for \emph{people} when using ids]{Time needed for finding all paths from the category 177678 (corresponding to the category \emph{people}) when ids are used in the program.}
+\caption[Time for all paths for \emph{people} when using ids]{Time needed for finding all paths from the category \emph{177678} (corresponding to the category \emph{people}) when ids are used in the program.}
 \label{fig:id_lookup}
 \end{figure}
 
@@ -42,11 +42,11 @@ Working with ids is also faster in many implementations concerning lookups in th
 
 [INFO] Time to find all article paths: 1.559 min
 \end{lstlisting}
-\caption[Time for all paths for \emph{people} when using full names]{Time needed for finding all paths from the category people when using full names).}
+\caption[Time for all paths for \emph{people} when using full names]{Time needed for finding all paths from the category \emph{people} when using full names).}
 \label{fig:fullname_lookup}
 \end{figure}
  
-The last reason to use ids instead of full names is that the full names may include characters useful for describing paths, for instance the characters "/" which is a common way of describing full paths. 
+The last reason to use ids instead of full names is that the full names may include characters useful for describing paths, for instance the characters "/" which is a common way of describing full paths. This could lead to trouble if the category name contains the symbal. 
 
 % Fordel 2: Kan bruke "/" in the text. 
 

@@ -1,0 +1,21 @@
+\section{Results of the Mapping}
+\subsubsection{Evaluation of Mapping Wikipedia Categories to Output Categories}
+The results from this approach were not so good for two main reasons. 
+%The results from this approach from this approach were not good for two main reasons: 
+The first reason is that it is difficult to perform matching based on words. A perfect result could only be achieved if the computer knows all synonyms, inflections and the true meaning of all words. 
+
+The other problem was with ambiguous words in the category names. An example of this is the categories shown in figure \ref{fig:ambiguous_category_name} where both categories contain the word \emph{Cicero}, but where the first category is for the suburb of Illinois and the other is for the Roman philosopher. Creating mapping rules for these names would be a difficult task. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+Category:Cicero, Illinois
+Category:Cicero
+\end{lstlisting}
+\caption{Example of two category names which contains the same word with different meaning, and should be classified to different categories.}
+\label{fig:ambiguous_category_name}
+\end{figure}
+
+
+The conclusion for this approach is that it might be possible to create a mapping between each Wikipedia Category and one or more desirable output categories, but this would need a very specified third tier in the IAB category and lots of rules. The task would therefore resemble a manual classification and is not a good approach. 
+%-> It is impossible to create a third tier to satisfy this. 

@@ -1,5 +1,5 @@
 \subsection{Wikipedia Path Excerpts to Output Category}
-The next attempt was built on the idea that a the mapping from Wikipedia category and output categories need more information, and that this information could be found in the full paths of articles. The mapping process is based on excerpts of the paths, which should be mapped to one or more output categories. This approach solves the problem with disambiguation if the path excerpts specifies the meaning of the category. 
+The other attempt was built on the idea that a the mapping from Wikipedia category and output categories needs more information about the Wikipedia categories. The idea is that this information could be found in excerpts of articles' full paths. Thus, the mapping process is based on excerpts of the paths, which should be mapped to one or more output categories. This approach solves the problem with disambiguation if the path excerpts specifies the meaning of the category. 
 
 \begin{figure}
 \centering
@@ -7,14 +7,17 @@ The next attempt was built on the idea that a the mapping from Wikipedia categor
 ancient philosophers/cicero
 towns in illinois/cicero,illinois
 \end{lstlisting}
-\caption{Solving disambiguation}
+\caption[Avoiding disambiguation with excerpts of category paths]{How disambiguation can be solved if parts of the full path is used to determine the meaning of the category name.}
 \label{fig:solving_disambiguation}
 \end{figure}
 
-
-does not have the problem with 
-
 \subsection{Automatic Mapping}
+The mapping process is not completely autmoated since the mapping between path excerpts of Wikipedia categories and IAB categories has to be evaluated by humans. 
+
+\begin{comment}
+INSERT EXAMPLE ABOUT WALKING HERE. 
+\end{comment}
+
 There are two main problems with manual mapping between excerpts from article paths and categories. The first problem is that the process is difficult and takes lots of time
 
 One of the main reasons for making it an automatic process is that the process easily can be created into a 
