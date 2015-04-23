@@ -1,5 +1,5 @@
 %\subsection{Mapping Wikipedia Categories to Desirable Output Categories}
-\subsection{Deciding Output Categories based on Wikipedia Categories}
+\subsection{Mapping based on Wikipedia Categories}
 %The first step is to decide the output categories. %in other word what categories
 The first approach was to create a mapping between each Wikipedia category and one or more categories in the desirable output category set. The idea is that a matching could be performed by matching words within the Wikipedia category names and an output category name (see figure \ref{fig:category_to_category_mapping}).
 
@@ -16,7 +16,7 @@ IAB category: sports/tennis
 The task of mapping each Wikiepedia category to desirable output categories is too big to be done manually since the Wikipedia category set contains 1 201 373 categories. This means that the process should be automated. One way of doing this is by looking at similarities in the words contained in the Wikipedia category and in the output category.
 
 \subsubsection{Expanding the IAB category}
-The categories in the IAB taxonomy were chosen as the desirable output category set for our task. This taxonomy  only consists of two category \emph{layers} (also called \emph{tiers}), which are not specified enough for creating a matching based on the category names. Hence, the IAB taxonomy was extended with a third and more specified layer to improve the category mapping process. 
+The categories in the IAB taxonomy were chosen as the desirable output category set for our task. This taxonomy  only consists of two category \emph{layers} (also called \emph{tiers}), which are not specified enough for creating a matching based on the category names. Hence, the IAB taxonomy was extended with a third and more specified layer to improve the category mapping process. This layer is added by creating a link from the second layer and to its representative third layer.
 
 %was added to the taxonomy to 
 %had to be created for this task, where this layer is specified 
@@ -24,6 +24,7 @@ The categories in the IAB taxonomy were chosen as the desirable output category 
 %The next layer has to be modified to 
 
 %fit the set of Wikipedia categories, and to be helpful for categorizing correct. 
+
 
 This third layer can be viewed as giving common knowledge to the machine. \emph{Europe} is an example of a second layer where the machine lacks common knowledge since it does not know what countries are part of Europe. Expansion of this tier could be creating a third tier containing all European countries, which means that all Wikipedia categories containing a name of a European country should map to the category \emph{Europe}.
 
@@ -39,7 +40,7 @@ This third layer can be viewed as giving common knowledge to the machine. \emph{
 %The set cof Wikipedia categories contains of 
 %Our set of Wikipedia categories contains 1 201 373 categories. 
 
-Figure \ref{fig:catmapping_exactmatch} shows how a matching between Wikipedia categories and output categories, where the output category name \emph{sports} are found as a word in the Wikipedia category name \emph{ministry of yougth affaris and sports}.
+Figure \ref{fig:catmapping_exactmatch} shows how a matching between Wikipedia categories and output categories, where the output category name \emph{sports} are found as a word in the Wikipedia category name \emph{ministry of youth affairs and sports}.
 
 \begin{figure}[h]
 \centering
@@ -50,7 +51,7 @@ IAB category: sports
 \caption[Exact match on mapping between Wikipedia category and output category]{Exact match on mapping between Wikipedia category and output category, where the output category is found in the Wikipedia category.}
 \label{fig:catmapping_exactmatch}
 \end{figure}
-The problem with this approach is that words like \emph{sport} will not be an exact match of the word \emph{sports}. This means that this Wikipedia category will not be included under the desirable output category. Thus, the next step was to find matches between the categories regardless of the declension of the word. This part is called \emph{lemmatization} and is defined as the process where different inflected forms of a word are grouped together \cite{wiki:lemmatisation}\cite[p.~30-33]{iirbook}. There are various lists for lemmatization available online. We chose a list from \cite{lemmatizationlist} which provided a list of common lemmatization. Both the words in the Wikipedia categories and the desirable output categories were processed so they where replaced by their lemma. 
+The problem with this approach is that words like \emph{sport} will not be an exact match of the word \emph{sports}. This means that this Wikipedia category will not be included under the desirable output category. Thus, the next step was to find matches between the categories regardless of the declension of the word. This part is called \emph{lemmatization} and is defined as the process where different inflected forms of a word are grouped together \cite{wiki:lemmatisation}\cite[p.~30-33]{iirbook}. There are various lists for lemmatization available online. We chose a list from \emph{MBM's Lemmatization Lists} \cite{lemmatizationlist} which provided a list of common lemmatization. Both the words in the Wikipedia categories and the desirable output categories were processed so they where replaced by their lemma, i.e. the canonical form of the word \cite{wiki:lemma}. 
 %by reading the lemmatization file and checked whether the words could be reduced. 
 Figure \ref{fig:catmapping_lemmamatch} shows example of a match found after lemmatization is performed. 
 

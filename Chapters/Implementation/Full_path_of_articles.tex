@@ -1,28 +1,15 @@
-\section{Full path of articles}
+\section{Finding Full Path of Articles}
 The goal of our implementation was to create a dictionary where the entries are created from the titles of Wikipedia articles, and each entry leads to one or more describing categories. Wikipedia already contains an underlying category structure which is useful to decide the relevant categories for each article. The first step was therefore to find the full path of each article in Wikipedia, where the path is given from the categories that lead to every article. 
 
 
 % Creating a representation of the underlying structure. 
 
 \subsection{Creating the Underlying Category Structure}
-Finding full paths of all articles require information about Wikipedia's structure between categories, and between categories and articles. This, the first step was to create a way of representing the available information about the Wkipedia structure. % so the relevant information could be extracted. 
+Finding full paths of all articles require information about Wikipedia's structure between categories, and between categories and articles. Thus, the first step was to create a way of representing the available information about the Wikipedia structure. % so the relevant information could be extracted. 
 The file \enwikicatlink contains the information needed to create a database table \emph{categorylinks} filled with all links between categories, all links between articles and files, and all links between categories and articles. All information about the links are inserted in the database table through \texttt{INSERT} statements where all entries are on the form\\\\
 (\emph{cl\_from},\emph{cl\_to},\emph{cl\_sortkey},\emph{cl\_timestamp},\emph{cl\_sortkey\_prefix},\emph{cl\_collation},\emph{cl\_type})\\\\
     Table \ref{tab:insertdescription} describes the meaning of all the \texttt{INSERT} statement fields \cite{wiki:categorylinkstable} and \ref{fig:entryexample} shows an example of an entry in the \texttt{INSERT} statement, where the link between the category with id \emph{12} and the  page \emph{Anarchism} is inserted into the table \emph{categorylinks}.  
 
-
-\begin{comment}
-The description of all the fields are 
-the form shown in figure \ref{fig:entryform}. and an example of how that looks is shwon in figure \ref{fig:entryexample}
-\begin{figure}[h]
-\centering
-\begin{lstlisting}
-(cl_from, cl_to, cl_sortkey, cl_timestamp, cl_sortkey_prefix, cl_collation, cl_type)
-\end{lstlisting}
-\caption{The form of all \texttt{INSERT} statement entries}
-\label{fig:entryform}
-\end{figure}
-\end{comment}
 
 \begin{figure}[h]
 \centering
@@ -30,7 +17,7 @@ the form shown in figure \ref{fig:entryform}. and an example of how that looks i
 (12,'Anarchism',' \nANARCHISM','2014-11-20 17:57:05',
 ' ','uppercase','page')
 \end{lstlisting}
-\caption{Example of an \texttt{INSERT} statement entry.}
+\caption[\texttt{INSERT} statement entry in \texttt{enwiki-latest-categorylinks.sql.gz}]{Example of an \texttt{INSERT} statement entry in \enwikicatlink. The link is between the category with id \emph{12} and the page \emph{Anarchism}.}
 \label{fig:entryexample}
 \end{figure}
 
@@ -48,7 +35,7 @@ cl\_collation & What collation is in used. \\ \hline
 cl\_type & What type of article is this (file, subcat (subcategory) or page (normal page)).
 \end{tabularx}
 \\[10pt]
-\caption[Relevant files from Wikipedia database dump]{The relevant files from the Wikipedia database dump and a short description on what they contain.}
+\caption[Description of entry fields in \emph{Categorylinks}]{Description of entry fields in \texttt{INSERT} statements in \emph{Categorylinks}.}
 \label{tab:insertdescription}
 \end{table}
 

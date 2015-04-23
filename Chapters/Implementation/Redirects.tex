@@ -46,7 +46,7 @@ If a page is supposed to be redirected to another page, this is found in \enwiki
 \caption{Example of a redirecting \texttt{INSERT} statement in \texttt{enwiki-latest-page.sql.gz}.} 
 \label{fig:isredirect}
 \end{figure}
-The first attempt of handling redirects is to make sure the paths are found to articles with correct names and not to the redirecting pages. Finding all paths to pages that redirect to other pages is unnecessary and creates more data than needed. It is instead better to find all pages that other pages redirect \emph{to}. This can be found in a separate file \enwikiredirect where both page id and page title for all pages are found. After all of these ids and titles are collected, the next step is to connect them with the correct output. As an example would the article from figure \ref{fig:isredirect} be connected to the page title in figure \ref{fig:correctacccomp} after the title is converted to lowercase and underscores are removed. 
+The first attempt of handling redirects is to make sure the paths are found to articles with correct names and not to the redirecting pages. Finding all paths to pages that redirect to other pages is unnecessary and creates more data than needed. It is instead better to find all pages that other pages redirect \emph{to}. This can be found in a separate file \enwikiredirect where both page id and page title for all pages are found. After all of these ids and titles are collected, the next step is to connect them with the correct output. As an example the article from figure \ref{fig:isredirect} would  be connected to the page title in figure \ref{fig:correctacccomp} after the title is converted to lowercase and underscores are removed. 
 
 \begin{figure}[h]
 \centering

@@ -1,13 +1,15 @@
 
 \subsection{Accessing Information from Wikipedia}
-There are two ways of accessing Wikipedia’s encyclopedic information; the most common way is to enter the webpage and search for the information needed, but it is also possible to download database dumps and access them directly to find information. All Wikipedia articles, images and categories are stored in a database which is accessed whenever a user search for information online, and the information retrieved from the database is returned to the webpage for example in the form of an article. To ensure that all data is safe at all times, files containing the information needed to recover the database is stored and regularly updated.\cite{wiki:databasedownload} This type of backup is called a database dump and is available for anyone interested at \url{http://dumps.wikimedia.org/enwiki/}. All Wikipedia files used for this project is downloaded 22nd of January 2015. 
+There are two ways of accessing Wikipedia’s encyclopedic information; the most common way is to enter the webpage and search for the information needed, but it is also possible to download database dumps and access them directly to find information. All Wikipedia articles, images and categories are stored in a database which is accessed whenever a user search for information online, and the information retrieved from the database is returned to the webpage, for instance in the form of an article. To ensure that all data is safe at all times, files containing the information needed to recover the database is stored and regularly updated\cite{wiki:databasedownload}. This type of backup is called a database dump and is available for anyone interested at \cite{databasedownload}. All Wikipedia files used for this project is downloaded 22nd of January 2015. 
 %When a user search for information on the webpage this database is accessed. 
 %which are accessed when a user are searching for an article online. 
 %A database dump is therefore a backup of the database, and usually stored in the case of some data is lost\footnote{TODO Insert some link here. }. This backup is available for anyone interested at \footnote{TODO:insert link}. 
 
 The files associated with the database dumps contains different information needed i.e., some files contains all the articles' titles, some contains information about which images belong to which articles and so on. Together they provide all information needed to restore Wikipedia if data is lost. 
-%Just a few of these files where relevant for our task, the information needed was links between categories, between categories and articles and some special information about page properties. 
-As mentioned, the first step is to find the full path of all articles. Since the Wikipedia articles are placed under categories describing their content, the full path of each article can be found by following the links between categories until an article is found. Table \ref{tab:databasedumpfiles} shows the files determined to be relevant for our task and a short description on what they contain. 
+
+%As mentioned, the first step is to find the full path of all articles. Since the Wikipedia articles are placed under categories describing their content, the full path of each article can be found by following the links between categories until an article is found. 
+
+Table \ref{tab:databasedumpfiles} shows the files determined to be relevant for our task and a short description on what they contain. 
 
 
 %This depends on creating a way to represent the structure of the categories and the articles. 

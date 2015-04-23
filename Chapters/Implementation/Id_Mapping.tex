@@ -1,5 +1,5 @@
 \section{Id Mapping}
-The files containing the results becomes extremely large due to the size of the results. When writing all the results to file, the files becomes extremely large. All paths of all Wikipedia articles is more than 20 GB of compressed data. It is desirable to reduce the space needed for storing all results on the computer. The solution was to create an id mapping for each category name and article name. Id mapping gives all names a unique id, and instead of writing the full path of category names to the file, the full paths with category ids is written to file. 
+The files containing the results becomes extremely large due to the extreme amout of data. All paths of all Wikipedia articles is more than 20 GB of compressed data. It is desirable to reduce the space needed for storing all results on the computer. The solution was to create an id mapping for each category name and article name. Id mapping gives all names a unique id, and instead of writing the full path of category names to the file, the full paths with category ids is written to file. 
 
 The id mapping is implemented by creating a counter that assigns numbers to each category name or article name that is not found yet, i.e., a unique number represents each name. Figure \ref{fig:idmapping} shows an excerpt of the id mapping created for our purpose, where the id \emph{4600570} corresponds to the article about \emph{Ole-Johan Dahl}, which means that this id is used everywhere \emph{Ole-Johan Dahl} is used in paths. 
 
@@ -19,9 +19,9 @@ The id mapping is implemented by creating a counter that assigns numbers to each
 \label{fig:idmapping}
 \end{figure}
 
-Id mapping is storage efficient because category names and article titles usually are a  lot longer than their representing ids. This means that the disk space needed for storing the id is smaller than the disk space needed for storing the category names or the article titles. 
+Id mapping is storage efficient because category names and article titles are usually a  lot longer than their representing ids. This means that the disk space needed for storing the id is smaller than the disk space needed for storing the category names or the article titles. 
 
-Working with ids is also faster in many implementations concerning lookups in the program. This depends on the chosen data structure, but dictionaries which are frequently used in our implementation is an example of a data structure that performs faster with id mapping. An example of this can be seen in figure \ref{fig:id_lookup} where the time to find all categories from the category with id \emph{177678} (corresponding to the category \emph{people}) is 0.955 minutes. Figure \ref{fig:fullname_lookup} shows the time (1.559 minutes) needed to find the same paths for the category names and for the article titles. Comparing the times shows that the time is a lot faster when using ids, which is important when many paths have to found.
+Working with ids is also faster in many implementations concerning lookups in the program. This depends on the chosen data structure, but dictionaries which are frequently used in our implementation is an example of a data structure that performs faster with id mapping. An example of this is illustrated in figure \ref{fig:id_lookup} where the time to find all categories from the category with id \emph{177678} (corresponding to the category \emph{people}) is 0.955 minutes. Figure \ref{fig:fullname_lookup} shows the time (1.559 minutes) needed to find the same paths for the category names and for the article titles. Comparing the times shows that the time is a lot faster when using ids, which is important when many paths have to found.
 
 \begin{figure}[h]
 \centering

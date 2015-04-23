@@ -1,0 +1,76 @@
+
+\section{Evaluation}
+An evaluation of the categorization process is essential to know whether the classifier classify correctly or not. This can also be used to find which categories are easy to classify, and which categories are difficult to recognize. The evaluation is based on comparing the results with the correct results (called \emph{Gold Standard} \cite{wiki:goldstandard}). The gold standard in our project is found in the url of articles, and is decided by the journalists when they publish articles. An article about sport contains \emph{sports} in the url, for example \emph{http://www.rappler.com/sports/by-sport/boxing-mma/pacquiao/90563-mayweather-sr-blasts-ariza}.
+
+\subsection{Evaluation of the Classifier}
+There are different ways of measuring correctness, but the most common are \emph{accuracy}, \emph{precision}, \emph{recall} and \emph{$F_{1}$-score}. These measures depend on some terms for the evaluation (see table \ref{tab:retrievedescription}).
+%Evaluation the categorization is found by evaluating how well the classifier perform, in other words the correctness of the classifier.
+%the correctness of the classifier
+%The purpose of evaluating the classification is to determine  the correctness of the classifier 
+%i.e., how well the classifier perform. 
+
+\subsubsection{Accuracy}
+\emph{Rand Index (RI)} accuracy measures the percentage of decisions that are correctly classified by the classifier \cite[p:~330]{iirbook}. Equation \ref{eq:accuracy} \cite{wiki:accuracy} shows how this is computed for evaluating the classifier. 
+
+\begin{equation} \label{eq:accuracy}
+\text{acc}=\frac{\text{true positives}+\text{true negatives}}{\text{true positives}+\text{false positives} + \text{false negatives} + \text{true negatives}}
+\end{equation}
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l |X}
+\textbf{Term}  & \textbf{Description} \\\hline
+\textbf{True Postive} (TP) & Text is classified to the class by both classifier and \emph{Gold Standard}, (correct). \\ \hline
+\textbf{True Negative} (TN) &  Text is neither classified to the class by the classifier, nor by \emph{Gold Standard}, (correct).  \\ \hline
+\textbf{False Negative} (FN) & Text is not classified to the class by the classifier, but by \emph{Gold Standard}, (incorrect). \\ \hline
+\textbf{False Positive} (FP) & Text is classified to the class by the classifier, but not by \emph{Gold Standard}, (incorrect).
+\end{tabularx}
+\\[10pt]
+\caption[Explanation of the \emph{TP}, \emph{TN}, \emph{FN} and \emph{FP}]{Explanation of the \emph{True Positive}, \emph{True Negative}, \emph{False Negative} and \emph{False Positive} \cite[p.~330-331]{iirbook}.}
+\label{tab:retrievedescription}
+\end{table}
+
+\subsubsection{Precision and Recall}
+Another way of evaluating the classifier is by using \emph{precision} and \emph{recall} which measures how many elements are correctly categorized and how many of the correct elements were found. 
+
+%of evaluation categorization is with \emph{precision} and \emph{recall} which are measures of how many elements were correctly categorized \cite{wiki:precisionrecall}. P
+
+Precision is defined as in equation \ref{eq:precision} \cite{wiki:precisionrecall}, which measures the fraction of returned results that are relevant \cite[p.~5]{iirbook}. This means that precision can tell how many of the articles were correctly categorized. 
+
+\begin{equation} \label{eq:precision} 
+\begin{split}
+\text{precision} & =\frac{|\{\text{relevant documents}\}\cap\{\text{retrieved documents}\}|}{|\{\text{retrieved documents}\}|} \\
+ & = \frac{\text{TP}}{\text{TP} + \text{FP}}
+ \end{split}
+\end{equation}
+Recall is a measure of finding how many of the relevant documents were found \cite[p.~5]{iirbook}. Equation \ref{eq:recall} \cite{wiki:precisionrecall} would provide information about how many of the correctly categorized elements were found. 
+
+\begin{equation} \label{eq:recall} 
+\begin{split}
+\text{recall} & =\frac{|\{\text{relevant documents}\}\cap\{\text{retrieved documents}\}|}{|\{\text{relevant documents}\}|} \\
+ & = \frac{\text{TP}}{\text{TP}+\text{FN}}
+\end{split}
+\end{equation}
+
+Combining precision and recall gives a measure of the correctness of the classifier. In addition, the measures can be combined to find the $F_{1}$-measure of the classifier which is way of measuring accuracy in terms of a weighted average of the precision and recall. The $F_{1}$-score is defined as in equation \ref{eq:fscore} \cite{wiki:fscore}. 
+
+\begin{equation} \label{eq:fscore}
+F_1 = 2 \cdot \frac{\mathrm{precision} \cdot \mathrm{recall}}{\mathrm{precision} + \mathrm{recall}}.
+\end{equation}
+
+The range of the $F_{1}$-score is between $0$ and $1$, where 1 is the best value. 
+
+% TODO: vi kan også evaluaere mappingen mellom wikipedia articler og iab kategorier. 
+
+%\subsection{Evaluate Wikipedia Categorization}
+%\subsection{Evaluate Article Categorization}
+
+\begin{comment}
+Evaluation is the 
+
+
+Kan også finne: 
+p. 330 i iirbook. 
+Rand index : measures the RI percentage of decisions that are correct. 
+\end{comment}

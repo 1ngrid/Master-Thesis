@@ -1,4 +1,4 @@
-\subsection{Finding Full Paths of Wikipedia Articles}
+\subsection{Following Links Between Categories}
 Finding the full paths for each Wikipedia article can be done when the representation of the structure is ready. Each path can be found by following the links between categories until an article is reached, and the links categories visited are the path. 
 
 \begin{figure}[h]
@@ -23,10 +23,10 @@ people/fictional characters/fictional characters by species/fictional life forms
 \end{figure}
 
 
-This leads to problems if the program keep going in loop and does not reach an article. A solution to this problem is to keep track on categories already visited and only follow links to categories not yet visited in the path. 
+This leads to problems if the program keeps going in loop and does not reach an article. A solution to this problem is to keep track on categories already visited and only follow links to categories not yet visited in the path. 
 %This might mean that the path to the category is not the best one, but 
 
-Another issue is to decide the start point for the paths, in other words the start category. Wikipedia contains some natural categories that are better to use as start category. These categories are very general and have links to some of the major categories within different fields, hence, able to reach most other categories in the Wikipedia category structure. The category \emph{Main Topic Classifiers} was chosen for this task, because it has 22 subcategories within various fields and  where all of them have their own subcategories (see figure \ref{fig:mainclassifiers})\cite{wiki:specialtree}.
+Another issue is to decide the start point for the paths, in other words the start category. Wikipedia contains some natural categories that are better to use as start categories. These categories are very general and have links to some of the major categories within different fields, hence, able to reach most other categories in the Wikipedia category structure. The category \emph{Main Topic Classifiers} was chosen for this task, because it has 22 subcategories within various fields and  where all of them have their own subcategories (see figure \ref{fig:mainclassifiers})\cite{wiki:specialtree}.
 
 \begin{figure}[h]
 \begin{center}

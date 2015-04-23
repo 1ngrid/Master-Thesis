@@ -1,11 +1,12 @@
 \chapter{Implementation}
+This chapter describes the implementation for creating a dictionary-based classifier. Several programs were made to achieve this goal, and many of the programs depends on the results from other programs. This chapter covers all the phases of the implementation in the order they were implemented. It starts by describing \emph{how to find full path of Wikipedia articles} from the Wikipedia database dump, including how to \emph{remove hidden categories} from the paths and how to \emph{handle redirects}. Further, the chapter describes the \emph{id mapping process} and compares this implementation with an implementation where full category names and article titles were used instead of ids. Deciding relevant categories is done by grading categories and category paths based on \emph{Inlink and Outlink Grading} and based on \emph{Normalized Inlink and Outlink Grading}. The mapping between Wikipedia article titles and IAB categories are described with \emph{category mapping} and with \emph{mapping between category excerpts and IAB categories}. Finally, the chapter describes the process of creating a dictionary-based classifier for other languages than English, giving an example of how to create a dictionary-based classifier for Norwegian.
 
-\input{Chapters/Implementation/Finding_Article_Paths}
+\input{Chapters/Implementation/Full_path_of_articles}
 \input{Chapters/Implementation/Hidden_Categories}
 \input{Chapters/Implementation/Categorygraph}
 \input{Chapters/Implementation/Articlegraph}
 
-\input{Chapters/Implementation/Full_Path}
+\input{Chapters/Implementation/Finding_Full_Path.tex}
 
 \input{Chapters/Implementation/Irrelevant_Articles}
 %\input{Chapters/Implementation/Wikipedia_Structure}

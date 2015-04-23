@@ -1,1 +1,63 @@
 \subsection{Normalized Grading Based on Inlinks and Outlinks}
+A way of avoiding favourization of short paths is by normalizing the path scores. 
+%Grading based on inlink number and outlink number favors short paths even if the paths contains categories considered as bad. One way of handling this problem is by normalizing the score of each path. 
+Equation \ref{eq:normscoreinput} shows how to normalizes the path score for path $P$ so the length of the path does not determine the relevance of the path. 
+
+% TODO: Write something about normalization - why is it good for grading?
+
+\begin{equation} \label{eq:normscoreinput}
+Pathscore_{P} = \frac{1}{N} \sum_{c} Score_{C}
+\end{equation}
+where $N$ is the number of categories in the path.
+
+Figure \ref{fig:norm_alexander_hughes} shows the three best results for the same article (Alexander Hughes) when the paths are normalized. The results here are more descriptive of the content of the article, where all paths contains information that he is associated with football. 
+
+\begin{figure}
+\centering
+\begin{lstlisting}
+alexander hughes:
+* health/health by city/health in edinburgh/sport in edinburgh/sports teams in edinburgh/football clubs in edinburgh/heart of midlothian f.c./heart of midlothian f.c. players/ (4.431941375)
+* concepts/principles/rules/sports rules and regulations/sports terminology/association football terminology/association football positions/association football players by position/association football defenders/ (5.01043655556)
+* sports/sports terminology/association football terminology/association football positions/association football players by position/association football defenders/ (6.08136966667)
+
+\end{lstlisting}
+\caption[Example of normalized scores on paths]{The three best paths for \emph{Alexander Hughes} when the path scores are normalized. }
+\label{fig:norm_alexander_hughes}
+\end{figure}
+
+
+\begin{comment}
+\subsection{Deciding Relevant Paths}
+One way of deciding which graded paths are relevant are by choosing a threshold for the path score. If the score is lower than a given threshold, it is marked as relevant, while a  higher score means that it is not relevant. A threshold can be found by deciding how many paths should be considered relevant.
+
+One way of doing this is by finding the scores of all paths. and sort the scores from lowest to highest (see \ref{eq:sortedscores}). Then a $k$ has to be decided to how many paths are believed to be relevant of all paths, for instance one could assume that only 10\% of the paths are relevant, which leads to $k = .10 \cdot n$. 
+
+\begin{equation} \label{eq:sortedscores}
+Sorted\_scores = \left[ S_{1}, S_{2}, ... , S_{k}, ... , S_{n} \right]
+\end{equation}
+
+
+
+\begin{equation} \label{eq:threshold}
+T = Sorted\_scores[k]
+\end{equation}
+
+
+The problem with this method is that not all articles are guaranteed to have any relevant paths. The other problem is that the score of the path will vary a lot within different fields, since some of the Wikipedia articles are categorized under very specified categories. 
+% TODO: Finn en kilde som er enig med meg. 
+
+% Problem: 
+% Finne hvor mange pather som er tilgjengelig. 
+
+Another approach is to choose the best $k$ paths for each Wikipedia article. This approach is independent of the values on other articles' path score which means all Wikipedia articles are guaranteed at least one path. The disadvantage is that some paths might be marked as relevant even though their path score is lower than path scores marked as irrelevant by other articles. Another disadvantage is that articles with many good paths will still have to choose the best $k$ paths and good paths might be lost. 
+
+\end{comment}
+
+\begin{comment}
+Fordeler: ser ikke på de andre
+alle articler får minst en score. 
+
+Ulemper: mange gode - hvilken er best?
+Kan ikke vite om scoren er god
+
+\end{comment}
