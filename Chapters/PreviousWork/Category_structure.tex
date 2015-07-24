@@ -1,0 +1,51 @@
+
+\section{Wikipedia's Category Structure}
+\label{sec:category_structure}
+Wikipedia articles are placed within categories, and these categories form an underlying category structure by linking the categories together. The structure is created and maintained by many users all over the world. This means that the thoroughness of a specific part (e.g., links between categories or how specified the categories are) depends on the users responsible for the creation or maintenance. We use the Wikipedia category structure to determine the content of Wikipedia articles within our project by following the category links leading to Wikipedia articles. We have studied two projects that focus on understanding Wikipedia's category structure and the category relationships in order to create an improved or more accurate taxonomy: 
+
+
+\begin{enumerate}
+\item \emph{Decoding Wikipedia Categories for Knowledge Acquisition}  \cite{nastase2008decoding} which focuses on understanding the conceptual relationships between category links in the structure. 
+\item \emph{Extracting Semantic Relationships between Wikipedia Categories} \cite{chernov2006extracting} which focuses on the semantic relationships within the category graph. 
+\end{enumerate}
+
+
+
+
+%The representation of relationships between Wikipedia categories might vary depending who created the structure.
+
+The human made category structure might vary depending on the user that created it. \cite{nastase2008decoding} is a project for automatically understanding this structure, by sorting both the categories and category links into types which describes the purpose of the categories and the category links. 
+%TODO: \emph{Identifying Document topics using the Wikipedia category network} \cite{schonhofen2009identifying} is a project that tries to sort the category 
+Project  \cite{chernov2006extracting} analyzes the links within the category structure for automatically understand the categories that mean the same. 
+
+
+%There exists however other projects that use more information from the category structure to better determine the content of the articles and the meaning of the categories. 
+
+\begin{comment}
+
+Taking advantage of the category structure: 
+-Extracting Semantic Relationships between Wikipedia Categories: chernov2006extracting
+-Identyfing document topics using the Wikipedia category network: schonhofen2009identifying
+-decoding wikipedia categories for knowledge adcquistion: nastase2008decoding
+
+\end{comment}
+
+
+\subsubsection{Relationships between categories}
+Relationships between Wikipedia categories are represented as category links. One may say that there exists two types of relationships within the category structure: 
+\begin{enumerate}
+\item conceptual relationship
+\item semantic relationship
+\end{enumerate}
+
+
+
+Conceptual relationships is in covered in the first project \cite[][]{nastase2008decoding}. This project focuses on relationship types represented in links between categories and articles, and between categories. Two links within the category structure can represent similar relationship types without having similar category names.   
+%These links represent similar concepts without being related. An example of two categories which have a conceptual relationship is the categories 
+%which focus on conceptual relationships between categories. Conceptual relationship between c
+Thus,  an automatic approach for representing the category links in a standardized way was created in \cite[][]{nastase2008decoding}.
+
+Semantic relationship is not necessarily represented within the structure of Wikipedia. These relationships occur between categories that have the same meaning. Project  \cite[][]{chernov2006extracting} covers an  implementation for finding articles with the same meaning by looking at the category links in Wikipedia's category structure. The semantic similarity for an article is found by creating a \emph{Semantic Connection Strength} (SCS) which represents the semantic connection to other articles. Their result is a semantic schema that retrieves the most relevant articles for a given word, without considering the word's syntax. 
+
+Our project does not consider semantic or conceptual relationships, but both of these projects provide useful information about the category structure and contain relevant ideas for further implementation. Applying semantic information could be very useful for categorizing, where keywords with high SCS could be categorized to the same categories. Conceptual relationships between categories could help the representation of the category structure and make the ranking of article paths easier. 
+

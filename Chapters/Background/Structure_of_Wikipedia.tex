@@ -1,13 +1,13 @@
 \subsection{Structure of Wikipedia}
-The structure of Wikipedia is web based, where articles with similarities are linked together. Since Wikipedia is language-based, articles only link to other articles within the same language, except for links to the same article in other languages. Wikipedia does also have a category structure where all articles are classified under at least one category. A category could have articles, but could also have subcategories, where the subcategories have their own articles and subcategories. Together they form a large category graph, which is an abstract structure that shows the relationships between the categories. All Wikipedia articles are placed under the most describing categories, as an example Ole Johan Dahl 
+The structure of Wikipedia is web based, where articles with topical similarities are linked together. Since Wikipedia is language-based, articles only link to other articles within the same language, except for links to the same article in other languages. Wikipedia does also have a category structure where all articles are classified under at least one category. A category could have articles, but could also have subcategories, where the subcategories have their own articles and subcategories. Together they form a large category graph, which is an abstract structure that shows the relationships between the categories. All Wikipedia articles are placed under the most describing categories, as an example Ole-Johan Dahl 
 %(Norwegian computer scientist \cite{Olejohandahleng})
 is placed under the category \emph{Norwegian computer scientists} which is under the parent category \emph{Computer scientists by nationality} which is under \emph{Computer Scientists}. 
 
-The category graph is created so there is a link between a category and each of its subcategories. There is no beginning of the category graph, but there are some categories which have most other categories as their subcategories. These can be thought of as \emph{beginning categories}, also called \emph{root categories}, and are important when we want to look through all categories in the graph and observe the relationships between them.  Two categories that can be viewed as potential root categories are \emph{Fundamental Categories} or \emph{Main Topic Classifications}. If one of these are chosen as the root category, we can continue through the graph by looking at its subcategories and proceed by looking at each of the subcategory's subcategories an so on.
+The category graph is created so there is a link between a category and each of its subcategories. There is no beginning of the category graph, but there are some categories which have most other categories as their subcategories. These can be thought of as \emph{beginning categories}, also called \emph{root categories}, and are important when we want to look through all categories in the graph and observe the relationships between them.  Two categories that can be viewed as potential root categories are \emph{Fundamental Categories} or \emph{Main Topic Classifications}. If one of these are chosen as the root category, we can continue through the graph by looking at its subcategories and proceed by looking at each of the subcategory's subcategories an so on. One important thing is to avoid loops within the category graph, since it is possible for a category to reach itself by following its subcategories.
 %An important 
 %The easiest way of looking at all categories in the graph is to choose a root category and follow the links to its subcategories and then continue to look 
 
-Figure \ref{fig: subcat_lindgren} is an example of a structure for the category \emph{Astrid Lindgren}, the Swedish writer of children books. The figure shows a tree structure for the category from the category graph. The figure shows that the category \emph{Astrid Lindgren} has 10 pages directly under the category, and 4 subcategories: \emph{Astrid Lindgrens characters} (9 pages), \emph{Films based on works by Astrid Lindgren} (1 subcategory and 23 pages), \emph{Works by Astrid Lindgren} (2 subcategories and 7 pages) and \emph{Pippi Longstocking} (1 subcategory and 10 pages).  This means that there are directly or indirectly 59 pages under the category \emph{Astrid Lindgren} without counting pages under the next level of subcategories. 
+Figure \ref{fig: subcat_lindgren} is an example of a structure for the category \emph{Astrid Lindgren}, the Swedish writer of children books. The figure shows a tree structure for the category from the category graph. The figure shows that the category \emph{Astrid Lindgren} has 10 pages directly under the category, and 4 subcategories: \emph{Astrid Lindgrens characters} (9 pages), \emph{Films based on works by Astrid Lindgren} (1 subcategory and 23 pages), \emph{Works by Astrid Lindgren} (2 subcategories and 7 pages) and \emph{Pippi Longstocking} (1 subcategory and 10 pages).  This means that under the category \emph{Astrid Lindgren} there are directly or indirectly 59 or less pages (some pages might be placed under more than one category). This is without counting potential pages under the next level of subcategories. 
 
 
 %is created and how it is fetched from the page for category information.\footnote{\categorytree}
@@ -20,7 +20,7 @@ Figure \ref{fig: subcat_lindgren} is an example of a structure for the category 
 \end{figure}
 
 % HVORFOR IKKE BRUKE WIKIPEDIA SINE KATEGORIER!
-Wikipedia articles are already classified under categories, but the set containing all Wikipedia categories cannot be used as a final categorization. The category set in Wikipedia is too large for such usage, where some categories do not provide information (e.g. \emph{List of lists of lists}), and some are too descriptive for its content (e.g. \emph{2009 Davis Cup Americas Zone Group I}). There are also cases where articles are categorized under categories where the combination of the categories does not provide any new information. An example is the article of \emph{Ole Johan Dahl}. Some of the article's categories are showed in figure \ref{fig: olejohandahl_categories}. In this example the article is both placed in the category \emph{People from Mandal, Norway} and in the category \emph{Norwegian Computer Scientists}. These categories both provide information about him being Norwegian, so it would be sufficient to put him in the category \emph{Computer Scientists}. The categories shown are also quite specific, and it might be desirable with more general categories. 
+Wikipedia articles are already classified under categories, but the set containing all Wikipedia categories cannot be used as a final categorization. The category set in Wikipedia is too large for such usage, where some categories do not provide information (e.g. \emph{List of lists of lists}), and some are too descriptive for its content (e.g. \emph{2009 Davis Cup Americas Zone Group I}). There are also cases where articles are categorized under categories where the combination of the categories does not provide any new information. An example is the article of \emph{Ole-Johan Dahl}. Some of the article's categories are shown in figure \ref{fig: olejohandahl_categories}. In this example the article is both placed in the category \emph{People from Mandal, Norway} and in the category \emph{Norwegian Computer Scientists}. These categories both provide information about him being Norwegian, so it would be sufficient to put him in the category \emph{Computer Scientists}. The categories shown are also quite specific, and it might be desirable with more general categories. 
 
 % TODO: Mamam: Dette var vanskelig å forstå
 
@@ -42,7 +42,7 @@ Another reason for creating a new independent category set is that the Wikipedia
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{Dumps/imgs/olejohandahl-categories.png}
-\caption[Categories for an Wikipedia article]{Some of the categories for the article of Ole Johan Dahl}
+\caption[Categories for an Wikipedia article]{Some of the categories for the article of \emph{Ole-Johan Dahl}.}
 \label{fig: olejohandahl_categories}
 \end{figure}
 
@@ -54,7 +54,12 @@ Another reason for creating a new independent category set is that the Wikipedia
 %Hva tenkte jeg her? Another reason is that Wikipedia contains
 
 
-Instead of creating a categorization from the Wikipedia titles and to the most describing categories from Wikipedia's category set, we want to create a connection to a category in a predefined category set. This set of categories should be presented as the desired output and be so simple that it can be understood by the users of the program. 
+Instead of creating a categorization from the Wikipedia titles and to the most describing categories from Wikipedia's category set, we want to create a connection to a category in a predefined category set. This set of categories has to fit the advertising domain, i.e., contain categories relevant for advertising. It is also desirable to choose a category set that is so simple that any users of the program understand the categories. 
+
+
+%should be presented as the desired output and be so simple that it can be understood by the users of the program,
+
+
 %The category set should also contain a special category \emph{unknown} for texts where no category is found.
 
 %Another requirement for the category set is that it has to be so well-defined and specific that it conserves as much information as possible about the categorized text. The solution to the problem should also be able to change the predefined category set to another predefined set depending on the texts that are being categorized and the context of the classification.

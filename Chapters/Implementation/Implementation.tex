@@ -1,28 +1,12 @@
 \chapter{Implementation}
-This chapter describes the implementation for creating a dictionary-based classifier. Several programs were made to achieve this goal, and many of the programs depends on the results from other programs. This chapter covers all the phases of the implementation in the order they were implemented. It starts by describing \emph{how to find full path of Wikipedia articles} from the Wikipedia database dump, including how to \emph{remove hidden categories} from the paths and how to \emph{handle redirects}. Further, the chapter describes the \emph{id mapping process} and compares this implementation with an implementation where full category names and article titles were used instead of ids. Deciding relevant categories is done by grading categories and category paths based on \emph{Inlink and Outlink Grading} and based on \emph{Normalized Inlink and Outlink Grading}. The mapping between Wikipedia article titles and IAB categories are described with \emph{category mapping} and with \emph{mapping between category excerpts and IAB categories}. Finally, the chapter describes the process of creating a dictionary-based classifier for other languages than English, giving an example of how to create a dictionary-based classifier for Norwegian.
+This chapter describes details of our implementation for creating a dictionary-based classifier. Several programs were made to achieve this goal, and many of the programs depend on the results from other programs. This chapter covers all the phases of the implementation in the order they were implemented. It starts with section \ref{sec:finding_full_path_of_articles} which describes how we find full path of all Wikipedia articles from the Wikipedia database dump, including how to remove hidden categories from the paths  and how to handle redirects. Further, the chapter describes the id mapping process (section \ref{sec:id_mapping}) and compares this implementation with an implementation where full category names and article titles were used instead of ids. Section \ref{sec:grading_of_categories} covers two ways of deciding relevant categories for each article; grading the  category paths based on inlink and outlink number (subsection \ref{sec:grading_based_on_inlinks_and_outlinks} and grading based on normalized inlink and outlink number (subsection \ref{sec:normalized_grading_based_on_inlinks_and_outlinks}). The mapping between Wikipedia article titles and IAB categories are described with two approaches; mapping based on Wikipedia categories (subsection \ref{sec:mapping_based_on_wikipedia_categories}) and mapping based on Wikipedia path excerpts (subsection \ref{sec:mapping_based_on_wikipedia_path_excerpts}. Finally, section \ref{sec:dictionary_based_classifier_for_other_languages} describes the process of creating a dictionary-based classifier for other languages based on the English classifier and describes how we created a dictionary-based classifier for Norwegian.
 
 \input{Chapters/Implementation/Full_path_of_articles}
 \input{Chapters/Implementation/Hidden_Categories}
-\input{Chapters/Implementation/Categorygraph}
-\input{Chapters/Implementation/Articlegraph}
-
-\input{Chapters/Implementation/Finding_Full_Path.tex}
-
-\input{Chapters/Implementation/Irrelevant_Articles}
-%\input{Chapters/Implementation/Wikipedia_Structure}
-%\input{Chapters/Implementation/Parsing_the_Dumps}
-
+\input{Chapters/Implementation/Representing_the_Underlying_Structure}
+\input{Chapters/Implementation/Following_Links_Between_Categories}
 \input{Chapters/Implementation/Redirects}
-
 \input{Chapters/Implementation/Id_Mapping}
-
 \input{Chapters/Implementation/Grading/Grading}
-
 \input{Chapters/Implementation/Wiki_to_Output/Wiki_to_Output}
-
-\input{Chapters/Implementation/Other_languages}
-
-%\input{Chapters/Implementation/Numbers}
-
-%\input{Chapters/Implementation/Div}
-%input{Chapters/Implementation/Div2}
+\input{Chapters/Implementation/OtherLanguages/Other_languages}

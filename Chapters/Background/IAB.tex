@@ -6,64 +6,24 @@ The predefined category set should be well-defined and fit for the purposes of t
 
 %The problem is therefore using IAB's categories for the clustering. 
 
-IAB is a business organization that develops, researches and maintains industry standards for the online advertising industry. The organization works for creating, coalescing and maintaining standards and practices in online advertising. In addition, IAB research and share knowledge on the advertisement, and is responsible for distributing 86 \% of all the online advertisement in the US \cite{IABabout}.
+IAB is a business organization that develops, researches and maintains industry standards for the online advertising industry. The organization works for creating, coalescing and maintaining standards and practices in online advertising. In addition, IAB researches and shares knowledge on the advertisement, and IAB members are responsible for distributing 86 \% of all the online advertisement in the US \cite{IABabout}.
 
-IAB provides different guidelines for advertising, including \emph{Quality Assurance Guidelines Taxonomy} (QAGT). This taxonomy is a well-defined for advertising, and can be viewed as a category set. The set is split into two \emph{layers} also called \emph{tiers}. The layers are created for varying the grade of speciality between first tier (a general or broad level) and the second tier (a deepening level). The first tier contains a total of 23 categories, examples are \emph{Business} and \emph{Food \& Drinks}. The second tier contains 371 subcategories, where each subcategory is a more specified category of a category in the first tier. 
+IAB provides different guidelines for advertising, including \emph{Quality Assurance Guidelines Taxonomy} (QAGT). This taxonomy is a well-defined for advertising, and can be viewed as a category set. The set is split into two \emph{layers} also called \emph{tiers}. The layers are created for varying the grade of speciality between the first tier (a general or broad level) and the second tier (a deepening level). The first tier contains a total of 23 categories, examples are \emph{Business} and \emph{Food \& Drinks}. The second tier contains 371 subcategories, where each subcategory is a more specific category of a category in the first tier. 
 
 %, where the categories are subcategories of a category in the first tier.
-Figure \ref{fig:IAB} shows the taxonomy of IAB as defined on their web page where the first tier is all the category names written in white (e.g. \emph{Food \& Drinks}) and the second tier is followed under the first tier (eg. \emph{American Cuisine}). Table \ref{tab:taxonomyascategories} is an example of how parts of the taxonomy for \emph{Food \& Drinks} and \emph{Hobbies \& Interests} is written as a category set, where the second tier is placed under the first tier. This means that an article mapping to \emph{Chinese Cuisine} maps to the category \emph{Food \& Drinks/Chinese Cuisine}.
+Figure \ref{fig:IAB} shows the taxonomy of IAB as defined on their web page where the first tier is all the category names written in white (e.g., \emph{Food \& Drinks}) and the second tier is followed under the first tier (e.g., \emph{American Cuisine}). 
 
-\begin{table}[h]
-\centering
-\begin{tabular}{l|l}
-%\textbf{Tier 1} & \textbf{Tier 2} \\ \hline
-\textbf{Food \& Drinks} & \textbf{Hobbies \& Interests} \\ \hline
-American cuisine & Art/Technology\\
-Barbecues \& Grilling & Arts \& Crafts\\
-Cajun/Creole & Beadwork \\
-Chinese Cuisine & Birdwatching\\
-Cocktails/Beer & Board Games/Puzzles\\
-Coffee/Tea & Candle \& Soap Making\\
-Cuisine-Specific & Card Games\\
-Desserts \& Baking & Chess \\
-... & ...
-\end{tabular}
-\caption{Example of how the IAB taxonomy changed to a category set}
-\label{tab:taxonomyascategories}
-\end{table}
+We wanted to use IAB's taxonomy as our output category set, i.e., the keywords are mapped to one or more categories in the category set. 
 
 
-
-
-%The category set from IAB's taxonomy is a well-defined category set to use of our clustering problem.  
-
-
-
-
-% I stedet kan vi bruke Wikipedia-kategoriene for en sjekk for å se om v har kategoriesert rett?
-%
 \begin{figure}[t]
-%\centering
 \begin{subfigure}{\textwidth}
 \includegraphics[width=\textwidth]{Chapters/Background/Taxonomy-1.png}
-%\caption{Categories of the IAB Taxonomy}
-%\label{fig:IAB1}
-%\end{figure}
 \end{subfigure}
 \begin{subfigure}{\textwidth}
-%\begin{figure}[H]
 \centering
-%\newline
 \includegraphics[width=\textwidth]{Chapters/Background/Taxonomy-2.png}
 \end{subfigure}
 \caption{Categories of the IAB Taxonomy}
 \label{fig:IAB}
-%\label{fig:IAB-categories}
 \end{figure}
-%Figure \ref{fig:IAB-categories} 
-
-
-%When categorizing a collection of texts, similar texts will be in the same cluster and therefore in the same category. This can be used to determine the content of the text. 
-
-%The content analysis need a list of keyword to look for in texts. 
-

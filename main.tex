@@ -34,7 +34,27 @@
 %\usepackage[romanian]{babel}
 \usepackage{combelow}
 \usepackage{layout}
+\usepackage{hhline}
+\usepackage{dcolumn}
+%\usepackage[sorting=none, backend=bibtex]{biblatex}
+\usepackage[style=numeric,backend=bibtex]{biblatex}
 %\usepackage{flushright}
+%\usepackage{multibib}
+%\newcites{wikipedia}{Wikipedia References}%
+
+
+\addbibresource{mybib.bib}
+
+\makeatletter
+%\renewcommand{\@chapapp}{}% Not necessary...
+\newenvironment{chapquote}[2][2.5em]
+  {\setlength{\@tempdima}{#1}%
+   \def\chapquote@author{#2}%
+   \parshape 1 \@tempdima \dimexpr\textwidth-2\@tempdima\relax%
+   \itshape}
+  {\par\normalfont\hfill--\ \chapquote@author\hspace*{\@tempdima}\par\bigskip}
+\makeatother
+
 
 %\usepackage{amsmath,amssymb}
 \makeatletter
@@ -102,19 +122,22 @@
   \hyphenchar\font=`\-% allowing hyphenation
 }
 
-\newcommand{\enwikipageprops}{\texttt{\justify{enwiki-latest-page\_props.sql.gz}} }
-\newcommand{\enwikipage}{\texttt{\justify{enwiki-latest-page.sql.gz}} }
-\newcommand{\enwikicatlink}{\texttt{\justify{enwiki-latest-categorylinks.sql.gz}} }
-\newcommand{\allhidden}{\texttt{\justify{All\_hidden\_categories.txt.gz}} }
-\newcommand{\enwikiredirect}{\texttt{\justify{enwiki-latest-redirect.sql.gz}} }
-\newcommand{\outputredirect}{\texttt{\justify{output-redirect-titles.txt.gz}} }
-\newcommand{\subcat}{\texttt{\justify{Sub-categories.txt.gz}} }
-\newcommand{\pagecat}{\texttt{\justify{Page-categories.txt.gz}} }
-\newcommand{\subcatlink}{\texttt{\justify{Subcat\_links.txt.gz}} }
-\newcommand{\catinfo}{\texttt{\justify{category-info.txt}} }
-\newcommand{\artinfo}{\texttt{\justify{article-info.txt.gz}} }
-\newcommand{\enwikicategory}{\texttt{\justify{enwiki-latest-category.sql.gz} }}
-\newcommand{\enwikilanglinks}{\texttt{\justify{enwiki-latest-langlinks.sql.gz} }}
+\newcommand{\enwikipageprops}{\texttt{\justify{enwiki-latest-page\_props.sql.gz}}}
+\newcommand{\enwikipage}{\texttt{\justify{enwiki-latest-page.sql.gz}}}
+\newcommand{\enwikicatlink}{\texttt{\justify{enwiki-latest-categorylinks.sql.gz}}}
+\newcommand{\allhidden}{\texttt{\justify{All\_hidden\_categories.txt.gz}}}
+\newcommand{\enwikiredirect}{\texttt{\justify{enwiki-latest-redirect.sql.gz}}}
+\newcommand{\outputredirect}{\texttt{\justify{output-redirect-titles.txt.gz}}}
+\newcommand{\subcat}{\texttt{\justify{Sub-categories.txt.gz}}}
+\newcommand{\pagecat}{\texttt{\justify{Page-categories.txt.gz}}}
+\newcommand{\subcatlink}{\texttt{\justify{Subcat\_links.txt.gz}}}
+\newcommand{\catinfo}{\texttt{\justify{category-info.txt}}}
+\newcommand{\artinfo}{\texttt{\justify{article-info.txt.gz}}}
+\newcommand{\enwikicategory}{\texttt{\justify{enwiki-latest-category.sql.gz}}}
+\newcommand{\enwikilanglinks}{\texttt{\justify{enwiki-latest-langlinks.sql.gz}}}
+
+\newcommand{\enwikidatabasedumps}{\texttt{\justify http://dumps.wikimedia.org/enwiki}}
+\newcommand{\ingridthesis}{\texttt{\justify https://github.com/ingridguren/Master-Thesis-2015}}
 
 
 
@@ -132,17 +155,8 @@
 \maketitle{}
 
 
-% url for footnotes
-\urldef\nowikidump\url{http://dumps.wikimedia.org/nowiki/latest/}
-\urldef\categorytree\url{http://no.wikipedia.org/w/index.php?title=Spesial%3AKategoritre&target=Astrid+Lindgren&mode=categories&namespaces= }.
-\urldef\olejohandahleng\url{http://en.wikipedia.org/wiki/Ole-Johan_Dahl}
-%\urldef\iababout\url{http://www.iab.net/about_the_iab}
-
-%%---------------------------------------------------------------------------%%
-%\pagenumbering{roman}
-\input{Chapters/Abstract/Abstract.tex}
-
-\input{Chapters/Acknowledgements.tex}  
+\input{Chapters/Abstract/Abstract}
+\input{Chapters/Acknowledgements}  
 \pagenumbering{roman}
 \tableofcontents{}
 \listoffigures{}
@@ -151,41 +165,39 @@
 \pagenumbering{arabic}
 \mainmatter{}
 %\pagenumbering{arabic}
-
-%\part{Introduction}
 \input{Chapters/Introduction/Introduction}
-
-%\part{Background}
 \input{Chapters/Background/Background}
-
 \input{Chapters/PreviousWork/Previous_Work}
-
-%\part{General Discussion}
-
-%\part{Implementation}
 \input{Chapters/Methods/Methods}
 \input{Chapters/Implementation/Implementation}
-%\part{Results and Discussion}
-
 \input{Chapters/Results/Results}
-
-%\part{Conclusion and Further Work}
 \input{Chapters/Conclusion_and_Further_Work/Conclusion_and_Further_Work}
-
-% often kept up to date. 
 
 
 %It has discussed the different components needed to perform a content analysis on a collection of texts. Two of the most important components of the classifier has been discussed; a predefined list of keywords where the keywords are based on the titles of Wikipeda, and a predefined set of categories for the result. The paper has also discussed important properties of the predefined category set, followed by other similar work and discussion of evaluation of the classifier, i.e., what parts of the classifier can be evaluated and how this should be done. 
 
 \backmatter{}
-
+\cleardoublepage
 \renewcommand{\bibname}{References}
-% Fra internettet:
-%\bibliographystyle{IEEEtran}
-%\bibliography{IEEEabrv,mybibfile}
+%%\bibliography{mybib}
+
+%\cleardoublepage
+
+\addcontentsline{toc}{chapter}{References}
+\printbibheading
+\printbibliography[keyword=ref,heading=subbibliography,title={Main References}]
+\printbibliography[keyword=wikipedia,heading=subbibliography,title={Wikipedia References}]
+
+%e={Wikpedia Reference%\printbibliography[title={References},keyword=ref]
+
+%\printbibliography[title={Wikipedia References},keyword=wikipedia]
+
+%\printbibliography[keyword=primary, title={Primary references}]
+%\printbibliography[notkeyword=primary, title={Other references}]
+
 
 % Fra Sigmund:
-\bibliographystyle{plain}
+%%\bibliographystyle{plain}
 
 % 2. Clear double page. This is necessary to produce the correct page number for the
 %    Bibliography-entry in the table of contents. This will however not resolve the problem with the
@@ -193,15 +205,9 @@
 %    chapter/section/subsection in the table of contents (this could be fixed by adding the
 %    BibTeX-file before including the Bibliography-entry (step 3), but then the page number will be
 %    incorrect again).
-\cleardoublepage
+
 % 3. Add the Bibliography-entry to the table of contents.
-\addcontentsline{toc}{chapter}{References}
-% 4. Set BibTeX style, here the ACM style.
-%\bibliography{library}
-%\part{References}
-%\printbibliography
 
 
-%\bibliography{IEEEabrv,mybibfile}
-\bibliography{mybib}
+%%\bibliography{mybib}
 \end{document}

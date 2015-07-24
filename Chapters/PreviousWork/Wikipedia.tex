@@ -1,0 +1,17 @@
+\section{Wikipedia as Encyclopedic Knowledge}
+\label{sec:extracting_keywords}
+
+Our main goal is to categorize any text based on keywords from our dictionary-based classifier. This requires a way of extracting keywords from Wikipedia. There exists various projects for marking Wikipedia entries in text and taking advantage of the Wikipedia's encyclopedic knowledge already since Wikipedia is a massive resource of  encyclopedic knowledge. Some of these projects are: 
+\begin{itemize}
+\item[-] \emph{Entity Extraction, Linking, Classification, and Tagging for Social Media: A Wikipedia-based Approach} \cite{entityextraction} which extracts Wikipedia article titles in tweets for understanding their content. 
+\item[-]  \emph{Large-Scale Taxonomy Mapping for Restructuring and Integrating Wikipedia} \cite{ponzetto2009large}.
+%\item[-] \emph{Automatic ontology extraction for document classification} \cite{kozlova2005automatic}.
+\item[-] \emph{Overcoming the Brittleness Bottleneck using Wikipedia: Enhancing Text Categorization with Encyclopedic Knowledge} \cite{brittleness}.
+%\item[-] \emph{Wikify!: linking documents to encyclopedic knowledge} \cite{mihalcea2007wikify}.
+\end{itemize}  
+
+Project \cite{ponzetto2009large} provides an extension to WordNet. It takes advantage of the semantic information from WordNet's synset\footnote{Definition of synset from WordNet: "Nouns, verbs, adjectives and adverbs are grouped into sets of cognitive synonyms (synsets), each expressing a distinct concept. Synsets are interlinked by means of conceptual-semantic and lexical relations."\cite{wordnet}} to automatically generate a taxonomy. The project's approach is to use an already created taxonomy based on Wikipedia; WikiTaxonomy \cite{ponzetto2008wikitaxonomy}.  The taxonomy is improved by linking the entries in the taxonomy to the synset from WordNet. These results are used to generate a new and improved Wikipedia taxonomy. 
+
+Encyclopedic knowledge from Wikipedia is also found in \cite{brittleness}. This project creates a classifier that is extended with knowledge from Wikipedia. Their assumption is that each Wikipedia article represents a concept and that documents are placed within a feature space of Wikipedia concepts and words. 
+
+The last project covered here is \cite{entityextraction}, which is a project that creates a dictionary-based classifier based on knowledge from Wikipedia. This project has a goal very similar to ours; to categorize tweets\footnote{Messages on Twitter (social media).} based on their content. The solution implemented for this problem was to use Wikipedia as a knowledge base, where Wikipedia articles are connected to concepts used in the classification process. \cite{entityextraction} describes an approach with lots of preprocessing of both tweets and the Wikipedia concepts. 

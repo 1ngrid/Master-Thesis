@@ -1,0 +1,22 @@
+\section{Discussion of the Results}
+The results of our classifier shows that all versions of the classifier categorizes too many articles to all classes, i.e., too many false positive (FP) for each class. The main reason for this is that we have created a one-to-many classifier, i.e., our dictionary-based classifier can assign more than one class to each article, while we compare with a one-to-one classification, i.e., each article is placed under one class in its url structure. This means that articles might be evaluated as wrongly classified even though the results of the classifier is correct. 
+
+\begin{comment}
+
+
+There are many reasons why the results are 
+
+
+- dårlig 
+- flere klassser
+- tvetydige ord. 
+
+
+are 2 main reasons for this: 
+\begin{enumerate}
+\item Many articles concern more than one topic: An article about a musician playing golf would be most likely be categorized as both entertainment and sports by our classifier, while the journalist publishing the article would have to choose the category within the url structure.  
+\item The required number of keywords for assigning a class is too low: We could all occurrences of keywords within the class, and it might be more realistic to put a lower limit before the category is assigned to the article. 
+\end{enumerate}
+
+
+\end{comment}

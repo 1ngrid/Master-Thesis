@@ -1,0 +1,103 @@
+\begin{comment}
+De ulike prosjektene: 
+
+Projects with classifier creation: 
+
+Projects determining content based on keyword extraction:
+-Entity Extraction, Linking, Classification, and Tagging for Social Media: A Wikipedia-based Approach: entityextraction
+-Large-Scale Taxonomy Mapping for Restructuring and Integrating Wikipedia: ponzetto2009large
+-Automatic ontology extraction for document classification: kozlova2005automatic
+-Overcoming the Brittleness Bottleneck using Wikipedia: Enhancing Text Categorization with Encyclopedic Knowledge: brittleness
+-Wikify!: linking documents to encyclopedic knowledge: mihalcea2007wikify
+
+
+Projects for determining content based on the category structure
+
+Taking advantage of the category structure: 
+-Extracting Semantic Relationships between Wikipedia Categories: chernov2006extracting
+-Identyfing document topics using the Wikipedia category network: schonhofen2009identifying
+-decoding wikipedia categories for knowledge adcquistion: nastase2008decoding
+
+Disambiguation:
+-named entity disambiguation by leveraging wikipedia semantic knowledge: han2009named
+-large-scaled named entity disambiguation based on Wikipedia data: cucerzan2007large
+-Distributed representations of words and phrases and their compositionality: mikolov2013distributed
+
+
+% What??? All Our N-Gram are Belong to You: Encknowledge
+
+\end{comment}
+
+\section{Similar Projects}
+\label{sec:similar_projects}
+Several projects have been studied in the process of creating a dictionary-based classifier. We have focused on 9 of the projects studied and grouped them within 4 different project topics (some projects are in more than one group): 
+\begin{enumerate}
+\item Projects dedicated to understand  Wikipedia's underlying category structure.
+%\begin{itemize}
+%\item[] These projects are dedicated to understand Wikipedia's underlying category structure. 
+%\end{itemize}
+\item Projects that use encyclopedic information from Wikipedia to determining content.
+\item Projects that uses information from Wikipedia to create classifiers.
+\item Projects for solving disambiguation. %ambiguous words or phrases.
+\end{enumerate}
+
+%For the reader's convenience, the rest of this section is dedicated to a short introduction to \emph{WordNet}, before introducing the relevant projects within each topic. All projects are briefly introduced by their name and main purpose. 
+
+\subsubsection{WordNet}
+The WordNet project has become one of the most used knowledge resources in NLP. %TODO: Insert reference
+The project provides a semantic lexicon for English, which is useful for the computer in order to understand and tag sentences so that it can find the meaning of the sentences. 
+
+We have not studied or focused too much on the WordNet project since it mainly covers synset of words, and our main focus is not related to meanings of words. However, it is essential to mention the WordNet project since some of the related projects are based on or are extensions of WordNet \cite{wordnet}.
+
+
+\begin{comment}
+
+\subsubsection{Projects based on Wikipedia's category structure}
+Wikipedia's category structure is large and contains lots of information. The structure is created and maintained by many users all over the world. This means that the thoroughness of a specific part (e.g., links between categories or how specified the categories are) depends on the users responsible for the creation or maintenance. We studied two projects with Wikipedia's category structure as main focus: 
+\begin{enumerate}
+\item \emph{Decoding Wikipedia Categories for Knowledge Acquisition}  \cite{nastase2008decoding} which focuses on understanding the conceptual relationships between category links in the structure. 
+\item \emph{Extracting Semantic Relationships between Wikipedia Categories} \cite{chernov2006extracting} which focuses on the semantic relationships within the category graph. 
+\end{enumerate}
+
+
+
+%The representation of relationships between Wikipedia categories might vary depending who created the structure.
+
+The human made category structure might vary depending on the user that created it. \cite{nastase2008decoding} is a project for automatically understanding this structure, by sorting both the categories and category links into types which describes the purpose of the categories and the category links. 
+%TODO: \emph{Identifying Document topics using the Wikipedia category network} \cite{schonhofen2009identifying} is a project that tries to sort the category 
+Project  \cite{chernov2006extracting} analyzes the links within the category structure for automatically understand the categories that mean the same. 
+
+
+
+
+%Another essential part of our project is to determine the content of Wikipedia articles based on Wikipedia's underlying category structure. Thus, some projects about the category structure have been studied as well, including \cite{chernov2006extracting}, \cite{schonhofen2009identifying}
+
+\subsubsection{Projects determining article content based on keyword extraction}
+Our main goal is to categorize any text based on keywords from our dictionary-based classifier. This requires a way of extracting keywords. There exists projects for marking Wikipedia entries in text and taking advantage of the Wikipedia's encyclopedic knowledge already. Some of these projects are: 
+\begin{itemize}
+\item[-] \emph{Entity Extraction, Linking, Classification, and Tagging for Social Media: A Wikipedia-based Approach} \cite{entityextraction} which extracts Wikipedia article titles in tweets for understanding their content. 
+\item[-]  \emph{Large-Scale Taxonomy Mapping for Restructuring and Integrating Wikipedia} \cite{ponzetto2009large}.
+%\item[-] \emph{Automatic ontology extraction for document classification} \cite{kozlova2005automatic}.
+\item[-] \emph{Overcoming the Brittleness Bottleneck using Wikipedia: Enhancing Text Categorization with Encyclopedic Knowledge} \cite{brittleness}.
+%\item[-] \emph{Wikify!: linking documents to encyclopedic knowledge} \cite{mihalcea2007wikify}.
+\end{itemize}  
+
+
+\subsubsection{Projects for creating classifiers based on Wikipedia}
+There exists other types of classifiers than the dictionary-based classifier. We have studied 4 projects that creates 3 types of classifiers that are based on Wikipedia: 
+\begin{enumerate}
+\item Dictionary-based classifier: \emph{Identifying document topics using the Wikipedia category network} \cite{schonhofen2009identifying} and \emph{Entity Extraction, Linking, Classification, and Tagging for Social Media: A Wikipedia-based Approach} \cite{entityextraction}.
+\item Classifier based on Bag of Words: \emph{Overcoming the Brittleness Bottleneck using Wikipedia: Enhancing Text Categorization with Encyclopedic Knowledge} \cite{brittleness}.
+\item Statistical classifier: \emph{Automatic ontology extraction for document classification} \cite{kozlova2005automatic}.
+\end{enumerate}
+
+\subsubsection{Projects for solving disambiguation}
+Disambiguation is one of the most advanced problems in NLP and is covered in many papers. Our projects handles disambiguation by removing all ambiguous entries from the dictionary, but we have studied 3 projects that uses Wikipedia to solve disambiguation: 
+\begin{enumerate}
+\item \emph{Named entity disambiguation by leveraging wikipedia semantic knowledge} \cite{han2009named}. 
+\item \emph{Large-scaled named entity disambiguation based on Wikipedia data} \cite{cucerzan2007large}. 
+\item \emph{Distributed Representations of Words and Phrases and their compositionality} \cite{mikolov2013distributed}.
+\end{enumerate}
+
+
+\end{comment}

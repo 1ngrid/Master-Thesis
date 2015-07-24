@@ -1,0 +1,26 @@
+\subsection{Evaluation of the Classifiers}
+It is essential to evaluate the classifier to determine if it behaves as desired. Evaluation is therefore one of the most important parts of the categorization process. There are different ways of evaluating classifiers, but the best results are usually found when comparing with the \emph{correct} results. % TODO: Insert some reference
+We have collected the evaluation techniques of the different classifiers and looked at what they have evaluated.% in order to compare our results with them. 
+
+\subsubsection{Evaluation measures}
+The evaluation measures for the classifiers have been \emph{precision}, \emph{recall} and \emph{$F_{1}$-score} for \cite{schonhofen2009identifying}, \cite{entityextraction}, \cite{brittleness} and \cite{kozlova2005automatic}\footnote{The formulas for these evaluation measures are presented in section \ref{sec:evaluation}.}. All the projects have chosen a micro average evaluation in their evaluation, which means that they find the evaluation measures individually for each class.  
+
+
+\subsubsection{What have been evaluated}
+Another way of evaluating our classifier's results is by comparing its results with the results of other classifiers. Thus, it is relevant to see what the other classifiers evaluated. 
+
+The categorization evaluation of \cite{entityextraction} is based on topics within the tweets. Some of these topics  are also  categories within IAB's taxonomy, and it is possible for us to compare our evaluation results with results of the project. It is, however, important to remember that \cite{entityextraction} added information to their knowledge base from other places than Wikipedia, which means that their classifier might have entities not available to our classifier.  
+
+The evaluation of \cite{schonhofen2009identifying} is split into evaluation of two classification experiments; 
+\begin{enumerate}
+\item Classification of Wikipedia articles based on their text bodies. 
+\begin{itemize}
+\item[] The articles chosen for this evaluation were not related to advertisement and  not a priority for our classifier. 
+\end{itemize}
+\item Classification of two independent corpora; 20 Newsgroups and RCV1. 
+\begin{itemize}
+\item[] This classification was based on a training set, and again not well-suited for comparison. 
+\end{itemize}
+\end{enumerate}
+
+The evaluation results in \cite{kozlova2005automatic} is based on a training set with different sizes, and not suited for comparison with our results. 

@@ -1,5 +1,86 @@
 \section{Conclusion}
+Automatic content categorization is useful for building up user profiles and in the task of automatically decide advertisements on web pages. We chose to create a dictionary-based classifier because it is easy to understand for brokers (which are often non-technical) and because it is based on a dictionary that easily can be modified to satisfy specific purposes.  
+
+Our classifier is based a dictionary where the entries are created from titles of Wikipedia articles. Each dictionary entry is connected to category from IAB's taxonomy, where we explored the underlying category structure of Wikipedia in order to create an automatic mapping between these. Our overall goal was to determine whether articles could be correctly categorized based on just the Wikipedia article titles and the underlying category structure. 
+
+%by comparison with the url
+We evaluated the classifier's results by comparing the results with url structures of articles. The sites used for the evaluation were \texttt{www.rappler.com} for the English classifier and \texttt{www.adressa.no} for the Norwegian classifier. The English classifier was evaluated with 3 categories: \emph{sports}, \emph{arts \& entertainment} and \emph{technology}.
+
+\begin{comment}
+
+The results of our projects shows that it is possible to determine the content of some articles just by exploring titles of Wikipedia articles. The English classifier was evaluated on 3 categories: 
+
+
+
+The classification to these categories showed various results, where the best evaluation scores where found within different fields:
+\begin{itemize}
+\item best precision was found for \emph{sports} which means that this class has fewest wrongly classified articles, i.e., low number of \emph{FP}.
+\item best recall was found for \emph{arts \& entertainment} which means that the classifier found most of the articles connected to this class, i.e., low number of \emph{FN}.
+%\item best accuracy was found for \emph{tehnology
+\end{itemize}
+
+We wanted a trade-off between precision and recall in our classifier, which were found by using $F_{1}$-score. 
+
+
+The trade-off between \emph{precision} and \emph{recall} is important to optimize the classifier, and a classifier with 
+
+
+it is desirable to create a classifier which 
+
+so that the classifier 
+
+\end{comment}
+
+We improved our classifier by creating new versions of its dictionary. The evaluation results showed that the later versions of the classifier were considerable better, i.e., higher evaluation score (as seen in table  \ref{tab:improved_f1} where we compared the $F_{1}$-score was higher when comparing version 3 and version 6). % where  we can see that the $F_{1}$-score is higher when comparing version 3 and version 6 for all three categories \footnote{We chose to compare version 3 and version 6 because all three categories where available for both versions.}.
+
+
+
+The results of our classifier showed that it is possible to determine the content of some articles just by exploring titles of Wikipedia articles ad the underlying category structure. However, many articles were wrongly categorized when compared to the url structure. This might be because we developed a one-to-many classifier which means that the classifier can classify an article to more than one class, while the classification results are compared to a one-to-one classification where an article contains only one class within the url structure. We found several examples of articles that were considered wrongly classified by the evaluation scores, but considered correctly classified by us. 
+
+
+
+%The improvements on the newer versions of the classifier shows that it classifies better in the later versions. 
+
+We decided to compare the results of our English classifier with \cite{entityextraction}, because this classifier contained all three classes.  Comparison showed that the classifier in \cite{entityextraction} achieved higher evaluation scores than ours. However, it is important to notice that \cite{entityextraction} added knowledge in addition to Wikipedia, including \emph{MusicBrainz} which is most likely very helpful for optimizing the categorization of \emph{arts \& entertainment}. Even though the evaluation scores were higher, we could see that the classification results of \cite{entityextraction} shows similar results as ours; \emph{sports} were found to be easier to classify than \emph{arts \& entertainment} and \emph{technology}.
+
+
+\begin{comment}
+ir classifier had the same 
+, where we can see that th
+
+sports: 0.317558
+arts: 0.159681
+0.163934
+
+Difference between 
+
+\begin{table}[]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{|c}
+ &  \\
+ & 
+\end{tabular}
+\caption{Caption}
+\label{tab:my_label}
+\end{table}
+
+\end{comment}
+
+The creation of the Norwegian classifier was based on the simple idea. All English entries in the classifier's dictionary were translated to Norwegian by using the internal language links within Wikipedia. Finally, we removed all words and phrases that were ambiguous in Norwegian and this resulted in a small Norwegian dictionary which could be used by a classifier. Only two of the categories were available on \texttt{www.adressa.no}, so we evaluated \emph{sports} with \emph{sport} and \emph{arts \& entertainment} with \emph{kultur}.
+
+The Norwegian classifier performed surprisingly well considering the simple approach for creation and that it contained few entries in its dictionary. However, an improvement of the classifier would be to add words or phrases that are distinctively Norwegian and not found in the English Wikipedia. %distinctively Norwegian words or phrases 
+
+
+Finally, our conclusion is that it is possible to get reasonably good results from our classifiers just by exploring the titles of Wikipedia articles and the underlying category structure. The results of the classifier can be improved by modifying the dictionary it is based on, but the classifier is already able to give a good indication of the content of an article. 
+
+
+
+
+\begin{comment}
 \subsection{Summary (of essay)}
-This paper has given a brief introduction to the automatic categorization problem used for content analysis. The main reason for automatic content analysis isthat manual classification is impossible for large collections of text, since it is both time consuming and  depends on experts within the topic of the texts. Automatic content analysis is based on the idea that the computer understands texts by recognizing specific keywords that  connected to one or more predefined categories. The advantages of basing such a keyword list on the titles of articles from Wikipedia is that Wikipedia is a large online encyclopedia that covers lots of subjects and is regularly maintained by lots volunteers. The category set for the classification can vary depending on the purpose of the classification, but it is essential that the predefined set is large enough to cover enough topics, but also so specific that information is preserved. An example of a predefined category set that is well-suited for advertisement is provided by IAB, Interactive Advertising Bureau. 
+This paper has given a brief introduction to the automatic categorization problem used for content analysis. The main reason for automatic content analysis is that manual classification is impossible for large collections of text, since it is both time consuming and  depends on experts within the topic of the texts. Automatic content analysis is based on the idea that the computer understands texts by recognizing specific keywords that  connected to one or more predefined categories. The advantages of basing such a keyword list on the titles of articles from Wikipedia is that Wikipedia is a large online encyclopedia that covers lots of subjects and is regularly maintained by lots volunteers. The category set for the classification can vary depending on the purpose of the classification, but it is essential that the predefined set is large enough to cover enough topics, but also so specific that information is preserved. An example of a predefined category set that is well-suited for advertisement is provided by IAB, Interactive Advertising Bureau. 
 
 \subsection{The final results}
+
+\end{comment}

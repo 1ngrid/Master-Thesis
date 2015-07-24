@@ -1,0 +1,138 @@
+\section{Evaluation of the Norwegian Classifier}
+We also needed to evaluate the results from the Norwegian classifier. It would be very interesting to compare the results of the "translated" dictionary with a dictionary-based classifier created by the same approach as the English classifier. This was not possible due to the projects deadline. Thus, the evaluation of the Norwegian classifier is performed by retrieving the classification results in the same way as evaluation of the English classifier. 
+
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{l |l|l}
+         & {\bf sports} & {\bf arts \& entertainment} \\ \hline
+{\bf TP} & 165          & 687                         \\ \hline
+{\bf TN} & 18030        & 14461                       \\ \hline
+{\bf FP} & 1677         & 1243                        \\ \hline
+{\bf FN} & 92           & 3359                        \\
+\end{tabular}
+\\[10pt]
+\caption{Classification results for the category \emph{Sports}.}
+\label{tab:results_norwegian}
+\end{table}
+
+
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{l |l|c}
+                & {\bf sports} & \multicolumn{1}{l|}{{\bf arts \& entertainment}} \\ \hline
+{\bf Precision} & 64.202335    & 16.979733                                        \\ \hline
+{\bf Recall}    & 8.957655     & 35.595855                                        \\ \hline
+{\bf Accuracy}  & 91.139050    & 76.698734                                        \\ \hline
+{\bf F1-score}  & 15.721772    & 22.991968                                        \\
+\end{tabular}
+\\[10pt]
+\caption{Classification results for the category \emph{Sports}.}
+\label{tab:evaluation_norwegian}
+\end{table}
+
+\begin{comment}
+\subsubsection{Results for \emph{Sports}}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{l|l}
+ & \textbf{no-iab} \\ \hline
+\textbf{TP} & 1342 \\ \hline
+\textbf{TN} & 87657 \\ \hline
+\textbf{FN} & 23252 \\ \hline
+\textbf{FP} & 1240 
+%\end{tabularx}
+\end{tabular}
+\\[10pt]
+\caption{Classification results for the category \emph{Sports}.}
+\label{tab:no_classifier_sports_results}
+\end{table}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+%\begin{tabularx}{\textwidth}{l| l }
+\begin{tabular}{l|l}
+                        & \textbf{no-iab}   \\ \hline
+\textbf{Precision}      & 0.520             \\ \hline
+\textbf{Recall}         & 0.055             \\ \hline
+\textbf{Accuracy}       & 0.784             \\ \hline
+\textbf{$F_{1}$-score}  & 0.099
+%\end{tabularx}
+\end{tabular}
+\\[10pt]
+\caption{Evaluation results for the IAB category \emph{Sports}.}
+\label{tab:no_classifier_sports_scores}
+\end{table}
+
+\subsubsection{Results for \emph{Arts \& Entertainment}}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+%\begin{tabularx}{\textwidth}{l|l }
+\begin{tabular}{l|l}
+ & \textbf{no-iab} \\ \hline
+\textbf{TP} & 3972 \\ \hline
+\textbf{TN} & 77778 \\ \hline
+\textbf{FN} & 5586 \\ \hline
+\textbf{FP} & 23806
+%\end{tabularx}
+\end{tabular}
+\\[10pt]
+\caption{Classification results for the category \emph{Arts \& Entertainment}.}
+\label{tab:no_classifier_entertainment_results}
+\end{table}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+%\begin{tabularx}{\textwidth}{l| l }
+\begin{tabular}{l|l}
+                        & \textbf{no-iab}   \\ \hline
+\textbf{Precision}      & 0.143             \\ \hline
+\textbf{Recall}         & 0.416             \\ \hline
+\textbf{Accuracy}       & 0.680             \\ \hline
+\textbf{$F_{1}$-score}  & 0.213
+%\end{tabularx}
+\end{tabular}
+\\[10pt]
+\caption{Evaluation scores for the IAB category \emph{Arts \& Entertainment}.}
+\label{tab:no_classificer_entertainemtent_scores}
+\end{table}
+
+
+
+\begin{comment}
+precision = 1342/(1342+1240) = 0.51975213013
+recall = 1342/(1342+23252) = 0.05456615434
+accuracy = (1342 + 87657)/(1342 + 87657 + 23252 + 1240) = 0.7841943414
+f1 = 2(0.51975213013*0.05456615434)/(0.51975213013+0.05456615434) = 0.09876361494
+
+
+
+Kultur: 
+TP: 3972
+FN: 5586
+FP: 23806
+TN: 77778
+precision: 3972/( 3972 + 23806) = 0.14299085607
+recall: 3972/(3972 + 5586) = 0.41556811048
+accuracy: (3972 + 77778)/(3972+77778 + 5586+32806) = 0.68044480697
+f1: 2( 0.14299085607*0.41556811048) /(0.14299085607 + 0.41556811048) = 0.21277051638
+
+\begin{table}[]
+\centering
+\begin{tabular}{c|c}
+ &  \\
+ & 
+\end{tabular}
+\caption{Caption}
+\label{tab:my_label}
+\end{table}
+\end{comment}

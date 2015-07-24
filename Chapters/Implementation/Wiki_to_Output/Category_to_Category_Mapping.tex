@@ -1,5 +1,6 @@
 %\subsection{Mapping Wikipedia Categories to Desirable Output Categories}
 \subsection{Mapping based on Wikipedia Categories}
+\label{sec:mapping_based_on_wikipedia_categories}
 %The first step is to decide the output categories. %in other word what categories
 The first approach was to create a mapping between each Wikipedia category and one or more categories in the desirable output category set. The idea is that a matching could be performed by matching words within the Wikipedia category names and an output category name (see figure \ref{fig:category_to_category_mapping}).
 
@@ -9,7 +10,7 @@ The first approach was to create a mapping between each Wikipedia category and o
 Wikipedia category: tennis
 IAB category: sports/tennis
 \end{lstlisting}
-\caption[Example mapping between Wikipedia category and IAB category]{Desirable mapping between a Wikipedia category and an IAB category. \emph{sports/tennis} in the IAB category means that \emph{tennis} is placed under the tier \emph{sports}.}
+\caption[Mapping between Wikipedia category and IAB category]{Desirable mapping between a Wikipedia category and an IAB category. \emph{sports/tennis} in the IAB category means that \emph{tennis} is placed under the tier \emph{sports}.}
 \label{fig:category_to_category_mapping}
 \end{figure}
 
@@ -48,10 +49,10 @@ Figure \ref{fig:catmapping_exactmatch} shows how a matching between Wikipedia ca
 Wikipedia category: ministry of youth affairs and sports
 IAB category: sports
 \end{lstlisting}
-\caption[Exact match on mapping between Wikipedia category and output category]{Exact match on mapping between Wikipedia category and output category, where the output category is found in the Wikipedia category.}
+\caption[Mapping between Wikipedia category and output category]{Exact match on mapping between Wikipedia category and output category, where the output category is found in the Wikipedia category.}
 \label{fig:catmapping_exactmatch}
 \end{figure}
-The problem with this approach is that words like \emph{sport} will not be an exact match of the word \emph{sports}. This means that this Wikipedia category will not be included under the desirable output category. Thus, the next step was to find matches between the categories regardless of the declension of the word. This part is called \emph{lemmatization} and is defined as the process where different inflected forms of a word are grouped together \cite{wiki:lemmatisation}\cite[p.~30-33]{iirbook}. There are various lists for lemmatization available online. We chose a list from \emph{MBM's Lemmatization Lists} \cite{lemmatizationlist} which provided a list of common lemmatization. Both the words in the Wikipedia categories and the desirable output categories were processed so they where replaced by their lemma, i.e. the canonical form of the word \cite{wiki:lemma}. 
+The problem with this approach is that words like \emph{sport} will not be an exact match of the word \emph{sports}. This means that this Wikipedia category will not be included under the desirable output category. Thus, the next step was to find matches between the categories regardless of the declension of the word. This part is called \emph{lemmatization} and is defined as the process where different inflected forms of a word are grouped together \cite[p.~30-33]{iirbook}. There are various lists for lemmatization available online. We chose a list from \emph{MBM's Lemmatization Lists} \cite{lemmatizationlist} which provided a list of common lemmatization. Both the words in the Wikipedia categories and the desirable output categories were processed so they where replaced by their lemma, i.e. the canonical form of the word \cite[][p. 30]{iirbook}. 
 %by reading the lemmatization file and checked whether the words could be reduced. 
 Figure \ref{fig:catmapping_lemmamatch} shows example of a match found after lemmatization is performed. 
 

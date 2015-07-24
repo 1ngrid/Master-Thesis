@@ -1,0 +1,139 @@
+
+\subsection{Creating a Norwegian Dictionary-based Classifier}
+\label{sec:creating_a_norwegian_dictionary_based_classifier}
+We chose to create Norwegian dictionary-based classifier to test the idea in real life. The main reason to choose Norwegian is that the results can be manually evaluated since we are familiar with Norwegian.
+
+The first step was to find the Wikipedia article id for each entry in the English dictionary. Further, we needed all links between English Wikipedia articles and the Wikipedia articles for the desired language, Norwegian in our case. Thus, we created a dictionary for the new language by using the translated titles of the Wikipedia articles and the categories found by the mapping process for the English dictionary. Finally, a cleaning process was performed on the entries in the new dictionary to ensure ambiguous entries were removed. 
+
+%Since Wikipedia is available in multiple languages, we can take advantage of this and easily reuse the categorization results found 
+
+%\subsubsection{Mapping between Dictionary Entry and Article Id}
+\subsubsection{Article Id for all dictionary entries}
+The dictionary for the English classifier consists of entries and their corresponding categories. It is essential to know the corresponding page ids for each dictionary entry for translating it into other languages. The page ids for a dictionary entry are found by following the same steps for transforming the Wikipedia article titles into dictionary entries while storing its ids at all times. The results of this process is independent of the language of the new classifier, thus reusable.
+
+%We need to know which Wikipedia articles these entries are based on before they can be translated to another language. This information can be found from 
+
+The file \enwikicatlink is used in the process of creating the dictionary for the English classifier, and contains links between Wikipedia articles and categories. Both Wikipedia article titles and their ids can be found from this file. Thus, we created a list of all Wikipedia article titles and their id. Next, we processed  the Wikipedia article titles similar to the process performed when creating dictionary entries (see section \ref{sec:representingtheunderlyingstructure} and section \ref{sec:processingtitles}). This makes the processed Wikipedia article titles identical to the dictionary entries. 
+%create a list of the Wikipedia article titles and their id. 
+
+
+%which is one of the files used in the process of creating the English dictionary for the classifier. This file contains information about all English article titles and their page id. 
+
+%We use this file to get the Wikipedia article titles and their page id while processing them to the same readable format (see section \ref{sec:representingtheunderlyingstructure}).
+%for all Wikipedia articles. 
+
+%The structure for representing each dictionary entry and its corresponding Wikipedia page id is found by going through all the links in the file. 
+
+%After the Wikipedia article titles are processed (same process as in section \ref{sec:representingtheunderlyingstructure}), it is stored in a file with its corresponding page id. Finally, we perform the same entry processing to each article title  (see section \ref{sec:processingtitles}) so it becomes identical to its dictionary entry. 
+
+The entry processing performed on the Wikipedia article titles could lead to multiple page ids so all page ids are stored for each dictionary entry. % Insert example of this?
+
+%It is worth mentioning that the mapping between each English dictionary entry and its page ids is applicable regardless of the language for the new classifier. 
+
+%between the article's page id and the Wikipedia article titles by going through all the links in the file. Each of the Wikipedia article titles were processed to be on the desirable entry form and stored together with their id. 
+
+% INSERT EXAMPLE
+%dictionary entries by going through all links and storing the dictionary entries' with  page id together with 
+
+\subsubsection{Finding all Norwegian links}
+There is a language code for representing all available languages for Wikipedia. The English language code is \emph{en} and the Norwegian language code is \emph{no}. All English articles available in Norwegian is found by finding all entries with \emph{'no'} in the entry field \emph{il\_lang}. The page id of the English Wikipedia article and its corresponding Norwegian title are stored together (see figure \ref{fig:english_id_norwegian_title}).  
+
+We were only interested in titles of Wikipedia articles for creating the Norwegian dictionary. Links between categories, talks or users were therefore not considered relevant. These were found by romving all pages with a name space not relevant, anw were found from Wikitalk pages \cite{wiki:usingtalkpages} \cite{wiki:namespaces} \cite{wiki:navnerom}.
+
+A total number of 281 617 Norwegian article titles were extracted from \enwikilanglinks. The Norwegian Wikipedia lists a total number of 410 286 articles \footnote{Total number of Norwegian articles per 27th of April 2015. This number might have been slightly different 25th of January 2015, which is the date we downloaded the database dump used to create the English dictionary-based classifier.} on the web page \cite{wiki:nostatistikk}, which means that approximately 69\% of all the Norwegian articles were found from the language table.
+
+% Prosent: 0.686 
+
+% Antall på nettsiden (per 27.04.15: 410 286 artikler på bokmål og riksmål
+
+% Bare å laste ned og sjekke antall sider sammenliknet med antall linker. 
+
+
+%('2968022', 'no', 'Barbados under Sommer-OL 2000')
+ 
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+378466      Fidel V. Ramos
+287145      Jacques Cazotte
+24984364    Gnathothlibus
+287149      Nyala
+2653965     Papuacedrusslekten
+370256      Timurid-dynastiet
+33931676    Druide
+778284      Flora (gudinne)
+4369469     Aloandia
+1246681     Edge (magasin)
+5980        Karbonsluk
+1902206     Nansenprisen
+\end{lstlisting}
+\caption[English page id and Norwegian article title]{The page id of the English Wikipedia article and its corresponding Norwegian title. Notice that some of the Norwegian titles contains parenthesis for handling ambiguous words. }
+\label{fig:english_id_norwegian_title}
+\end{figure}
+
+\subsubsection{Translating the English classifier}
+The next step was to translate the English dictionary to Norwegian. This was done by looking at the each entry in the English dictionary and finding the corresponding article title in Norwegian. Figure \ref{fig:en_to_nok} shows hos the English dictionary entries corresponds to a Norwegian title, and \ref{fig:norwegian_dictionary} shows the results when the English categories are added to the Norwegian titles. 
+ 
+ 
+ \begin{comment}
+Then I needed to find the corresponding English article name for the page id, which was done by looping through relevant pages in the \enwikicatlink file since all entries are on the form: 
+ 
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+INSERT INTO `categorylinks` VALUES (0,'','','2014-01-16 15:23:19','','','page'),(10,'Redirects_from_moves','ACCESSIBLECOMPUTING','2014-10-26 04:50:23','','uppercase','page')
+\end{lstlisting}
+\caption{Caption}
+\label{fig:redirect_example_catlink}
+\end{figure}
+id 10 equals accesiblecomputing. 
+\end{comment}
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+bicycle kick        brassespark
+davis phinney       davis phinney
+phasi charoen       district  phasi charoen
+chanthaburi         chanthaburi
+hindnubben          hindnubben
+kamrup district     kamrup (distrikt)
+\end{lstlisting}
+\caption[English dictionary entry and Norwegian article title]{Example of English dictionary entries and their corresponding titles in the Norwegian Wikipedia.}
+\label{fig:en_to_nok}
+\end{figure}
+
+%At the end I loaded the finished dictionary and compared the names and created a large dictionary with the english names where there were norwegian titles available and ended with a dictionary like this: 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+"speilreflekskamera": [
+      "technology & computing/cameras & camcorders"
+    ], 
+    "henry hermansen": [
+      "sports/skiing"
+    ], 
+    "joost wichman": [
+      "sports/mountain biking"
+    ], 
+    "punt e mes": [
+      "food & drinks/wine"
+    ], 
+    "mikroorganisme": [
+      "science/biology"
+    ], 
+\end{lstlisting}
+\caption[Example of a Norwegian dicitonary-based classifier]{The Norwegian dictionary when the English categories are given to their corresponding Norwegian entry}
+\label{fig:norwegian_dictionary}
+\end{figure}
+
+
+\subsubsection{Processing the Norwegian entries in the new dictionary}
+Finally, we needed to process the entries in the Norwegian dictionary. The reason for this is that some of the Norwegian entries might be ambiguous even though the English entries are not. Thus, all titles containing parenthesis were disregarded. It was also essential 
+
+% Skriv litt om hvor mange tvetydige titler vi har osv.. :)
+
+
+% Results: 
+% Norwegian entry list with 21310 entries

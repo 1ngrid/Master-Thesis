@@ -1,0 +1,47 @@
+
+
+\subsection{Results for Sports}
+We started by evaluating the results for the IAB category \emph{sports} for the different versions of the classifier.\footnote{The 1st version of the classifier did not have any classification rules for sports.} The results are shown in \ref{tab:iabresults_sports}, while the evaluation scores are shown in \ref{tab:precision_sports}. 
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l|  X|X|X|X|X|X }
+         & {\bf iab-1} & {\bf iab-2} & {\bf iab-3} & {\bf iab-4} & {\bf iab-5} & {\bf iab-6} \\ \hline
+{\bf TP}        & NaN       & 131         & 16          & 15          & 294         & 567         \\ \hline
+{\bf TN}        & NaN       & 25852       & 26613       & 26606       & 26539       & 26034       \\ \hline
+{\bf FN}        & NaN       & 2269        & 2379        & 2379        & 2091        & 1839        \\ \hline
+{\bf FP}        & NaN       & 719         & 9           & 8           & 80          & 598         \\ 
+\end{tabularx}
+\\[10pt]
+\caption[Classification results for \emph{sports}]{Classification results for all versions of the classifier for the category \emph{sports}.}
+\label{tab:iabresults_sports}
+\end{table}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l|  l|l|l|l|l|l }
+                & {\bf iab-1} & {\bf iab-2} & {\bf iab-3} & {\bf iab-4} & {\bf iab-5} & {\bf iab-6} \\ \hline
+{\bf Precision} & NaN         & 15.411765   & 64.000000   & 65.217391   & 78.609626   & 48.669528   \\ \hline
+{\bf Recall}    & NaN         & 5.458333    & 0.668058    & 0.626566    & 12.327044   & 23.566085   \\ \hline
+{\bf Accuracy}  & NaN         & 89.686238   & 91.770342   & 91.771236   & 92.514826   & 91.607549   \\ \hline
+{\bf F1-score}  & NaN         & 8.061538    & 1.322314    & 1.241208    & 21.312070   & 31.755811   \\
+\end{tabularx}
+\\[10pt]
+\caption[Categorization results for \emph{Sports}]{Evaluation scores for the different versions of the classifier when classifying \emph{sports}.}
+\label{tab:precision_sports}
+\end{table}
+
+
+\subsubsection{Evaluation of the results}
+The results of the classification show that all evaluation scores are better in the later versions of the dictionary, where \emph{iab-5} and \emph{iab-6} are the versions with best results. 
+
+The main difference between \emph{iab-5} and \emph{iab-6} is that there are fewer entries in \emph{iab-6} than in \emph{iab-5}. It is noticeable that \emph{iab-5} has a higher number of correctly classified articles (TP), but also a higher number of wrongly classified articles (FP). Classifier \emph{iab-6}, on the other hand, has a higher recall which means that it has less wrongly classified articles. 
+
+
+
+
+Comparison with other projects. 
+
+

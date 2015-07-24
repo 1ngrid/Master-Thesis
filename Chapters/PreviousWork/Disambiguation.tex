@@ -1,4 +1,44 @@
 \section{Disambiguation}
 \label{sec:disambiguation}
 
-Here I'm gonna write how to solve disambiguation and common problems or something?
+Most people would prefer to interact with their computer in natural language, e.g., search for \emph{"What is computer science?"} rather than \emph{"computer science definition"}. We have already mentioned that the task of understanding natural language is called \emph{Natural Language Processing} (NLP) and is a difficult task because it requires the computer to actually understand the meaning of text. This task is especially difficult because of ambiguity. 
+
+Ambiguity means that there are more than one meaning to a word, phrase or sentence, and disambiguation is the task of finding the correct meaning. There exists many different types of ambiguity \cite[][p.100 and p.466-468]{jurafsky2000speech}% , but our problem is most concerned with 
+\begin{itemize}
+\item Part-of-speech ambiguity where a part of the sentence is ambiguous. Example: \emph{book} could be either a noun (\emph{hand me that \emph{book}}) or a verb (\emph{\emph{book} that flight}).
+\item Structural ambiguity where the structure of the sentence is ambiguous. This can be split into further types
+\begin{itemize}
+\item Attachment ambiguity where it is not clear how the words are connected together. Example: \emph{We saw the Eiffel tower flying to Paris}.
+\item Coordination ambiguity where sets of phrases are joined by conjunction. Example: \emph{Old men and women}.
+\end{itemize}
+\item Local ambiguity where some part of the sentence is ambiguous even if the whole sentence is not ambiguous. 
+
+%Example: The sentence \emph{book that flight} is not ambiguous, but the word \emph{book} is a local amibugity in the sentence since we can 
+
+\end{itemize}
+Many sentences in natural language are complex and combine the different types of ambiguity. This makes it hard for the computer to determine the meaning of the sentence. 
+
+
+Ambiguous keywords are a problem for our classifier, which means that part-of-speech ambiguity the most relevant for our project. Our solution was to remove all all ambiguous keywords from our dictionary-based classifier, but a good extension for our implementation is to handle disambiguation in a better way. Hence, we have examined some projects for resolving ambiguity:
+
+\begin{enumerate}
+\item \emph{Named entity disambiguation by leveraging wikipedia semantic knowledge} \cite{han2009named}. 
+\item \emph{Large-scaled named entity disambiguation based on Wikipedia data} \cite{cucerzan2007large}. 
+\item \emph{Distributed Representations of Words and Phrases and their compositionality} \cite{mikolov2013distributed}.
+\end{enumerate}
+
+\subsubsection{Ambiguous entities}
+Project \cite{han2009named} and \cite{cucerzan2007large} encounter the same disambiguation problem as us; entities that have various meanings. The idea of their solution is to measure similarities between occurrences of names and use this to determine whether two occurrences of a specific name represent the same entity. Both projects look through internal hyperlinks in Wikipedia articles and collect all surface forms\footnote{Surface form is defined as full name, acronym, alternative names and spelling variations that occur for an Wikipedia article title} of each article (entity). 
+
+
+
+%Another project for solving ambiguous entities is \cite{cucerzan2007large}. This project finds surface forms of entities in a similar way as \cite{han2009named} where they look at hyperlinks between Wikipedia articles, but they also look at titles at the disambiguation pages and the redirecting pages.  
+
+
+%by looking at the titles of Wikipedia articles, disambiguation pages, titles of redirecting pages and references to the articles from other Wikipedia articles.
+
+In addition, \cite{cucerzan2007large} finds both semantic relations and social relatedness between Wikipedia in the task of determining the meaning of an entity. This is done by studying hyperlinks between them. The combination of these three factors form a way of avoiding ambiguity, since the most likely meaning is set for each Wikipedia article. 
+Project \cite{han2009named} solves ambiguity by also looking at titles at the disambiguation pages and the redirecting pages, and represent the Wikipedia entities as vectors in a vector space model. 
+
+The last project studied for solving disambiguation is provided by Google in \cite{mikolov2013distributed}. This project used a different approach, where they created an improved Skip-gram model. All words are represented in a vector space, with semantic and syntactic relationships represented between the words. The training of the Skip-gram model made it possible to determine the meaning of the words based on the semantic relationships to other words within the vector space. 
+

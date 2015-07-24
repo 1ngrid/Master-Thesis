@@ -1,5 +1,6 @@
 \section{Id Mapping}
-The files containing the results becomes extremely large due to the extreme amout of data. All paths of all Wikipedia articles is more than 20 GB of compressed data. It is desirable to reduce the space needed for storing all results on the computer. The solution was to create an id mapping for each category name and article name. Id mapping gives all names a unique id, and instead of writing the full path of category names to the file, the full paths with category ids is written to file. 
+\label{sec:id_mapping}
+The files containing the results becomes extremely large due to the extreme amount of data. All paths to all Wikipedia articles is more than 20 GB of compressed data. It is desirable to reduce the space needed for storing all results on the computer. The solution was to create an id mapping for each category name and article name. Id mapping gives all names a unique id, and instead of writing the full path of category names to the file, we write the full paths with category ids. 
 
 The id mapping is implemented by creating a counter that assigns numbers to each category name or article name that is not found yet, i.e., a unique number represents each name. Figure \ref{fig:idmapping} shows an excerpt of the id mapping created for our purpose, where the id \emph{4600570} corresponds to the article about \emph{Ole-Johan Dahl}, which means that this id is used everywhere \emph{Ole-Johan Dahl} is used in paths. 
 
@@ -30,7 +31,7 @@ Working with ids is also faster in many implementations concerning lookups in th
 
 [INFO] Time to find all article paths: 0.955 min
 \end{lstlisting}
-\caption[Time for all paths for \emph{people} when using ids]{Time needed for finding all paths from the category \emph{177678} (corresponding to the category \emph{people}) when ids are used in the program.}
+\caption[Time for all paths for \emph{people} when using ids]{Time needed for finding all paths from the category \emph{177678} (corresponding to the category \emph{people}) when ids are used by our program.}
 \label{fig:id_lookup}
 \end{figure}
 
@@ -42,11 +43,11 @@ Working with ids is also faster in many implementations concerning lookups in th
 
 [INFO] Time to find all article paths: 1.559 min
 \end{lstlisting}
-\caption[Time for all paths for \emph{people} when using full names]{Time needed for finding all paths from the category \emph{people} when using full names).}
+\caption[Time for all paths for \emph{people} when using full names]{Time needed for finding all paths from the category \emph{people} when our program uses full names of categories and articles.}
 \label{fig:fullname_lookup}
 \end{figure}
  
-The last reason to use ids instead of full names is that the full names may include characters useful for describing paths, for instance the characters "/" which is a common way of describing full paths. This could lead to trouble if the category name contains the symbal. 
+The last reason to use ids instead of full names is that the full names may include characters useful for describing paths, for instance the characters "/" which is a common way of describing full paths. This could lead to trouble if the category name contains the symbol. 
 
 % Fordel 2: Kan bruke "/" in the text. 
 

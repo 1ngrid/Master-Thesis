@@ -1,7 +1,13 @@
-\subsubsection{Hidden categories}
-Wikipedia's category structure contains lots of hidden categories which are not displayed as categories at the bottom of an article page for the general users, even if the article is placed under the category. Examples of some hidden categories are \emph{All articles with dead external links}, \emph{Wikipedia Articles needing rewrite} and \emph{Wikipedia articles in need of updating from September 2014}. These categories are useful for editing articles or maintaining a trustworthy and well-structured encyclopedia. The hidden categories provide an easy way to mark all  categories with something in common, for instance mark all categories with references that needs to be checked. 
+\subsubsection{Removing hidden categories}
+\label{sec:removing_hidden_categories}
+Wikipedia's category structure contains lots of hidden categories which are not displayed as categories at the bottom of an article page for the general users, even if the article is placed under the category. Examples of some hidden categories are \emph{All articles with dead external links}, \emph{Wikipedia Articles needing rewrite} and \emph{Wikipedia articles in need of updating from September 2014}. Hidden categories are useful for editing articles or maintaining a trustworthy and well-structured encyclopedia. These categories provide an easy way to mark all  categories with something in common, for instance mark all categories with references that needs to be checked. 
 
-Hidden categories are concerned with maintenance and administration, hence not relevant for normal users or for our study because they add complexity to the structure, and are not relevant when finding full paths of articles. Hence, it is desirable to remove all the links to hidden categories, but for this it was necessary to know the title of all hidden categories.  On Wikipedia's information page about \emph{Hidden Categories}\cite{wiki:hiddencat} 15 385 subcategories are listed as immediate subcategories, hence these are also hidden categories. Many of these categories have links to their own hidden subcategories which also had to be found. The first attempt was to look through all the links from the category \emph{Hidden Categories}, where 15 006 subcategories where found and marked as not relevant. Since this did not give the expected number, another attempt was made by looking at the file \enwikipageprops (figure \ref{fig:pageprops} shows how insertions of a  hidden category is marked). Thus, all the ids marked with \emph{hiddencat} was collected and their corresponding category title found in \enwikipage. This approach led to 15 513 categories. To make sure that all hidden categories where found, a test was made to see if all categories from the first attempt was found in the list created from the second attempt. The results showed that all categories found in the first attempt was also found in the second attempt, and the list of all 15 513 category titles whose links should be disregarded from the paths in the final results. 
+Hidden categories are concerned with maintenance and administration, hence not relevant for normal users, or for our project for 2 reasons: 
+\begin{enumerate}
+\item Hidden categories do not provide relevant information in full article paths.
+\item Hidden categories add complexity to our structure.
+\end{enumerate}
+Hence, it is desirable to remove all links to hidden categories, which means that we need the titles of all hidden categories.  On Wikipedia's information page about the category \emph{Hidden Categories}\cite{wiki:hiddencat} 15 385 subcategories are listed as immediate subcategories, which means that these are also hidden categories. Many of these categories have links to their own hidden subcategories. We did two attempts for finding all hidden categories. The first attempt was to look through all the links from the category \emph{Hidden Categories}, where 15 006 subcategories where found and marked as not relevant. This did not give the expected number, so the second attempt was made by looking at the file \enwikipageprops. All ids marked with \emph{hiddencat} (see figure \ref{fig:pageprops}) were collected and their corresponding category title found in \enwikipage. This approach led to 15 513 categories. To make sure that all hidden categories where found, a test was made to see if all categories from the first attempt was found in the list created from the second attempt. The results showed that all categories found in the first attempt was also found in the second attempt, and the list of all 15 513 category titles whose links should be disregarded from the paths in the final results. 
 
 \begin{figure}[h]
 \centering
@@ -12,7 +18,7 @@ Hidden categories are concerned with maintenance and administration, hence not r
 \label{fig:pageprops}
 \end{figure}
 
-The hidden categories should be removed from both links between categories and articles, and between categories. The first case is easy since the links can just be removed from the results. Removing hidden categories between categories has to be done carefully to make sure that information is not lost. The reason for this is that hidden categories might be subcategories of visible categories or have visible categorise as their own subcategories. Figure \ref{fig_stevie_wonder_hidden} is an example of a path to the article about \emph{Stevie Wonder} which includes a hidden category. 
+The hidden categories should be removed from both links between categories and articles, and between categories. The first case is easy since the links can just be removed from the results. Removing hidden categories between categories has to be done carefully to make sure that information is not lost. Hidden categories might be subcategories of visible categories or have visible categorise as their own subcategories. Figure \ref{fig:stevie_wonder_hidden} is an example of a path to the article about \emph{Stevie Wonder} which includes a hidden category. 
 
 
 %An example of this can be seen in figure \ref{fig:stevie_wonder_hidden}, where the double rounded rectangle is a hidden category, the rounded rectangle is a normal (visible) category and the rectangle is the article about \emph{Stevie Wonder}.
@@ -39,17 +45,19 @@ The desirable visible paths for all articles are paths without hidden categories
 \label{fig:stevie_wonder}
 \end{figure}
 
-Table \ref{tab:withouthiddencat} shows how number of links between categories and articles are reduced when hidden categories are disregarded. Number of links between categories has increased even though total number of categories are reduced from asf to 504 309.
+Table \ref{tab:withouthiddencat} shows how number of links between categories and articles are reduced when hidden categories are disregarded. Number of links between categories has increased even though total number of categories are reduced from 519 822 to 504 309.
 
 %The main reason to reduce number of links is to reduce the complexity 
 
 \begin{table}[h]
 \centering
+\renewcommand{\arraystretch}{1.25}
 \begin{tabular}{l|c|c}
 \textbf{Links between...} & \textbf{W/ Hidden Categories} & \textbf{W/o Hidden Categories}  \\ \hline
  \textbf{subcategories} & 3 358 007  & 3 467 360\\
  \textbf{articles and categories} & 71 487 647  & 52 611 629 
 \end{tabular}
+\\[10pt]
 \caption[Number of links without hidden categories]{Number of links removed when all hidden categories are excluded. }
 \label{tab:withouthiddencat}
 \end{table}
@@ -58,6 +66,9 @@ Table \ref{tab:withouthiddencat} shows how number of links between categories an
 
 
 \begin{comment}
+
+504309 + 15513
+
 Number of category links (w hiddencats): 3 358 007
 Number of category links (w/o hiddencats): 
 

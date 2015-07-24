@@ -1,14 +1,15 @@
 \section{Finding Full Path of Articles}
-The goal of our implementation was to create a dictionary where the entries are created from the titles of Wikipedia articles, and each entry leads to one or more describing categories. Wikipedia already contains an underlying category structure which is useful to decide the relevant categories for each article. The first step was therefore to find the full path of each article in Wikipedia, where the path is given from the categories that lead to every article. 
+\label{sec:finding_full_path_of_articles}
+The goal of our implementation was to create a dictionary where the entries are created from the titles of Wikipedia articles, and each entry leads to one or more describing categories. Wikipedia already contains an underlying category structure which is useful to decide the content for each article. Thus, the first step was to find the full paths of each article in Wikipedia, where the paths are given from the categories that lead to the articles. 
 
 
 % Creating a representation of the underlying structure. 
 
 \subsection{Creating the Underlying Category Structure}
-Finding full paths of all articles require information about Wikipedia's structure between categories, and between categories and articles. Thus, the first step was to create a way of representing the available information about the Wikipedia structure. % so the relevant information could be extracted. 
+Finding full paths of all articles require information about Wikipedia's structure between categories, and between categories and articles. Thus, we needed a way of representing the available information about the Wikipedia structure. % so the relevant information could be extracted. 
 The file \enwikicatlink contains the information needed to create a database table \emph{categorylinks} filled with all links between categories, all links between articles and files, and all links between categories and articles. All information about the links are inserted in the database table through \texttt{INSERT} statements where all entries are on the form\\\\
-(\emph{cl\_from},\emph{cl\_to},\emph{cl\_sortkey},\emph{cl\_timestamp},\emph{cl\_sortkey\_prefix},\emph{cl\_collation},\emph{cl\_type})\\\\
-    Table \ref{tab:insertdescription} describes the meaning of all the \texttt{INSERT} statement fields \cite{wiki:categorylinkstable} and \ref{fig:entryexample} shows an example of an entry in the \texttt{INSERT} statement, where the link between the category with id \emph{12} and the  page \emph{Anarchism} is inserted into the table \emph{categorylinks}.  
+(\emph{cl\_from},\emph{cl\_to},\emph{cl\_sortkey},\emph{cl\_timestamp},\emph{cl\_sortkey\_prefix},\emph{cl\_collation},\emph{cl\_type}).\\\\
+    Table \ref{tab:insertdescription} describes the meaning of all the \texttt{INSERT} statement fields \cite{wiki:categorylinkstable} and figure \ref{fig:entryexample} shows an example of an entry in a \texttt{INSERT} statement, where the link between the category with id \emph{12} and the  page \emph{Anarchism} is inserted into the table \emph{categorylinks}.  
 
 
 \begin{figure}[h]
@@ -22,7 +23,7 @@ The file \enwikicatlink contains the information needed to create a database tab
 \end{figure}
 
 
-\begin{table}[ht]
+\begin{table}[h]
 \renewcommand{\arraystretch}{1.25}
 \begin{tabularx}{\textwidth}{l|X}
 \textbf{Entry field} &  \textbf{Description} \\ \hline
@@ -40,7 +41,7 @@ cl\_type & What type of article is this (file, subcat (subcategory) or page (nor
 \end{table}
 
 
-\begin{figure}[ht]
+\begin{figure}[h]
 \begin{lstlisting}
 INSERT INTO `categorylinks` VALUES 
 (0,'','','2014-01-16 15:23:19','','','page'),
@@ -53,14 +54,17 @@ INSERT INTO `categorylinks` VALUES
 \label{fig:categorylinks}
 \end{figure}
 
-Each \texttt{INSERT} statement consists of multiple links for insertion in the database table as we can see in figure \ref{fig:categorylinks}. The \texttt{INSERT} statements has to be split so that all links are separated into new statements, and only relevant links are kept, i.e.,  links with \emph{cl\_type} as \emph{subcat} (link between categories) or \emph{page} (link between category and article). The file \enwikicatlink contains 10 938 \texttt{INSERT} statements, which in total consists of 88172914 links. Table \ref{tab:enwikicatlinks} shows the number of different links found in the file. 
+Each \texttt{INSERT} statement consists of multiple links for insertion in the database table as we can see in figure \ref{fig:categorylinks}. The \texttt{INSERT} statements has to be split so that all links are separated into new statements, and only relevant links are kept, i.e.,  links with \emph{cl\_type} as \emph{subcat} (link between categories) or \emph{page} (link between category and article). The file \enwikicatlink contains 10 938 \texttt{INSERT} statements, which in total consists of 88 172 914 links. Table \ref{tab:enwikicatlinks} shows the number of different links found in the file. 
 
-\begin{table}[ht]
+\begin{table}[h]
+\centering
 \renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\textwidth}{l|c|c|c} %X}
-\textbf{Betweeen...} & \textbf{categories} &  \textbf{categories and articles} & \textbf{articles and files} \\\hline
- & 1 648 873 & 21 846 996 & 5 262 146
-\end{tabularx}
+\begin{tabular}{l|l} %X}
+\textbf{Links between} & \textbf{Number of links} \\ \hline
+\textbf{categories} &  1 648 873\\ \hline
+\textbf{categories and articles} & 21 846 996 \\ \hline
+\textbf{articles and files} & 5 262 146 
+\end{tabular}
 \\[10pt]
 \caption{Number of links found within the different link types.}
 \label{tab:enwikicatlinks}
@@ -70,4 +74,4 @@ Each \texttt{INSERT} statement consists of multiple links for insertion in the d
 
 %It is clear that there are lots of links within As table \ref{tab:enwikicatlinks} 
 
-Table \ref{tab:enwikicatlinks} shows that there are lots of links between categories and between categories and articles. Some of these links are connected to categories for maintaining the encyclopedia. These categories are called \emph{hidden categories} and should be removed to reduce the complexity.
+Some of the links between categories are links for maintaining the encyclopedia. The categories with this purpose are called \emph{hidden categories} and should be removed in our project in order to reduce the complexity.

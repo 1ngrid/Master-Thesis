@@ -1,8 +1,13 @@
 \subsection{Processing Titles}
+\label{sec:processingtitles}
 A match in a random article is found if a phrase or word is an exact match with a Wikipedia article title, hence the Wikipedia article titles can be viewed as entries in a dictionary. The titles should therefore be processed to make sure that matches will be found. 
 
-\subsubsection{Disambiguation or Specification of titles}
-Lots of the Wikipedia titles contains parenthesis that specify what the Wikiepdia article is about. Figure \ref{fig:parenthesis_example} shows two Wikipedia titles for the \emph{David Sharpe}, where one article is about David Sharpe (1967-) the British athlete  \cite{wiki:davidsharpeathlete} and the other is about David Sharpe (1910-1980) the American actor  \cite{wiki:davidshapreactor}.
+\subsubsection{Disambiguation or specification of titles}
+Lots of the Wikipedia titles contains parenthesis that specify what the Wikipedia article is about. Figure \ref{fig:parenthesis_example} shows two Wikipedia titles for the \emph{David Sharpe}, where one article is about David Sharpe (1967-) the British athlete\cite{wiki:davidsharpeathlete} and the other is about David Sharpe (1910-1980) the American actor \cite{wiki:davidsharpeactor}.
+
+Ambiguous titles are a problem if they are categorized to different categories. Thus, all ambiguous titles are removed from the dictionary. 
+
+%are a problem if they are categorized to different categories because they can be misleading.  
 
 %\emph{General Grant}, where one article is about the largest giant sequoia \cite{wiki:generalgranttree} and the other is about a 1,005-ton ship built in 1864 \cite{wiki:generalgrantship}. A match will mostly likely occur without the parenthesis, so these has to be removed from the entries. 
 
@@ -14,9 +19,12 @@ Lots of the Wikipedia titles contains parenthesis that specify what the Wikiepdi
 david sharpe (athlete)
 david sharpe (actor)
 \end{lstlisting}
-\caption{Wikipedia article titles with parenthesis}
+\caption{Wikipedia article titles with parenthesis.}
 \label{fig:parenthesis_example}
 \end{figure}
+
+
+%\begin{comment}
 
 Lots of Wikipedia articles are about events happening a specific year. Exact matching with these titles will most likely occur, hence the year should be removed from the entry.  Figure \ref{fig:davis_cups} shows an example of two entries which corresponds to the Davis tennis tournaments in 1996 and in 2000. Removing the year from these entries will increase the probability of finding a match, but also make both entries look the same. 
 
@@ -26,7 +34,7 @@ Lots of Wikipedia articles are about events happening a specific year. Exact mat
 Wikipedia article title: 1996 Davis Cup
 Wikipedia article title: 2000 Davis Cup
 \end{lstlisting}
-\caption{Wikipedia article titles which will look the same when removing the year from the title.}
+\caption[Wikipedia article title with year]{Wikipedia article titles which will look the same when removing the year from the title.}
 \label{fig:davis_cups}
 \end{figure}
 
@@ -40,13 +48,13 @@ Another specification found in Wikipedia articles is specification on gender, li
 2015 Dubai Tennis Championships - Women's Singles
 2015 Dubai Tennis Championships - Men's Singles
 \end{lstlisting}
-\caption{Wikipedia articles specified for gender (women and men) and gender neutral.}
+\caption[Wikipedia article title with gender]{Wikipedia articles specified for gender (women and men) and gender neutral.}
 \label{fig:dubai_gender}
 \end{figure}
 
 The next step is to decide whether the modified entries mean the same or have different meaning after the parenthesis and years are removed. This was done by looking at the mapping of the entries. Two processed entries are considered identical if they are a match of each other and are mapped to the same category. One of the entries is kept if the entries are identical, both are disregarded otherwise. The entry \emph{David Sharpe} (figure \ref{fig:parenthesis_example}) is an example of an entry that is removed from the dictionary since the two original entries are mapped to different categories , while \emph{Davis Cup} (figure \ref{fig:davis_cups}) is kept since both of the entries are mapped to the same categories. The gender specific entries in figure \ref{fig:dubai_gender} are reduced to one entry \emph{Dubai Tennis Championships - Singles} when gender and year is removed from the entry, and is kept in the dictionary.
 
-There are both advantages and disadvantages with this approach. The main disadvantage is that entries are removed, hence, information is lost. We could still argue that the removed entries are the entries most likely to wrongly classify text, and that the probability to correctly classifiy text is increased when these entries are removed. 
+There are both advantages and disadvantages with this approach. The main disadvantage is that entries are removed, hence, information is lost. We could still argue that the removed entries are the entries most likely to wrongly classify text, and that the probability to correctly classify text is increased when these entries are removed. 
 
 %The advantage is on the other hand that the removed entries are the entries which most likely would lead to wrong information. 
 
@@ -61,9 +69,10 @@ Some of the entries are reduced to very common English word. Figure \ref{fig:com
 Wikipedia article title: (85476) 1997 MY
 Entry: my
 \end{lstlisting}
-\caption{Example of an entry that has been reduced to a common English word. }
+\caption[Entry reduced to common English word]{Example of an entry that has been reduced to a common English word. }
 \label{fig:common_word}
 \end{figure}
 
-Words that occur extremely often in most documents are more likely to disturb the categorization instead of providing useful information. These words should henceforth be disregarded as entries. This was done by creating a large list containing the most common English words, called a \emph{stop list} \cite[p.~ 25]{iirbook} . An entry is removed if it is reduced to one of these words. The stop list chosen for this implementation was chosen as the 1000 most basic English words according to Wictionary, combined with the 100 most common spoken words according to TV and movie scripts \cite{wiki:freqwordlist}.
+Words that occur extremely often in most documents are more likely to disturb the categorization instead of providing useful information. These words should henceforth be disregarded as entries. This was done by creating a large list containing the most common English words, called a \emph{stop list} \cite[p.~ 25][]{iirbook} . An entry is removed if it is reduced to one of these words. The stop list chosen for this implementation was chosen as the 1000 most basic English words according to Wictionary, combined with the 100 most common spoken words according to TV and movie scripts \cite{wiki:freqwordlist}.
 
+%\end{comment}

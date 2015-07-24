@@ -1,0 +1,41 @@
+\section{Classifiers Based on Wikipedia}
+\label{sec:classifiers_based_on_wikipedia}
+
+We have created a dictionary-based classifier, which classifies text based on occurrences of entries in our dictionary. This is just one way of classifying text. Classifiers can be created in various ways, and the classifiers can focus on different features. We have studied some projects which creates classifiers from Wikipedia: 
+\begin{enumerate}
+\item Dictionary-based classifier: \emph{Identifying document topics using the Wikipedia category network} \cite{schonhofen2009identifying} and \emph{Entity Extraction, Linking, Classification, and Tagging for Social Media: A Wikipedia-based Approach} \cite{entityextraction}.
+\item Classifier based on Bag of Words: \emph{Overcoming the Brittleness Bottleneck using Wikipedia: Enhancing Text Categorization with Encyclopedic Knowledge} \cite{brittleness}.
+\item Statistical classifier: \emph{Automatic ontology extraction for document classification} \cite{kozlova2005automatic}.
+\end{enumerate}
+
+\subsubsection{Dictionary-based classifiers}
+One of the most relevant project regarding our project is \cite[][]{schonhofen2009identifying}. This project is closely related to our research, with a similar goal; to determine whether documents can be categorized by only exploring titles and categories of Wikipedia articles. 
+
+The main difference between this project and ours, is their choice of output categories. \cite{schonhofen2009identifying} categorizes documents to  Wikipedia categories, while we categorize documents to a category set based on IAB's taxonomy. Their categorization approach are similar to ours, and consists of two main steps: 
+\begin{enumerate}
+\item Look for word compounds within the text that match processed titles of Wikipedia articles. 
+\item Retrieve the Wikipedia articles' categories. 
+\end{enumerate}
+The classifier in \cite[][]{schonhofen2009identifying} is a dictionary-based classifier like ours, but the keywords are categorized to the corresponding Wikipedia articles' categories instead of an independent category set. Another difference is that we look at the whole category structure, while \cite{schonhofen2009identifying} looks at categories retrieved from the matched Wikipedia article titles. \\\\
+Another dictionary-based classifier is found in \cite{entityextraction}, which is a project for classifying and tagging tweets. The project uses Wikipedia to create a knowledge base, where they process titles of Wikipedia articles and link them towards suitable categories representing the content of their article. 
+
+
+The project concluded that Wikipedia did not have coverage for classifying all tweets, and added more concepts and instances to the knowledge base or better classification results. This is interesting for our project since we create a dictionary-based classifier solely from Wikipedia.
+
+
+\subsubsection{Bag of Words (BOW)}
+One of the most common ways of classifying text is by representing the text as a \emph{Bag of Words} (BOW). % TODO: Need reference
+The idea is that the classifier looks at which words occur within the document and classifies the document based on the frequencies of these words. The BOW does not consider the order of the words, but only counts the occurrences. BOW can be advanced by weighting words so that common words have a smaller impact on the classification, and topic specific words have a larger impact. 
+
+One of the disadvantages with a classifier based on BOW, is that the classifier has problems with classification of short documents where there are few occurrences of all words, and small categories which have few connected keywords. Project \cite{brittleness} focuses on optimizing the BOW classifier on small classes and short documents. 
+
+The project created a program that finds the Wikipedia article most similar to the document, and extends this document with the words occurring in the Wikipedia article. This approach gives more topic specific words to the documents, which makes it easier to classify them with  a simple classifier. 
+
+\subsubsection{Statistical classification}
+Another way of classifying documents is by statistical classification. This approach is part machine learning where the classifier learns how to optimize its classification by using a training set. There exists various techniques within statistical classification, including \emph{Support Vector Machine} (SVM).  % TODO: Insert reference: inf4800 boka
+SVM is a method within supervised learning\footnote{Supervised learning is based on training sets which contain the correct classification results. Thus, the classifier receives feedback on its classification and can optimize the classification process.} % TODO: insert reference
+where the classifier uses a training set to create a separation line (for 2 classes) or a hyperplane (for more than 2 classes). This line or hyperplane is used to separate classes. 
+
+Classification based on SVM is found in project \cite{kozlova2005automatic}, a project that focuses on ontology\footnote{Ontology can be defined as an explicit specification of a conceptualization \cite{gruberontology}.} extraction to improve classification. The project uses ontology to understand the semantic and syntactic relationships within Wikipedia, and creates a hyperplane to separate the classes. Many texts should be categorized to more than one class if the content is about more than one topic. The project's solution is to let the classifier create a hyperplane that correctly classifies most of the training data, but still lets some of the data be categorized to wrong classes. 
+
+The results of the ontology extraction in  \cite{kozlova2005automatic} is a interesting feature for future works with our implementation. Automatically understanding the concepts within Wikipedia could create a better taxonomy and improve the classification results. 

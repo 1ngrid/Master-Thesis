@@ -1,0 +1,36 @@
+\subsection{Results for Arts \& Entertainment}
+The online web page used for evaluation (\texttt{rappler.com}) contains a category called \emph{Entertainment}, which corresponds to the IAB taxonomy's category \emph{Arts \& Entertainment}. Thus, we retrieved all classified results for evaluating how well the classifier performed when classifying entertainment related articles. The classification results are shown in table \ref{tab:iabresults_entertainment} and the evaluation scores are shown in table \ref{tab:precision_entertainment}.
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l|  X|X|X|X|X|X }
+         & {\bf iab-1} & {\bf iab-2} & {\bf iab-3} & {\bf iab-4} & {\bf iab-5} & {\bf iab-6} \\ \hline
+{\bf TP} & NaN          & NaN           & 152         & 154         & 2530        & 2543        \\ \hline
+{\bf TN} & NaN          & NaN           & 25090       & 24990       & 1196        & 39          \\ \hline
+{\bf FN} & NaN          & NaN           & 2398        & 2396        & 23          & 1           \\ \hline
+{\bf FP} & NaN          & NaN           & 1572        & 1683        & 25489       & 26764       \\
+\end{tabularx}
+\\[10pt]
+\caption[Classification results for \emph{arts \& entertainment}]{Classification results for all versions of the classifier for the category \emph{arts \& entertainment}.}
+\label{tab:iabresults_entertainment}
+\end{table}
+
+\begin{table}[h]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l|  X|X|X|X|X|X }
+                & {\bf iab-1} & {\bf iab-2} & {\bf iab-3} & {\bf iab-4} & {\bf iab-5} & {\bf iab-6} \\ \hline
+{\bf Precision} & NaN         & NaN         & 8.816705    & 8.383234    & 9.029587    & 8.677108    \\ \hline
+{\bf Recall}    & NaN         & NaN         & 5.960784    & 6.039216    & 99.099099   & 99.960692   \\ \hline
+{\bf Accuracy}  & NaN         & NaN         & 86.409695   & 86.041816   & 12.743690   & 8.798174    \\ \hline
+{\bf F1-score}  & NaN         & NaN         & 7.112775    & 7.020743    & 16.551093   & 15.968101   \\
+\end{tabularx}
+\\[10pt]
+\caption[Evaluation scores for \emph{arts \& entertainment}]{Evaluation scores for the different versions of the classifier when classifying \emph{arts \& entertainment}.}
+\label{tab:precision_entertainment}
+\end{table}
+
+\subsubsection{Evaluating the results}
+
+

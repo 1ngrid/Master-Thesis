@@ -1,25 +1,20 @@
 \subsection{Normalized Grading Based on Inlinks and Outlinks}
-A way of avoiding favourization of short paths is by normalizing the path scores. 
+\label{sec:normalized_grading_based_on_inlinks_and_outlinks}
+A way of avoiding favoritism of short paths is by normalizing the path scores. 
 %Grading based on inlink number and outlink number favors short paths even if the paths contains categories considered as bad. One way of handling this problem is by normalizing the score of each path. 
-Equation \ref{eq:normscoreinput} shows how to normalizes the path score for path $P$ so the length of the path does not determine the relevance of the path. 
+Equation \ref{eq:normscoreinput} was used to normalize the path scores for each path so that the length of the path does not determine the relevance of the path. 
 
 % TODO: Write something about normalization - why is it good for grading?
 
-\begin{equation} \label{eq:normscoreinput}
-Pathscore_{P} = \frac{1}{N} \sum_{c} Score_{C}
-\end{equation}
-where $N$ is the number of categories in the path.
-
 Figure \ref{fig:norm_alexander_hughes} shows the three best results for the same article (Alexander Hughes) when the paths are normalized. The results here are more descriptive of the content of the article, where all paths contains information that he is associated with football. 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \begin{lstlisting}
 alexander hughes:
 * health/health by city/health in edinburgh/sport in edinburgh/sports teams in edinburgh/football clubs in edinburgh/heart of midlothian f.c./heart of midlothian f.c. players/ (4.431941375)
 * concepts/principles/rules/sports rules and regulations/sports terminology/association football terminology/association football positions/association football players by position/association football defenders/ (5.01043655556)
 * sports/sports terminology/association football terminology/association football positions/association football players by position/association football defenders/ (6.08136966667)
-
 \end{lstlisting}
 \caption[Example of normalized scores on paths]{The three best paths for \emph{Alexander Hughes} when the path scores are normalized. }
 \label{fig:norm_alexander_hughes}

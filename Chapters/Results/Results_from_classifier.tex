@@ -1,0 +1,58 @@
+\section{Results from Classifier}
+\label{sec:results_from_classifier}
+The main purpose of the evaluation is to see whether there are any improvements when the results are applied. We assumed that improvements are found if the classifier categorized correctly. This section is dedicated to evaluating the results automatically from \texttt{rappler.com}.
+
+%This section describes how we validate the classifier's results 
+
+\subsubsection{Rappler.com}
+Our project was tested at the webpage \texttt{www.rappler.com} which is an online Indonesian news site where most articles are written in English. Articles on Rappler are sorted by the publishers based on the articles' contents. The available categories and their subcategories are shown in table \ref{tab:rapplercontent}.
+
+\begin{table}[ht]
+\centering
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l|  X }
+\textbf{Main category} & \textbf{Subcategories} \\ \hline
+News & Philippines, World, \#BalikBayan, Science \& Nature, Specials \\ \hline
+Video & Newscast, Shows, Reports, Documentary, Specials \\ \hline
+Business & Economy, Brighter Life, Industries, Money, Features, Specials \\ \hline
+MoviePH & Issues, \#ProjectAgos, \#BudgetWatch, \#HungerProject, Community, IMHO \\ \hline
+Views & Thought Leaders, iSpeak, Rappler Blogs, \#AnimatED \\ \hline
+Life \& Style & Food, Books, Arts \& Culture, Travel, Specials, \#PugadBaboy \\ \hline
+Entertainment & Entertainment News, Movies, Music, Special Coverage \\ \hline
+Sports & Boxing, Basketball, Football, Other Sports, University Sports\\ \hline
+Tech & News, Features, Reviews, Hands on, Social Media \\ \hline
+Live & \#RStream, Newscast \\ \hline
+BrandRap & Stories, Specials, \#BuildWealth, \#HomeMagic, \#BrighterLife, \#BetterWorld
+\end{tabularx}
+\\[10pt]
+\caption{Rappler's category structure}
+\label{tab:rapplercontent}
+\end{table}
+We have focused on 3 categories which are present both on Rappler and in IAB's taxonomy, i.e., \emph{Sports}, \emph{Entertainment} and \emph{Tech/Technology}. These categories are evaluated for all versions of the classifier to see how well the classifier performed and to see if any improvements were made between the different versions. 
+
+\subsubsection{Bias with our evaluation}
+Some of Rappler's articles are not written in English. These articles cannot be classified by our classifier since it is based on an English dictionary. Selection of all English articles is done by only looking at articles that contain the tag "language":"en". 
+
+% TODO: Hva med de som er publisert før vi startet klassifiseringen?
+%be classified correctly by our classifier due to 
+
+
+\subsection{Retrieving Results from Cxense}
+Our classifier's results were retrieved from \emph{Cxense insight} by finding all articles with the tag we are looking for. We chose to only look at the results from the last 5 days \footnote{The last results retrieved for evaluation was retrieved *** of July 2015.}. Figure \ref{fig:retrievecode} shows an example of code for  retrieving all articles which contain the tag \emph{sports} within both the url taxonomy and \emph{igg-iabtaxonomy5}. 
+
+\begin{figure}[h]
+\centering
+\begin{lstlisting}
+{ "siteId":"9222338298879175891", 
+"groups":["url"],
+"start":"-5d",
+"fields":["urls"],
+"filters":[
+{"type":"keyword","group":"'igg-iabtaxonomy5'","item":"'sports'"},
+{"type":"keyword", "group":"taxonomy","item":"'sports'"}],"count":1000}'
+\end{lstlisting}
+\caption[Example of code for retrieving results]{Example of code for retrieving all events with \emph{sports} within the url taxonomy and within igg-iabtaxonomy5.}
+\label{fig:retrievecode}
+\end{figure}
+
+
